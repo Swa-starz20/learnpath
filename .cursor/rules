@@ -1,0 +1,19 @@
+You are working on LearnPath — an AI-powered personalized learning and career roadmap platform.
+
+Project Rules:
+
+* Maintain modular architecture
+* Do not break API contracts
+* Use reusable components
+* Use clean folder structures
+* Follow TypeScript best practices
+* Maintain responsive UI
+* Never modify unrelated files
+* Keep frontend/backend separation strict
+* Use environment variables securely
+* Maintain scalable architecture
+* Use proper naming conventions
+* Generate production-quality code only
+* Do not create duplicate components
+* Use TailwindCSS consistently
+* Maintain API consistency across modules
