@@ -285,4 +285,3 @@ export const DOMAIN_ROADMAP_CONFIGS: Record<DomainId, DomainRoadmapConfig> = {
   chemical:    { domainId: 'chemical',    tracks: CHEMICAL_TRACKS },
 };
 
-export type { NodeStatus, RoadmapNode, CareerTrack, DomainRoadmapConfig };

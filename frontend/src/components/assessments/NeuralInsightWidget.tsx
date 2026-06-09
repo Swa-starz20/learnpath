@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { CheckCircle2, Lock, Activity } from "lucide-react";
+import { Lock, Activity } from "lucide-react";
 
 interface NeuralInsightWidgetProps {
   profileLabel: string;

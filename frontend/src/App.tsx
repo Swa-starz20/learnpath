@@ -8,6 +8,11 @@ import PersonalityAssessment from "./pages/PersonalityAssessment"
 import AptitudeAssessment from "./pages/AptitudeAssessment"
 import BehavioralAnalysis from "./pages/BehavioralAnalysis"
 import AssessmentResults from "./pages/AssessmentResults"
+import CoursesPage from "./pages/CoursesPage"
+import CourseWorkspace from "./pages/CourseWorkspace"
+import PlacementsPage from "./pages/PlacementsPage"
+import InterviewWorkspacePage from "./pages/InterviewWorkspacePage"
+import CompanyReadinessPage from "./pages/CompanyReadinessPage"
 
 function App() {
   return (
@@ -22,6 +27,11 @@ function App() {
           <Route path="/assessments/aptitude" element={<AptitudeAssessment />} />
           <Route path="/assessments/behavioral" element={<BehavioralAnalysis />} />
           <Route path="/assessments/results" element={<AssessmentResults />} />
+          <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/courses/:courseId" element={<CourseWorkspace />} />
+          <Route path="/placements" element={<PlacementsPage />} />
+          <Route path="/placements/interview" element={<InterviewWorkspacePage />} />
+          <Route path="/placements/company" element={<CompanyReadinessPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

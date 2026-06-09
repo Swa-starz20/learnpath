@@ -9,7 +9,6 @@ import {
   Radar,
   ResponsiveContainer,
   Tooltip,
-  type TooltipProps,
 } from 'recharts';
 import { cn } from '@/lib/utils';
 
@@ -28,7 +27,7 @@ const sizeMap = {
   lg: 360,
 };
 
-const CustomTooltip: React.FC<TooltipProps<number, string>> = ({ active, payload }) => {
+const CustomTooltip = ({ active, payload }: any) => {
   if (!active || !payload?.length) return null;
   const item = payload[0];
   return (

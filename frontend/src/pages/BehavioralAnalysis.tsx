@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import {
   Activity, Brain, Users, Zap, Target, TrendingUp, Shield,
-  MessageSquare, BarChart2, Sparkles, ChevronRight
+  MessageSquare, BarChart2
 } from "lucide-react";
 import {
   RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, Tooltip

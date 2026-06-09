@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, type Variants } from "framer-motion";
 import { Flame, ShieldCheck, CalendarClock, Brain } from "lucide-react";
 import { StatsCard } from "@/components/dashboard/StatsCard";
 import { EngineeringRoadmap } from "@/components/dashboard/EngineeringRoadmap";
@@ -6,6 +7,8 @@ import { SkillProficiencyPanel } from "@/components/dashboard/SkillProficiencyPa
 import { RecommendationsPanel } from "@/components/dashboard/RecommendationsPanel";
 import { AIInsightPanel } from "@/components/dashboard/AIInsightPanel";
 import { QuickActions } from "@/components/dashboard/QuickActions";
+import { getIntelligenceState, onIntelligenceStateChange } from "@/intelligence/intelligenceSyncEngine";
+import { getDashboardSummary, getAdaptiveFocusLabel } from "@/intelligence/intelligenceSelectors";
 
 // ----- Page-level container animation -----
 const pageVariants = {
@@ -16,28 +19,41 @@ const pageVariants = {
   },
 };
 
-const sectionVariant = {
+const sectionVariant: Variants = {
   hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' as const } },
 };
 
-// ----- AI Insight Stat Card content -----
-const AIInsightContent = () => (
-  <div className="relative z-10">
-    <div className="flex justify-between items-start mb-4">
-      <div className="text-violet-400 text-xl">
-        <Brain size={20} />
-      </div>
-      <span className="text-[10px] font-mono tracking-widest text-violet-300/70">✦</span>
-    </div>
-    <p className="text-sm italic text-violet-300/80 leading-relaxed mb-1 font-light">
-      "Focus on System Design today to hit 80%."
-    </p>
-    <p className="text-[10px] text-white/30 font-mono tracking-widest uppercase">AI Daily Insight</p>
-  </div>
-);
+
 
 const DashboardPage = () => {
+  // ── Reactive intelligence state subscription ──────────────────────────────
+  // Seeds from the singleton on mount; re-renders automatically on every
+  // intelligence cycle via onIntelligenceStateChange.
+  // onIntelligenceStateChange returns an unsubscribe fn — used as useEffect cleanup.
+  const [intelligenceState, setIntelligenceState] = useState(
+    () => getIntelligenceState()
+  );
+  useEffect(() => onIntelligenceStateChange(setIntelligenceState), []);
+
+  // ── Intelligence-derived values (recomputed on every re-render) ───────────
+  const summary = intelligenceState ? getDashboardSummary(intelligenceState) : null;
+
+  // Live values with fallbacks so UI never breaks if engine hasn't hydrated yet
+  const streakDays = summary?.streak ?? 14;
+  const careerReadiness = summary?.readiness ?? 78;
+  const topInsightMessage = intelligenceState?.mentorInsights.contextSummary
+    ?? '"Focus on System Design today to hit 80%."';
+
+  const weakSkillCount = summary?.weakSkillCount ?? 0;
+
+  // Adaptive layer outputs
+  const adaptiveFocusLabel = intelligenceState
+    ? getAdaptiveFocusLabel(intelligenceState)
+    : 'Learning in progress';
+
+  const isAdaptiveActive = intelligenceState?.adaptive.isHydrated ?? false;
+
   return (
     <div className="relative min-h-screen">
       {/* ── Atmospheric background blobs ── */}
@@ -91,7 +107,7 @@ const DashboardPage = () => {
             icon={<Flame size={20} />}
             badge="+2 today"
             badgeVariant="cyan"
-            value="14 Days"
+            value={`${streakDays} Days`}
             label="Learning Streak"
             accent="cyan"
             delay={0.05}
@@ -101,7 +117,7 @@ const DashboardPage = () => {
             icon={<ShieldCheck size={20} />}
             badge="Top 15%"
             badgeVariant="primary"
-            value="78%"
+            value={`${careerReadiness}%`}
             label="Career Readiness"
             accent="purple"
             delay={0.1}
@@ -117,7 +133,7 @@ const DashboardPage = () => {
             delay={0.15}
           />
 
-          {/* AI Insight card – custom layout */}
+          {/* AI Insight card – custom layout, message from intelligence engine */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -130,7 +146,23 @@ const DashboardPage = () => {
               animate-pulse-border group cursor-default"
           >
             <div className="absolute -right-4 -top-4 w-20 h-20 rounded-full bg-violet-500/15 blur-xl group-hover:bg-violet-500/25 transition-all duration-700" />
-            <AIInsightContent />
+            <div className="relative z-10">
+              <div className="flex justify-between items-start mb-4">
+                <div className="text-violet-400 text-xl"><Brain size={20} /></div>
+                <span className="text-[10px] font-mono tracking-widest text-violet-300/70">✦</span>
+              </div>
+              <p className="text-sm italic text-violet-300/80 leading-relaxed mb-1 font-light">
+                {topInsightMessage}
+              </p>
+              {weakSkillCount > 0 && (
+                <p className="text-[10px] text-amber-400/60 font-mono mt-1">
+                  {weakSkillCount} skill gap{weakSkillCount > 1 ? 's' : ''} detected
+                </p>
+              )}
+              <p className="text-[10px] text-white/30 font-mono tracking-widest uppercase mt-1">
+                {isAdaptiveActive ? adaptiveFocusLabel : 'AI Daily Insight'}
+              </p>
+            </div>
           </motion.div>
         </motion.section>
 

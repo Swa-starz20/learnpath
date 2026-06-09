@@ -7,6 +7,7 @@ import { ENGINEERING_DOMAINS } from '@/data/engineeringDomains';
 import type { DomainId } from '@/data/engineeringDomains';
 import { DOMAIN_ROADMAP_CONFIGS } from '@/data/roadmapConfigs';
 import type { RoadmapNode } from '@/data/roadmapConfigs';
+import { dispatchIntelligenceEvent } from '@/intelligence/intelligenceEvents';
 
 // Components
 import { RoadmapHero } from '@/components/roadmap/RoadmapHero';
@@ -48,19 +49,29 @@ const RoadmapPage = () => {
   );
 
   const handleDomainChange = useCallback((id: DomainId) => {
+    // Dispatch domain change so the intelligence engine rebuilds for the new domain
+    dispatchIntelligenceEvent({
+      type: 'DOMAIN_CHANGED',
+      payload: { previousDomainId: domainId, newDomainId: id, triggeredAt: Date.now() },
+    });
     setDomainId(id);
     const newConfig = DOMAIN_ROADMAP_CONFIGS[id];
     setTrackId(newConfig.tracks[0].id);
     const newActive = newConfig.tracks[0].nodes.find((n) => n.status === 'active');
     setSelectedNodeId(newActive?.id ?? null);
-  }, []);
+  }, [domainId]);
 
   const handleTrackChange = useCallback((id: string) => {
+    // Dispatch track change so the intelligence engine rebuilds recommendations
+    dispatchIntelligenceEvent({
+      type: 'TRACK_CHANGED',
+      payload: { domainId, previousTrackId: trackId, newTrackId: id, triggeredAt: Date.now() },
+    });
     setTrackId(id);
     const newTrack = config.tracks.find((t) => t.id === id) ?? config.tracks[0];
     const newActive = newTrack.nodes.find((n) => n.status === 'active');
     setSelectedNodeId(newActive?.id ?? null);
-  }, [config.tracks]);
+  }, [config.tracks, domainId, trackId]);
 
   // Derived data
   const selectedNode = nodes.find((n) => n.id === selectedNodeId) ?? null;

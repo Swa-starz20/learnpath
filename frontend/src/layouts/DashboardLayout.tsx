@@ -1,12 +1,12 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, Link } from "react-router-dom";
 
 const navLinks = [
-  { href: "/", label: "Dashboard", icon: "⊞" },
-  { href: "/roadmap", label: "Roadmap", icon: "◈" },
-  { href: "/mentor", label: "AI Mentor", icon: "◉" },
+  { href: "/",            label: "Dashboard",   icon: "⊞" },
+  { href: "/roadmap",     label: "Roadmap",     icon: "◈" },
+  { href: "/mentor",      label: "AI Mentor",   icon: "◉" },
   { href: "/assessments", label: "Assessments", icon: "◧" },
-  { href: "#", label: "Courses", icon: "◨" },
-  { href: "#", label: "Placements", icon: "◫" },
+  { href: "/courses",     label: "Courses",     icon: "◨" },
+  { href: "/placements",  label: "Placements",  icon: "◫" },
 ];
 
 const pageTitles: Record<string, string> = {
@@ -18,6 +18,10 @@ const pageTitles: Record<string, string> = {
   "/assessments/aptitude": "Aptitude Analysis",
   "/assessments/behavioral": "Behavioral Analysis",
   "/assessments/results": "Assessment Results",
+  "/courses": "Courses",
+  "/placements": "Career Readiness",
+  "/placements/interview": "Interview Intelligence",
+  "/placements/company": "Company Readiness",
 };
 
 const DashboardLayout = () => {
@@ -26,9 +30,9 @@ const DashboardLayout = () => {
   const pageTitle = pageTitles[location.pathname] ?? "LearnPath AI";
 
   const isActive = (href: string) =>
-    href === "/"
-      ? location.pathname === "/"
-      : href !== "#" && location.pathname.startsWith(href);
+    href === '/'
+      ? location.pathname === '/'
+      : location.pathname.startsWith(href);
 
   return (
     <div className="min-h-screen bg-[#0b1326] text-white">
@@ -55,13 +59,11 @@ const DashboardLayout = () => {
 
   return (
     <div key={item.label}>
-      <a
-        href={item.href}
+      <Link
+        to={item.href === "#" ? location.pathname : item.href}
         className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 ${
           active
             ? "bg-violet-500/[0.15] border border-violet-500/25 text-violet-300 font-semibold shadow-[0_0_12px_rgba(192,193,255,0.06)]"
-            : item.label === "Placements"
-            ? "text-white/20 hover:bg-white/[0.03] hover:text-white/35 border border-transparent"
             : "text-white/40 hover:bg-white/[0.04] hover:text-white/70 border border-transparent"
         }`}
       >
@@ -80,12 +82,10 @@ const DashboardLayout = () => {
               {pageTitle}
             </span>
           )}
-      </a>
+      </Link>
 
-      {/* Assessment sub-nav */}
       {item.href === "/assessments" &&
-        location.pathname.startsWith("/assessments") &&
-        location.pathname !== "/assessments" && (
+        location.pathname.startsWith("/assessments") && (
           <div className="ml-4 mt-1 mb-2 space-y-0.5 border-l border-violet-500/15 pl-3">
             {[
               {
@@ -105,9 +105,9 @@ const DashboardLayout = () => {
                 label: "Results",
               },
             ].map((sub) => (
-              <a
+              <Link
                 key={sub.label}
-                href={sub.href}
+                to={sub.href}
                 className={`block px-3 py-2 rounded-lg text-[11px] font-mono transition-all ${
                   location.pathname === sub.href
                     ? "text-violet-300 bg-violet-500/10"
@@ -115,7 +115,38 @@ const DashboardLayout = () => {
                 }`}
               >
                 {sub.label}
-              </a>
+              </Link>
+            ))}
+          </div>
+        )}
+      {item.href === "/placements" &&
+        location.pathname.startsWith("/placements") && (
+          <div className="ml-4 mt-1 mb-2 space-y-0.5 border-l border-violet-500/15 pl-3">
+            {[
+              {
+                href: "/placements",
+                label: "Career Readiness",
+              },
+              {
+                href: "/placements/interview",
+                label: "Interview Prep",
+              },
+              {
+                href: "/placements/company",
+                label: "Company Readiness",
+              },
+            ].map((sub) => (
+              <Link
+                key={sub.label}
+                to={sub.href}
+                className={`block px-3 py-2 rounded-lg text-[11px] font-mono transition-all ${
+                  location.pathname === sub.href
+                    ? "text-violet-300 bg-violet-500/10"
+                    : "text-white/25 hover:text-white/50"
+                }`}
+              >
+                {sub.label}
+              </Link>
             ))}
           </div>
         )}
@@ -149,12 +180,12 @@ const DashboardLayout = () => {
             <div className="flex items-center gap-3">
               {/* Back breadcrumb for nested assessment pages */}
               {location.pathname.startsWith("/assessments/") && (
-                <a
-                  href="/assessments"
+                <Link
+                  to="/assessments"
                   className="flex items-center gap-1 text-white/25 hover:text-white/50 text-xs font-mono transition-colors mr-2"
                 >
                   ← Assessments
-                </a>
+                </Link>
               )}
               <h2 className="text-base font-semibold text-white/70 font-['Hanken_Grotesk',_sans-serif]">
                 {pageTitle}

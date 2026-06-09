@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import {
@@ -12,6 +13,7 @@ import { careerCompatibility, behavioralRadarData } from "@/data/assessmentData"
 import  CompatibilityCard  from "@/components/assessments/CompatibilityCard";
 import  AnimatedMetricCard  from "@/components/assessments/AnimatedMetricCard";
 import { AIInsightPanel } from "@/components/assessments/AIInsightPanel";
+import { dispatchIntelligenceEvent } from "@/intelligence/intelligenceEvents";
 
 // ── Radar tooltip ─────────────────────────────────────────────────────────
 const RadarTooltip = ({ active, payload }: { active?: boolean; payload?: { value: number }[] }) => {
@@ -77,6 +79,35 @@ const Section = ({ title, subtitle, children, delay = 0 }: {
 
 // ── Page ──────────────────────────────────────────────────────────────────
 const AssessmentResults = () => {
+  // Dispatch ASSESSMENT_COMPLETED on mount so the intelligence engine updates
+  // skill gaps, recommendations, roadmap risk, and mentor insights.
+  useEffect(() => {
+    dispatchIntelligenceEvent({
+      type: 'ASSESSMENT_COMPLETED',
+      payload: {
+        assessmentId: 'full-assessment-results',
+        domainId: 'computer',
+        result: {
+          assessmentId: 'full-assessment-results',
+          completedAt: Date.now(),
+          overallScore: 84.7,
+          metrics: [
+            { category: 'cognitive',    label: 'Logical Reasoning',   score: 88, benchmark: 72, gap: 16 },
+            { category: 'cognitive',    label: 'Analytical Thinking',  score: 82, benchmark: 70, gap: 12 },
+            { category: 'cognitive',    label: 'Verbal Reasoning',     score: 64, benchmark: 68, gap: -4 },
+            { category: 'technical',    label: 'Quantitative Skills',  score: 75, benchmark: 71, gap: 4 },
+            { category: 'behavioral',   label: 'Behavioral IQ',        score: 84, benchmark: 76, gap: 8 },
+            { category: 'personality',  label: 'Personality Fit',      score: 94, benchmark: 80, gap: 14 },
+          ],
+          weakSkills:   ['verbal-reasoning', 'quantitative-skills'],
+          strongSkills: ['logical-reasoning', 'analytical-thinking', 'personality-fit'],
+          recommendedDomainId: 'computer',
+        },
+        triggeredAt: Date.now(),
+      },
+    });
+  }, []);
+
   return (
     <div className="relative space-y-8">
       {/* Atmospheric background */}

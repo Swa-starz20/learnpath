@@ -2,7 +2,7 @@
 // Used across AssessmentsPage, PersonalityAssessment, AptitudeAssessment, 
 // BehavioralAnalysis, and AssessmentResults
 
-import { Brain, Zap, Activity, Target, Code2, Users } from "lucide-react";
+
 
 // ── Types ─────────────────────────────────────────────────────────────────
 

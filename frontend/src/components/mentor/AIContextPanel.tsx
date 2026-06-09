@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { SkillInsightCard } from "./SkillInsightCard";
 import { ResourceCard, quickResources } from "./ResourceCard";
+import { getIntelligenceState } from "@/intelligence/intelligenceSyncEngine";
 
 // ── Sync status items ──────────────────────────────────────────
 interface SyncItem {
@@ -18,12 +19,7 @@ interface SyncItem {
   synced: boolean;
 }
 
-const syncItems: SyncItem[] = [
-  { label: "Roadmap Synced", synced: true },
-  { label: "Assessment Synced", synced: true },
-  { label: "Mentor Memory Active", synced: true },
-  { label: "Recommendation Engine", synced: false },
-];
+
 
 // ── Section wrapper ────────────────────────────────────────────
 const Section = ({
@@ -64,8 +60,35 @@ const Divider = () => (
   <div className="h-px bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" />
 );
 
-// ── AI Context Panel ────────────────────────────────────────────
+// ── AI Context Panel ────────────────────────────────────────────────────────
 export const AIContextPanel = () => {
+  // Consume live intelligence state — fall back gracefully if not yet hydrated
+  const intel = getIntelligenceState();
+
+  // Sync status: recommendation engine is live once recommendations exist
+  const syncItems: SyncItem[] = [
+    { label: "Roadmap Synced",          synced: !!(intel?.roadmap.lastSyncedAt) },
+    { label: "Assessment Synced",       synced: (intel?.assessments.state.completedAssessments.length ?? 0) > 0 },
+    { label: "Mentor Memory Active",    synced: !!(intel?.mentorInsights.contextSummary) },
+    { label: "Recommendation Engine",   synced: !!(intel?.recommendations.nextCourse) },
+  ];
+
+  // Top 3 proactive topics from mentor intelligence (fallback to hardcoded)
+  const learningInsights = intel?.mentorInsights.proactiveTopics.slice(0, 3).map(topic => ({
+    icon: <Brain size={11} />,
+    text: topic,
+    color: "text-violet-300",
+  })) ?? [
+    { icon: <TrendingUp size={11} />, text: "Learning velocity 34% above cohort", color: "text-cyan-400" },
+    { icon: <Brain size={11} />, text: "Strong recall on distributed systems topics", color: "text-violet-300" },
+    { icon: <Zap size={11} />, text: "Suggested: 2 mock sessions this week", color: "text-fuchsia-300" },
+  ];
+
+  // Context summary line
+  const contextLine = intel?.mentorInsights.contextSummary
+    ? intel.mentorInsights.contextSummary.slice(0, 80)
+    : "Syncing with your progress...";
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -88,7 +111,7 @@ export const AIContextPanel = () => {
             className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(76,215,246,0.7)]"
           />
           <p className="text-[10px] text-white/30 font-mono tracking-wide">
-            Syncing with your progress...
+            {contextLine}
           </p>
         </div>
       </div>
@@ -240,11 +263,7 @@ export const AIContextPanel = () => {
         {/* ── Learning Insights ────────────────────────────── */}
         <Section title="Learning Insights" accent="fuchsia" delay={0.4}>
           <div className="space-y-2">
-            {[
-              { icon: <TrendingUp size={11} />, text: "Learning velocity 34% above cohort", color: "text-cyan-400" },
-              { icon: <Brain size={11} />, text: "Strong recall on distributed systems topics", color: "text-violet-300" },
-              { icon: <Zap size={11} />, text: "Suggested: 2 mock sessions this week", color: "text-fuchsia-300" },
-            ].map((insight, i) => (
+            {learningInsights.map((insight, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 4 }}
