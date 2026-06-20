@@ -1,0 +1,329 @@
+Build the **Adaptive Intelligence Behavior Layer** for LearnPath AI.
+
+## Mission
+
+Extend the existing intelligence architecture with adaptive behavior capabilities that react to learner performance, mastery trends, engagement, and progression patterns.
+
+This is an **intelligence-engine task only**.
+
+---
+
+## Mandatory Architecture Alignment
+
+Before implementing anything, analyze and reuse the existing LearnPath architecture.
+
+### Existing Systems
+
+* Dashboard
+* Assessments Engine
+* Adaptive Roadmap Intelligence Engine
+* Courses Intelligence System
+* AI Mentor
+* Shared Intelligence Infrastructure
+* Unified Intelligence Sync Engine
+
+### Maintain Full Consistency With
+
+* existing intelligence architecture
+* existing engine patterns
+* existing type system
+* existing learning store
+* existing engineering-domain abstraction
+* existing naming conventions
+* existing config-driven design
+* existing recommendation workflows
+* existing progression workflows
+
+### Strictly Reuse Existing Logic
+
+Prefer extending and composing existing engines over creating new calculations.
+
+Reuse wherever applicable:
+
+* intelligenceSyncEngine
+* progressionEngine
+* recommendationEngine
+* skillGraphEngine
+* learning store selectors/types
+
+Do not duplicate functionality already available in the platform.
+
+---
+
+## Constraints
+
+### Do Not
+
+* redesign UI
+* create pages
+* modify layouts
+* touch styling
+* regenerate components
+* rebuild existing systems
+* introduce AI APIs
+* add backend code
+* create duplicate recommendation logic
+* create duplicate progression logic
+* introduce breaking changes
+* create unnecessary abstractions
+* generate large mock datasets
+
+### Must
+
+* keep implementation minimal
+* use strong typing
+* remain deterministic
+* remain domain-agnostic
+* support all engineering domains
+* preserve backward compatibility
+* follow existing project conventions
+
+---
+
+## Adaptive Behavior Goals
+
+The platform already synchronizes intelligence.
+
+Add adaptive behavior that responds to learner patterns.
+
+### Struggling Learners
+
+Potential actions:
+
+* recommend reinforcement
+* reduce difficulty
+* trigger mentor intervention
+* slow roadmap progression
+* prioritize weak skills
+
+### High Performers
+
+Potential actions:
+
+* increase difficulty
+* accelerate progression
+* unlock advanced content
+* recommend advanced labs
+* increase challenge level
+
+---
+
+## Create
+
+```text
+/src/engine/
+
+adaptiveEngine.ts
+difficultyEngine.ts
+behaviorEngine.ts
+mentorEngine.ts
+```
+
+---
+
+## 1. difficultyEngine.ts
+
+### Purpose
+
+Determine adaptive difficulty adjustments.
+
+### Inputs
+
+* readiness score
+* mastery score
+* learning velocity
+* weak skills
+* assessment trends
+
+### Outputs
+
+* increaseDifficulty
+* decreaseDifficulty
+* maintainDifficulty
+
+### Requirements
+
+* deterministic
+* reusable
+* strongly typed
+* no UI dependencies
+* no store mutations
+* no duplicated calculations
+
+Export only focused utility functions.
+
+---
+
+## 2. behaviorEngine.ts
+
+### Purpose
+
+Detect learner behavior patterns.
+
+### Supported Behaviors
+
+* struggling
+* accelerating
+* plateauing
+* highlyEngaged
+* inconsistent
+
+### Inputs
+
+Use existing progression, mastery, engagement, and velocity signals.
+
+### Outputs
+
+Return structured behavior signals suitable for reuse across the platform.
+
+### Requirements
+
+* deterministic
+* composable
+* strongly typed
+* reusable by other engines
+
+---
+
+## 3. mentorEngine.ts
+
+### Purpose
+
+Generate mentor guidance from adaptive behavior signals.
+
+### Supported Guidance
+
+* reinforcement recommendation
+* intervention recommendation
+* advanced challenge suggestion
+* roadmap pacing suggestion
+
+### Requirements
+
+* return structured mentor insights
+* no LLM prompts
+* no AI generation
+* no UI logic
+* reusable across mentor workflows
+
+---
+
+## 4. adaptiveEngine.ts
+
+### Purpose
+
+Central orchestration layer.
+
+### Consume
+
+* progressionEngine
+* recommendationEngine
+* skillGraphEngine
+* intelligenceSyncEngine
+* difficultyEngine
+* behaviorEngine
+* mentorEngine
+
+### Export
+
+```ts
+evaluateAdaptiveState()
+generateAdaptiveRecommendations()
+generateAdaptiveMentorContext()
+determineLearningPathAdjustments()
+```
+
+### Responsibilities
+
+* aggregate intelligence signals
+* evaluate learner state
+* determine adaptive actions
+* generate mentor context
+* produce learning path adjustments
+* reuse existing recommendation and progression outputs
+
+---
+
+## Engineering Requirements
+
+### Prefer
+
+* composable functions
+* pure functions
+* strong typing
+* reusable outputs
+* minimal implementation
+* config-driven thresholds
+* existing project patterns
+
+### Avoid
+
+* duplicated calculations
+* duplicated recommendation logic
+* duplicated progression logic
+* UI dependencies
+* hardcoded domain-specific behavior
+* unnecessary complexity
+
+---
+
+## Reliability & Self-Healing
+
+Before finalizing implementation:
+
+1. Validate all imports and exports.
+2. Verify type compatibility with existing project types.
+3. Resolve naming conflicts automatically.
+4. Remove duplicate logic if discovered.
+5. Ensure no circular dependencies are introduced.
+6. Ensure all engines compile without TypeScript errors.
+7. Ensure all functions are reusable and deterministic.
+8. Preserve backward compatibility.
+9. Reuse existing infrastructure whenever possible.
+10. If inconsistencies are detected, automatically align implementation with existing architecture rather than creating parallel systems.
+
+---
+
+## Deliverables
+
+Provide:
+
+### Files Created
+
+List all new files.
+
+### Functions Exported
+
+List all exported functions per file.
+
+### Existing Systems Reused
+
+Specify which engines, stores, types, and utilities were reused.
+
+### Adaptive Behaviors Supported
+
+List all supported learner behavior patterns.
+
+### Future Integration Points
+
+Describe how the adaptive layer can integrate with:
+
+* roadmap progression
+* recommendations
+* assessments
+* mentor workflows
+* future intelligence modules
+
+---
+
+### Final Rule
+
+Implement only the Adaptive Intelligence Behavior Layer.
+
+Do not generate UI.
+Do not redesign anything.
+Do not create pages.
+Do not modify layouts.
+Do not introduce backend functionality.
+
+Focus exclusively on a clean, minimal, reusable, error-free intelligence architecture that remains fully consistent with the existing LearnPath AI ecosystem.

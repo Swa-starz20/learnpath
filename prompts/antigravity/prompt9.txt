@@ -1,0 +1,120 @@
+Perform a full route and domain integrity audit of the LearnPath AI frontend.
+
+Scope:
+
+Routes:
+/
+/dashboard
+/roadmap
+/courses
+/courses/:slug
+/mentor
+/assessments
+/placements
+/placements/interview
+/placements/company
+
+Audit Requirements:
+
+1. Route Validation
+
+* Verify every route resolves correctly.
+* Verify no 404s.
+* Verify no blank screens.
+* Verify no loading loops.
+* Verify no broken navigation links.
+* Verify all lazy imports/components resolve.
+
+2. Build Validation
+
+* Run:
+  npm run build
+  npx tsc --noEmit
+* Fix any route-related, import-related, or runtime issues found.
+* Do not modify UI design.
+
+3. Console Audit
+
+* Check for:
+
+  * React warnings
+  * key warnings
+  * undefined property access
+  * hook dependency warnings
+  * import/export mismatches
+  * runtime exceptions
+
+4. Domain Integrity Audit
+
+Validate ALL domains:
+
+Computer Engineering
+AI/ML
+Robotics
+Mechatronics
+Mechanical
+Civil
+Electrical
+Electronics
+Chemical
+Biomedical
+Industrial
+Aerospace
+
+For EACH domain verify:
+
+Roadmap:
+
+* correct roadmap nodes
+* correct milestones
+* correct skill graph
+
+Courses:
+
+* correct catalog
+* correct course mappings
+* correct workspace content
+
+Placements:
+
+* correct career path
+* correct role mappings
+* correct benchmarks
+
+Interview Workspace:
+
+* correct readiness calculations
+* correct recommendations
+* correct interview tracks
+
+Critical Requirement:
+Identify any location where a non-CS domain is silently falling back to Computer Engineering / CS data.
+
+Fix all fallback issues found.
+
+5. Deliverable
+
+Provide ONLY:
+
+Issues Found
+
+* file
+* problem
+* root cause
+
+Fixes Applied
+
+* file modified
+* exact correction
+
+Validation
+
+* route status
+* build status
+* TypeScript status
+* remaining issues (if any)
+
+Do not create new features.
+Do not redesign UI.
+Do not generate future recommendations.
+Focus only on validation, bug fixing, and domain correctness.

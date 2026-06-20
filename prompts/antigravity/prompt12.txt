@@ -1,0 +1,320 @@
+# PHASE 2 — LEARNING GRAPH FOUNDATION
+
+## Execution Scope
+
+Phase 1 is complete, validated, and locked.
+
+### Existing Modules
+
+* auth
+* user
+* security
+* config
+* common
+* exception
+
+### Environment
+
+* Java 17
+* Maven
+* PostgreSQL 18
+* Flyway
+* Docker
+
+### Status
+
+* Phase 1 tests passing
+* Architecture approved for implementation
+
+**Implement Phase 2 only.**
+
+---
+
+## Autonomous Error Detection & Resolution
+
+During implementation, proactively identify and resolve any issues without requiring additional approval.
+
+### Required Checks
+
+* Detect and fix compilation errors
+* Detect and fix dependency injection issues
+* Detect and fix Flyway migration failures
+* Detect and fix JPA/Hibernate mapping errors
+* Detect and fix repository wiring issues
+* Detect and fix circular dependency problems
+* Detect and fix DTO validation issues
+* Detect and fix REST endpoint registration issues
+* Detect and fix PostgreSQL compatibility issues
+* Detect and fix foreign key and index definition errors
+* Detect and fix startup failures
+* Detect and fix failing tests related to Phase 2 functionality
+
+### Constraints
+
+* Do not introduce breaking changes to Phase 1 modules
+* Preserve approved architecture decisions
+* Maintain backward compatibility with existing APIs and database structures
+* Document any automatically applied fixes in the validation results section
+
+---
+
+## Modules To Create
+
+### 1. domain
+
+### 2. skill
+
+### 3. roadmap
+
+### 4. course
+
+### 5. progression
+
+---
+
+## DOMAIN MODULE
+
+Create:
+
+* Domain
+* DomainRepository
+* DomainService
+* DomainController
+
+Requirements:
+
+* CRUD-ready architecture
+* DTOs with Bean Validation
+* Flyway seed data for all 12 engineering domains
+* Proper indexing for lookup operations
+
+---
+
+## SKILL MODULE
+
+Create:
+
+* Skill
+* UserSkill
+* SkillRepository
+* UserSkillRepository
+* SkillService
+* SkillController
+
+Requirements:
+
+* User-to-skill tracking
+* DTOs with Bean Validation
+* Proper foreign key relationships
+* Duplicate assignment prevention where applicable
+
+---
+
+## ROADMAP MODULE
+
+Create:
+
+* CareerTrack
+* RoadmapNode
+* RoadmapEdge
+* RoadmapNodeSkill
+* UserRoadmapProgress
+
+Create corresponding:
+
+* Repositories
+* Services
+* Controllers
+
+Requirements:
+
+* Directed roadmap graph support
+* Skill mapping to roadmap nodes
+* User roadmap progression tracking
+* Referential integrity enforcement
+* Efficient graph traversal indexing
+
+---
+
+## COURSE MODULE
+
+Create:
+
+* Course
+* CourseModule
+* Lesson
+* CompletionRecord
+
+Create corresponding:
+
+* Repositories
+* Services
+* Controllers
+
+Requirements:
+
+* Course hierarchy support
+* Lesson completion tracking
+* Completion deduplication enforcement
+* Proper cascading behavior where appropriate
+
+---
+
+## PROGRESSION MODULE
+
+Create:
+
+* UserProgression
+* ProgressionService
+* ProgressionController
+
+Responsibilities:
+
+* XP tracking
+* Mastery score tracking
+* Completion tracking
+
+Requirements:
+
+* Single source of truth for mastery_score
+* Consistent progression calculations
+* Validation against invalid progression states
+
+---
+
+## DATABASE
+
+Create Flyway migrations:
+
+* V3__create_domain_tables.sql
+* V4__create_skill_tables.sql
+* V5__create_roadmap_tables.sql
+* V6__create_course_tables.sql
+* V7__create_progression_tables.sql
+
+### Mandatory Architecture Constraints
+
+Implement exactly as approved:
+
+* roadmap_node_skills.skill_id → foreign key to skills.id
+* completion_records UNIQUE(user_id, entity_id)
+* mastery_score exists only in user_progression
+* PostgreSQL-compatible schema
+* Explicit foreign keys
+* Appropriate indexes on lookup and relationship columns
+
+### Additional Database Validation
+
+Verify:
+
+* Migration ordering is correct
+* All referenced tables exist before foreign key creation
+* Index names are unique
+* Constraint names are unique
+* No duplicate table creation
+* No reserved PostgreSQL keywords are used as identifiers
+* Flyway checksum validation passes
+
+---
+
+## API
+
+Expose REST endpoints:
+
+* /domains
+* /skills
+* /roadmaps
+* /courses
+* /progression
+
+### Standards
+
+Use:
+
+* DTO layer
+* Bean Validation
+* Service layer
+* Repository layer
+* Constructor injection only
+* Spring Boot best practices
+* Consistent API response handling
+* Proper HTTP status codes
+* Global exception handling integration
+
+---
+
+## Exclusions
+
+Do NOT implement:
+
+* assessments
+* mentor
+* intelligence
+* placement
+* recommendation engines
+* adaptive engines
+
+These belong to later phases.
+
+---
+
+## Validation
+
+After implementation execute:
+
+```bash
+mvn clean test
+mvn spring-boot:run
+```
+
+Validate:
+
+* Flyway migrations
+* Application startup
+* Repository wiring
+* Entity mappings
+* REST endpoint registration
+* DTO validation
+* Foreign key integrity
+* Index creation
+* Service dependency injection
+* Controller registration
+* PostgreSQL compatibility
+
+Automatically resolve any detected issues and rerun validation until all Phase 2 components are stable.
+
+---
+
+## Output Format
+
+Return only:
+
+### Files Created
+
+### Files Modified
+
+### Database Tables Added
+
+### API Endpoints Added
+
+### Validation Results
+
+Include:
+
+* Build status
+* Test status
+* Flyway status
+* Startup status
+* Issues detected
+* Fixes automatically applied
+* Remaining warnings (if any)
+
+### Remaining Blockers
+
+If no blockers remain, explicitly state:
+
+**None**
+
+If all requirements are satisfied, end with:
+
+**PHASE 2 LEARNING GRAPH FOUNDATION COMPLETE**

@@ -1,0 +1,506 @@
+Build the complete **Psychometric Assessment Engine UI** for **LearnPath AI**.
+
+IMPORTANT:
+This module MUST visually, structurally, and architecturally align with the existing LearnPath platform already implemented inside the imported project.
+
+The generated UI MUST inherit and reuse the existing design system from the project, especially the styles, spacing, motion, gradients, glassmorphism, and component patterns already present in:
+
+* Dashboard page
+* AI Mentor page
+* Existing Stitch-generated UI components
+* Existing Tailwind design tokens
+* Existing glass utilities
+* Existing typography system
+* Existing animation/motion system
+* Existing card layouts and dashboard spacing
+* Existing futuristic AI visual language
+
+DO NOT introduce a conflicting design system.
+
+DO NOT generate generic SaaS quiz interfaces.
+
+DO NOT use plain white cards, default Tailwind styling, or traditional form layouts.
+
+The final result should feel like:
+
+* an AI-powered cognitive intelligence platform
+* a futuristic behavioral analysis engine
+* a premium neuroscience-inspired assessment system
+* a cinematic AI analytics dashboard
+* an advanced engineering aptitude evaluation suite
+
+The UI should feel consistent with:
+
+* the existing Stitch design language in the imported project
+* the previously generated LearnPath dashboard
+* the AI Mentor experience
+* the futuristic holographic aesthetic already established
+
+---
+
+# TECH STACK
+
+Use ONLY:
+
+* React
+* TypeScript
+* TailwindCSS
+* ShadCN UI
+* Framer Motion
+* Recharts
+
+Generate ONLY:
+
+* assessment pages
+* reusable psychometric components
+* charts
+* UI logic
+* assessment state handling
+* frontend interactions
+* mock assessment data
+
+DO NOT generate:
+
+* backend
+* APIs
+* authentication
+* database
+* routing
+* sidebar
+* navbar
+* app shell
+* layout wrappers already existing in project
+
+The project already contains:
+
+* DashboardLayout
+* Tailwind theme tokens
+* glassmorphism utilities
+* glow effects
+* futuristic dark theme
+* Stitch-generated UI patterns
+* reusable dashboard components
+
+Reuse existing utilities and patterns wherever possible.
+
+---
+
+# STITCH DESIGN SYSTEM ALIGNMENT
+
+CRITICAL:
+
+The generated UI MUST match the imported Stitch design system exactly.
+
+Follow these principles:
+
+* preserve existing spacing rhythm
+* preserve existing border radius scale
+* preserve existing glow intensity
+* preserve existing typography hierarchy
+* preserve existing card transparency levels
+* preserve existing hover interactions
+* preserve existing animation timing
+* preserve existing dashboard density
+* preserve existing color palette
+
+Use the same visual hierarchy already established in the project.
+
+The assessment engine should feel like a native extension of the current LearnPath platform — not a separate module.
+
+---
+
+# VISUAL STYLE
+
+Match EXACTLY:
+
+* deep navy/slate backgrounds
+* cyan holographic glow
+* violet neon accents
+* cinematic glass panels
+* subtle gradients
+* translucent layered cards
+* thin futuristic typography
+* AI operating-system aesthetics
+* holographic overlays
+* neural-network inspired visuals
+
+Inspired by:
+
+* Neural interfaces
+* Jarvis HUD
+* Cognitive analysis systems
+* Linear AI
+* Vercel AI dashboards
+* futuristic operating systems
+* AI intelligence consoles
+
+Use:
+
+* layered depth
+* ambient glow
+* subtle blur
+* animated gradients
+* floating UI panels
+* intelligent motion feedback
+
+Avoid:
+
+* flat UI
+* generic forms
+* standard quiz layouts
+* excessive borders
+* bright white surfaces
+
+---
+
+# MODULE STRUCTURE
+
+Create the following pages/components:
+
+1. AssessmentsPage.tsx
+2. PersonalityAssessment.tsx
+3. AptitudeAssessment.tsx
+4. BehavioralAnalysis.tsx
+5. AssessmentResults.tsx
+
+Also create reusable components such as:
+
+* AssessmentCard
+* QuestionCard
+* ProgressTracker
+* AIInsightPanel
+* CognitiveRadarChart
+* CompatibilityCard
+* AnimatedMetricCard
+* AssessmentTimer
+* AdaptiveProgressBar
+* NeuralInsightWidget
+
+---
+
+# 1. ASSESSMENTS DASHBOARD
+
+Build a futuristic assessment landing page integrated into the LearnPath dashboard ecosystem.
+
+The page should feel like:
+
+* an AI cognitive command center
+* a neural evaluation hub
+* an engineering intelligence dashboard
+
+Include:
+
+* active assessments
+* completed assessments
+* assessment categories
+* AI readiness score
+* cognitive profile preview
+* progress indicators
+* assessment streaks
+* adaptive recommendations
+* AI-generated insights preview
+
+Assessment Cards:
+
+* Personality Profiling
+* Aptitude Analysis
+* Behavioral Intelligence
+* Technical Readiness
+* Career Alignment
+
+Each card should include:
+
+* estimated duration
+* difficulty
+* completion status
+* AI-powered badge
+* animated hover glow
+* progress state
+* futuristic iconography
+
+Use:
+
+* glassmorphism cards
+* layered gradients
+* subtle animated backgrounds
+* staggered card animations
+
+---
+
+# 2. PERSONALITY ASSESSMENT UI
+
+Build a cinematic assessment experience.
+
+The interface should feel immersive and intelligent.
+
+Include:
+
+* single-question focus layout
+* adaptive transitions
+* AI-guided interaction flow
+* animated progress visualization
+* contextual insight prompts
+
+Question Types:
+
+* multiple choice
+* scale sliders
+* situational judgment
+* behavioral preference
+* emotional intelligence indicators
+
+Visual Features:
+
+* floating glass question cards
+* neon progress line
+* holographic overlays
+* adaptive glow effects
+* animated transitions
+* intelligent focus states
+
+Include:
+
+* previous/next navigation
+* completion percentage
+* AI adaptive assessment indicator
+* smooth keyboard accessibility
+* animated answer selection states
+
+The experience should feel premium and distraction-free.
+
+---
+
+# 3. APTITUDE ASSESSMENT UI
+
+Create a futuristic engineering aptitude testing interface.
+
+Include sections:
+
+* logical reasoning
+* quantitative aptitude
+* verbal ability
+* analytical thinking
+* engineering problem solving
+
+Features:
+
+* timed sections
+* countdown timer
+* performance tracker
+* animated progress indicators
+* adaptive difficulty indicators
+
+Question Cards:
+
+* clean futuristic layout
+* option hover glow
+* intelligent section indicators
+* animated selection feedback
+* holographic timer display
+
+Use:
+
+* compact dashboard spacing
+* immersive focus mode
+* subtle neural animations
+
+---
+
+# 4. BEHAVIORAL ANALYSIS DASHBOARD
+
+Create advanced AI analytics visualizations.
+
+This page should feel like a behavioral intelligence engine.
+
+Include:
+
+* personality radar chart
+* strengths vs weaknesses
+* leadership score
+* collaboration index
+* adaptability score
+* communication score
+* engineering mindset analysis
+* cognitive flexibility metrics
+* stress response indicators
+
+Charts:
+
+* radar chart
+* circular progress
+* animated bars
+* compatibility visualization
+* neural metric graphs
+
+Use Recharts with:
+
+* animated transitions
+* glowing chart strokes
+* futuristic tooltip styling
+* translucent chart containers
+
+The analytics section should resemble an AI intelligence console.
+
+---
+
+# 5. AI GENERATED RESULTS PAGE
+
+Build a cinematic AI-generated report interface.
+
+The page should feel like:
+
+* an AI-generated engineering profile
+* a futuristic intelligence report
+* a cognitive analytics dashboard
+
+Include:
+
+* top strengths
+* growth areas
+* career compatibility
+* recommended engineering domains
+* learning style analysis
+* ideal roadmap suggestions
+* AI-generated personality summary
+* engineering aptitude interpretation
+
+Career Compatibility Cards:
+
+* AI/ML Engineer
+* Backend Engineer
+* Cloud Architect
+* DevOps Engineer
+* Cybersecurity Analyst
+* Data Engineer
+* Full Stack Engineer
+
+Each card should show:
+
+* compatibility %
+* personality match
+* growth potential
+* recommended learning path
+* AI confidence score
+
+Use:
+
+* cinematic reveal animations
+* layered analytics panels
+* glowing compatibility indicators
+
+---
+
+# 6. AI INSIGHT ENGINE PANEL
+
+Create a floating AI intelligence section.
+
+This should feel like a holographic AI assistant integrated into the dashboard.
+
+Show:
+
+* cognitive analysis
+* engineering personality profile
+* learning velocity
+* stress handling
+* decision-making style
+* adaptability intelligence
+* collaboration tendencies
+* technical growth prediction
+
+Visual style:
+
+* holographic AI assistant panel
+* glowing insight cards
+* neural analytics feel
+* floating translucent overlays
+* animated pulse indicators
+
+Include subtle AI-generated commentary blocks.
+
+---
+
+# 7. ANIMATIONS
+
+Use Framer Motion extensively.
+
+Include:
+
+* page transitions
+* question transitions
+* staggered cards
+* hover lift
+* glow pulse
+* chart animations
+* progress transitions
+* animated counters
+* floating ambient motion
+* smooth opacity transitions
+
+Animations should feel:
+
+* premium
+* cinematic
+* intelligent
+* futuristic
+* subtle and polished
+
+Avoid excessive motion.
+
+Motion should enhance immersion without reducing usability.
+
+---
+
+# 8. RESPONSIVENESS
+
+Desktop:
+
+* premium multi-panel cognitive dashboard
+* layered analytics layout
+* immersive widescreen experience
+
+Tablet:
+
+* adaptive stacked sections
+* responsive chart scaling
+* preserved dashboard hierarchy
+
+Mobile:
+
+* immersive mobile assessment flow
+* swipe-friendly interactions
+* optimized question navigation
+* compact analytics cards
+
+Maintain visual consistency across all breakpoints.
+
+---
+
+# 9. CODE QUALITY
+
+Requirements:
+
+* reusable components
+* scalable architecture
+* clean TypeScript
+* production-ready structure
+* modular assessment system
+* maintainable component hierarchy
+* reusable chart utilities
+* reusable animation wrappers
+
+Use:
+
+* strongly typed props
+* clean folder organization
+* composable UI patterns
+* reusable hooks where necessary
+
+Export ONLY:
+
+* assessment pages
+* reusable psychometric components
+* frontend UI logic
+
+DO NOT modify existing global architecture unless necessary for integration.
+
+The generated module must plug seamlessly into the existing LearnPath + Stitch ecosystem.

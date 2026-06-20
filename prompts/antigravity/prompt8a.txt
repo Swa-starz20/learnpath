@@ -1,0 +1,244 @@
+Build Phase 2 of the Placement Intelligence System:
+
+INTERVIEW INTELLIGENCE WORKSPACE
+
+IMPORTANT
+
+Before generating anything:
+
+Study and preserve all existing LearnPath systems:
+
+- Dashboard
+- Assessments
+- Roadmap
+- Courses
+- AI Mentor
+- Placement Foundation
+
+Reuse existing architecture.
+
+Reuse existing intelligence infrastructure.
+
+Reuse existing adaptive layer.
+
+Reuse existing styling system.
+
+DO NOT redesign existing pages.
+
+DO NOT modify existing layouts.
+
+DO NOT touch existing placement components.
+
+DO NOT create duplicate intelligence logic.
+
+Use existing:
+
+/src/intelligence/
+/src/engine/
+/src/types/
+/src/store/
+
+==================================================
+GOAL
+==================================================
+
+Create the Interview Intelligence Workspace.
+
+This becomes:
+
+/placements/interview
+
+and serves as the simulation layer between:
+
+Courses
+→ Placement Readiness
+→ Real Interviews
+
+==================================================
+CREATE
+==================================================
+
+PAGE
+
+/src/pages/InterviewWorkspacePage.tsx
+
+COMPONENTS
+
+/src/components/placements/interview/
+
+Create only:
+
+- InterviewHero.tsx
+- InterviewTrackSelector.tsx
+- MockInterviewCard.tsx
+- InterviewEvaluationPanel.tsx
+- ConfidenceAnalysisCard.tsx
+- WeakAreaPanel.tsx
+- InterviewProgressPanel.tsx
+- InterviewInsightsPanel.tsx
+
+DATA
+
+/src/data/interviews/
+
+Create only:
+
+- interviewTracks.ts
+- interviewBenchmarks.ts
+
+==================================================
+INTERVIEW TYPES
+==================================================
+
+Support:
+
+- Technical Interview
+- Aptitude Interview
+- HR Interview
+- Domain Interview
+
+For ALL engineering domains:
+
+- CS/CE
+- AI/ML
+- Robotics
+- Mechanical
+- Electrical
+- Electronics
+- Civil
+- Aerospace
+- Biomedical
+- Chemical
+- Automobile
+- Mechatronics
+
+No CS-only assumptions.
+
+==================================================
+INTELLIGENCE INTEGRATION
+==================================================
+
+Consume existing intelligence state.
+
+Reuse selectors where possible.
+
+Use:
+
+- roadmap readiness
+- assessment readiness
+- learning velocity
+- weak skills
+- mentor insights
+- adaptive behavior
+- placement readiness
+
+DO NOT create duplicate scoring systems.
+
+==================================================
+UI STRUCTURE
+==================================================
+
+Hero Section
+
+Display:
+
+- Interview Readiness
+- Confidence Score
+- Technical Readiness
+- Communication Readiness
+- Domain Readiness
+- Recommended Interview Type
+
+Section 1
+
+Interview Tracks
+
+Technical
+Aptitude
+HR
+Domain
+
+Section 2
+
+Mock Interview Workspace
+
+Show:
+
+- interview type
+- duration
+- difficulty
+- readiness score
+- AI confidence
+
+Section 3
+
+Evaluation Intelligence
+
+Display:
+
+- strengths
+- weaknesses
+- improvement priority
+- mentor recommendation
+
+Section 4
+
+Interview Progress
+
+Display:
+
+- completed simulations
+- pass probability
+- confidence trend
+- readiness trend
+
+Section 5
+
+AI Interview Insights
+
+Display:
+
+- likely blockers
+- recommended preparation focus
+- adaptive suggestions
+
+==================================================
+IMPLEMENTATION RULES
+==================================================
+
+Config-driven.
+
+Domain-driven.
+
+Reusable.
+
+Scalable.
+
+Minimal files only.
+
+No placeholder systems.
+
+No backend.
+
+No API integrations.
+
+No speech/video features yet.
+
+No real interview engine yet.
+
+Only readiness + intelligence workspace.
+
+==================================================
+OUTPUT
+==================================================
+
+After implementation provide:
+
+1. Files created
+2. Files modified
+3. Existing intelligence reused
+4. Selectors consumed
+5. Validation results
+6. Future integration hooks
+
+Keep implementation lightweight and consistent with existing LearnPath architecture.

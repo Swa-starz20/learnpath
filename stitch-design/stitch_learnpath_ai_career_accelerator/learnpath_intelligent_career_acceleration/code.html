@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LearnPath AI | Architect Your Engineering Future</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --sidebar-width: 280px;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gloss-effect {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+        }
+        .neon-glow-cyan {
+            filter: drop-shadow(0 0 8px rgba(76, 215, 246, 0.6));
+        }
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.02); }
+        }
+        .roadmap-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 5s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2d3449",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#003640",
+                        "surface-tint": "#c0c1ff",
+                        "secondary-container": "#03b5d3",
+                        "primary": "#c0c1ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-primary": "#1000a9",
+                        "surface-container-high": "#222a3d",
+                        "surface-bright": "#31394d",
+                        "outline-variant": "#464554",
+                        "on-surface": "#dae2fd",
+                        "surface-container-low": "#131b2e",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-primary-fixed": "#07006c",
+                        "primary-fixed": "#e1e0ff",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "on-tertiary-container": "#400071",
+                        "surface": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "tertiary-container": "#b76dff",
+                        "primary-container": "#8083ff",
+                        "surface-container": "#171f33",
+                        "on-secondary-fixed": "#001f26",
+                        "on-tertiary": "#490080",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "background": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "inverse-on-surface": "#283044",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#dae2fd",
+                        "on-tertiary-fixed": "#2c0051",
+                        "surface-dim": "#0b1326",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ddb7ff",
+                        "secondary": "#4cd7f6",
+                        "on-secondary-container": "#00424e",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-container": "#0d0096",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-background": "#dae2fd",
+                        "outline": "#908fa0",
+                        "on-surface-variant": "#c7c4d7",
+                        "secondary-fixed": "#acedff",
+                        "tertiary-fixed": "#f0dbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit-sm": "8px",
+                        "unit-md": "16px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit-xs": "4px",
+                        "unit-xl": "64px",
+                        "sidebar-width": "280px",
+                        "unit-lg": "32px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-xl": ["Hanken Grotesk"],
+                        "label-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background selection:bg-primary/30">
+<!-- Top Navigation (Mobile Bottom Nav handled via hidden md:flex) -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/50 backdrop-blur-lg border-b border-white/10 h-16 flex items-center justify-between px-gutter">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-extrabold bg-gradient-to-r from-primary to-tertiary bg-clip-text text-transparent">LearnPath</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-2 border-primary font-body-sm text-body-sm" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Roadmap</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Courses</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl font-bold transition-transform active:scale-95 shadow-[0_0_15px_rgba(128,131,255,0.4)] text-body-sm">Start Assessment</button>
+</div>
+</nav>
+<main class="pt-16 max-w-container-max mx-auto overflow-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex flex-col items-center justify-center text-center px-gutter pt-unit-xl">
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-tertiary blur-[120px] rounded-full"></div>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto space-y-unit-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-unit-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-secondary">AI-Powered Career Intelligence</span>
+</div>
+<h1 class="font-display-xl text-display-xl leading-tight">
+                    Architect Your <span class="bg-gradient-to-r from-primary via-tertiary to-secondary bg-clip-text text-transparent">Engineering Future</span> with AI
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    The only platform that builds a living, breathing career roadmap based on your unique psychometric profile and evolving skill-gaps.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-unit-md">
+<button class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary-container to-tertiary-container text-on-primary-container font-bold text-body-md shadow-[0_10px_30px_rgba(128,131,255,0.3)] transition-all hover:scale-105 active:scale-95">Get Started</button>
+<button class="px-8 py-4 rounded-xl glass-panel text-on-surface font-bold text-body-md transition-all hover:bg-white/10">View Sample Roadmap</button>
+</div>
+</div>
+<!-- Animated Roadmap Preview -->
+<div class="relative mt-unit-xl w-full max-w-5xl mx-auto glass-panel p-unit-md rounded-[2rem] shadow-2xl overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full gloss-effect pointer-events-none"></div>
+<div class="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
+<div class="w-3 h-3 rounded-full bg-secondary/40"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Live Roadmap Generator — v2.4</span>
+</div>
+<div class="relative h-[300px] flex items-center justify-around">
+<svg class="absolute inset-0 w-full h-full z-0" viewbox="0 0 1000 300">
+<path class="roadmap-line fill-none stroke-secondary/20 stroke-2" d="M 50 150 Q 250 50 500 150 T 950 150"></path>
+<path class="roadmap-line fill-none stroke-primary/40 stroke-2" d="M 50 150 Q 250 250 500 150 T 950 150" style="animation-delay: -2.5s"></path>
+</svg>
+<div class="relative z-10 glass-panel p-unit-sm rounded-xl border-secondary/30 flex flex-col items-center gap-2 animate-pulse-slow">
+<span class="material-symbols-outlined text-secondary neon-glow-cyan" data-icon="school">school</span>
+<span class="font-label-md text-label-md">Foundations</span>
+</div>
+<div class="relative z-10 glass-panel p-unit-sm rounded-xl border-primary/30 flex flex-col items-center gap-2" style="animation-delay: 1s">
+<span class="material-symbols-outlined text-primary" data-icon="code">code</span>
+<span class="font-label-md text-label-md">Backend Mastery</span>
+</div>
+<div class="relative z-10 bg-primary-container text-on-primary-container p-unit-sm rounded-xl shadow-lg shadow-primary/20 flex flex-col items-center gap-2">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">AI Integration</span>
+</div>
+<div class="relative z-10 glass-panel p-unit-sm rounded-xl border-tertiary/30 flex flex-col items-center gap-2" style="animation-delay: 2s">
+<span class="material-symbols-outlined text-tertiary" data-icon="work">work</span>
+<span class="font-label-md text-label-md">Senior Architect</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-unit-xl px-gutter grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-4xl mx-auto">
+<div class="glass-panel p-unit-lg rounded-2xl text-center group transition-all hover:bg-white/5">
+<h3 class="font-display-xl text-headline-lg text-primary mb-2">1M+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Career Paths Optimized by LearnPath AI</p>
+</div>
+<div class="glass-panel p-unit-lg rounded-2xl text-center group transition-all hover:bg-white/5">
+<h3 class="font-display-xl text-headline-lg text-secondary mb-2">98%</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Placement Success within 6 Months</p>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-unit-xl px-gutter">
+<div class="text-center mb-unit-xl">
+<h2 class="font-headline-lg text-headline-lg mb-4">Hyper-Personalized Intelligence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Four engines working in sync to power your career trajectory.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- AI Recommendation Engine -->
+<div class="md:col-span-8 glass-panel p-unit-lg rounded-[2rem] overflow-hidden group hover:border-primary/50 transition-colors">
+<div class="flex flex-col md:flex-row gap-unit-lg">
+<div class="flex-1 space-y-unit-md">
+<span class="material-symbols-outlined text-secondary text-unit-lg neon-glow-cyan" data-icon="auto_settings">auto_mode</span>
+<h3 class="font-headline-md text-headline-md">AI Recommendation Engine</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Dynamic course and project suggestions that adjust daily based on your learning velocity and industry shifts.</p>
+</div>
+<div class="flex-1 glass-panel rounded-xl bg-black/20 p-4 border-white/5">
+<img alt="AI Logic" class="rounded-lg object-cover w-full h-40 opacity-80" data-alt="A high-tech digital interface displaying a network of interconnected nodes and glowing data points representing complex AI neural networks. The aesthetic is clean and futuristic with deep navy and electric cyan accents. Soft ambient light illuminates the geometric structures creating a sense of advanced computational power and organized data flow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0iRRBkJb8fiTgJ684aSNQa5NNWa8ndieU8yRgnrgR_k4um88FyfBKUqNDmHmieNkHMOp6jdgZdQEEo0vmOxwUPVCDMYBg1BNeO6P9KHBmErHPebC0SMG7bZR3kBAugiB6O8XaW9uRX8O-BxxvN6plrVrGFmKrTvoHbvpwGT0qIx-5-1iQzXID8usvRogGUUJmhWLsxki7Lfxkmd6vyxzlUHCBlUGMGKkLRntieGcWSiBohyABdVQEYCoxjJlpJftMTqJycLoSRus"/>
+<div class="mt-4 space-y-2">
+<div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+<div class="h-2 w-3/4 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Psychometric Intelligence -->
+<div class="md:col-span-4 glass-panel p-unit-lg rounded-[2rem] space-y-unit-md group hover:border-tertiary/50 transition-colors">
+<span class="material-symbols-outlined text-tertiary text-unit-lg" data-icon="psychology">psychology</span>
+<h3 class="font-headline-md text-headline-md">Psychometric IQ</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">We analyze your cognitive style to determine if you're a builder, an architect, or a researcher.</p>
+</div>
+<!-- Adaptive Learning -->
+<div class="md:col-span-4 glass-panel p-unit-lg rounded-[2rem] space-y-unit-md group hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary text-unit-lg" data-icon="adaptive_audio_mic">adaptive_audio_mic</span>
+<h3 class="font-headline-md text-headline-md">Adaptive Learning</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Content difficulty adjusts in real-time. If you struggle, we pivot; if you excel, we accelerate.</p>
+</div>
+<!-- Skill-gap Analytics -->
+<div class="md:col-span-8 glass-panel p-unit-lg rounded-[2rem] group hover:border-secondary/50 transition-colors">
+<div class="flex items-start gap-unit-md">
+<div class="space-y-unit-md flex-1">
+<span class="material-symbols-outlined text-secondary text-unit-lg neon-glow-cyan" data-icon="monitoring">monitoring</span>
+<h3 class="font-headline-md text-headline-md">Skill-gap Analytics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time comparison between your current skill set and the requirements of Fortune 500 engineering roles.</p>
+</div>
+<div class="hidden md:block w-48 h-48">
+<!-- Radar Chart Visualization Mockup -->
+<svg class="w-full h-full opacity-60" viewbox="0 0 100 100">
+<polygon class="text-white/20" fill="none" points="50,10 90,40 75,90 25,90 10,40" stroke="currentColor" stroke-width="0.5"></polygon>
+<polygon class="neon-glow-cyan" fill="rgba(76, 215, 246, 0.2)" points="50,20 80,45 65,80 35,80 20,45" stroke="#4cd7f6" stroke-width="1.5"></polygon>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Showcase -->
+<section class="py-unit-xl px-gutter bg-surface-container-lowest/30 rounded-[3rem] my-unit-xl">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-unit-xl items-center">
+<div class="space-y-unit-md">
+<h2 class="font-headline-lg text-headline-lg">Your Path, <br/><span class="text-tertiary">Visualized.</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Our interactive showcase displays how LearnPath maps your journey from Junior Developer to Senior Lead, highlighting every critical skill acquisition along the way.
+                    </p>
+<ul class="space-y-unit-sm pt-unit-md">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">Dynamic Skill Weighting</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">Industry Trend Integration</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">Mock Interview Readiness</span>
+</li>
+</ul>
+</div>
+<div class="relative glass-panel rounded-3xl p-unit-md border-white/5 shadow-2xl overflow-hidden min-h-[500px]">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+<!-- AI Career Mockup UI -->
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="font-headline-md text-body-lg font-bold">Cloud Architect Track</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">Candidate Match: 94%</p>
+</div>
+<div class="px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-full text-secondary font-label-md">High Demand</div>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary border-4 border-surface shadow-[0_0_15px_rgba(192,193,255,0.6)]"></div>
+<div class="w-0.5 flex-1 bg-gradient-to-b from-primary to-transparent"></div>
+</div>
+<div class="flex-1 pb-8">
+<h5 class="font-body-md font-bold text-primary">Core Systems (Completed)</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">OS Fundamentals &amp; Distributed Computing</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-4 border-white/20 bg-surface-variant flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+</div>
+<div class="w-0.5 flex-1 border-l-2 border-dashed border-white/10"></div>
+</div>
+<div class="flex-1 pb-8">
+<h5 class="font-body-md font-bold text-secondary">Kubernetes Orchestration</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Advanced container management and auto-scaling</p>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-0.5 bg-white/5 rounded text-[10px] text-on-surface-variant">Project: Multi-region cluster deployment</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 opacity-40">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-4 border-white/10 bg-surface-variant"></div>
+</div>
+<div class="flex-1">
+<h5 class="font-body-md font-bold">Serverless Performance</h5>
+<p class="font-body-sm text-body-sm">Latency optimization in AWS Lambda &amp; GCP Functions</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-8 border-t border-white/5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden glass-panel flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="smart_toy">smart_toy</span>
+</div>
+<p class="font-body-sm text-body-sm italic text-on-surface-variant">"Next Recommended: System Design Interview with Lead Mentor Sarah."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-unit-xl px-gutter">
+<div class="text-center mb-unit-xl">
+<h2 class="font-headline-lg text-headline-lg">Success Stories</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Hear from the engineers who built their future with us.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Testimonial 1 -->
+<div class="glass-panel p-unit-lg rounded-2xl flex flex-col justify-between hover:scale-[1.02] transition-all">
+<p class="font-body-md italic text-on-surface mb-8">"LearnPath didn't just teach me coding; it showed me the exact gaps I needed to fill to get hired at Google. The AI mentor's feedback was terrifyingly accurate."</p>
+<div class="flex items-center gap-4">
+<img alt="Student" class="w-12 h-12 rounded-full object-cover" data-alt="A professional portrait of a young male software engineer in a modern, softly lit office environment. He is smiling warmly, wearing a clean charcoal sweater. The background shows blurred architectural lines and warm interior lighting, creating a high-end, successful career aesthetic that aligns with the premium engineering theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmOONyQ_iGJAlHyDloNlMmIsk5WYOjx0UzSjscfO5mP-cdZxRPy5WQBGbRdHyNfdBlSev-MmWLZZpItB_4etUa8nf_z7j7Qx8WI4NRMQJceCGUHF6nGyYON0n0EeGE3743Nct9wP4IoajLNR00KZKJJ-jmn-tHHWoDCMQ8YO3NYpKeh2W6jarXIWMNI0KjBTEuqT_zODdyICiK-pb_AcvABQPe5dlU0lQvN-LdunRLto3OBHhda9akjFRGtmyZykne0pYPPukB4T4"/>
+<div>
+<p class="font-body-sm font-bold">Alex Rivera</p>
+<p class="font-label-md text-label-md text-secondary">L4 SWE @ Google</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="glass-panel p-unit-lg rounded-2xl flex flex-col justify-between hover:scale-[1.02] transition-all border-primary/20 bg-primary/5">
+<p class="font-body-md italic text-on-surface mb-8">"The psychometric profiling was the turning point. It helped me realize I was better suited for Systems Architecture than Frontend. I've never been happier."</p>
+<div class="flex items-center gap-4">
+<img alt="Student" class="w-12 h-12 rounded-full object-cover" data-alt="A sophisticated headshot of a female engineer with a confident smile. She has dark hair and is wearing a minimalist navy blazer. The setting is a brightly lit tech studio with subtle geometric patterns and soft purple ambient lighting, reflecting a professional and visionary personality in the engineering field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1dQ-Lu5qNM8rZOQQasuhedRWbhq7cfRaums5oh8UqdG46N9IOeLDv_252573ESx_E3rM9psH5dtJl28RxecROMs2p18TDeSEv7u_T3q1mzsfqQudy66MzuTKARS-cXVR5foxvHKsONeMiV9pMUeQ_LH4HTXXc0PuaR61sC0DL_E1KSw3tWvfu7CUnZGq03V5lBvjPiK3mXNG1wF7PWkha1-SUwgzFbnx_zVP2wx8Wlnt4ePgihLDb7TxNVKrnujpMsWFANI2fiQY"/>
+<div>
+<p class="font-body-sm font-bold">Sarah Chen</p>
+<p class="font-label-md text-label-md text-primary">Senior Architect @ Meta</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="glass-panel p-unit-lg rounded-2xl flex flex-col justify-between hover:scale-[1.02] transition-all">
+<p class="font-body-md italic text-on-surface mb-8">"The skill-gap analytics allowed me to focus my 10 hours a week on exactly what mattered. No fluff, just results. Secured my role in 3 months."</p>
+<div class="flex items-center gap-4">
+<img alt="Student" class="w-12 h-12 rounded-full object-cover" data-alt="A close-up portrait of a male data scientist with a thoughtful expression. He has short hair and is wearing professional glasses. The background is a clean, minimalist workspace with hints of digital screens and soft electric blue light, emphasizing a data-driven and analytical career focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANGr4qdWCtXJ3n9GjWMQiiqlIKI6f_0yBl-PQFXVllnMfNPkuFeXOnwnaeq2Mm8gibG5BCDDg1AFFeu0G19xIKG9yTgOlAtW4MC6oc99zz-KUvXaKnWz6QxuDOP5e_IqYWZmWTuEjrewN6UVgclrtNUvjEAt5H82b3j8T5I-zQHvWwrMoJwMQtuxUHti6yxLxa9urK7Il6c4e87f4E1nHUGsWb1QmpFsoKc7U04mVU0gYYVkP0g8KVuDhHAHV3Io0AZ91ww0MsP4c"/>
+<div>
+<p class="font-body-sm font-bold">Marcus Thorne</p>
+<p class="font-label-md text-label-md text-tertiary">Data Engineer @ Amazon</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-unit-xl px-gutter mb-unit-xl">
+<div class="relative glass-panel rounded-[3rem] p-unit-xl text-center overflow-hidden border-primary/30">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 via-background to-tertiary/10 opacity-50"></div>
+<div class="relative z-10 max-w-2xl mx-auto space-y-unit-md">
+<h2 class="font-headline-lg text-headline-lg">Ready to build your <br/>legacy?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Join 1M+ engineers and start your AI-guided journey today.</p>
+<button class="px-10 py-5 rounded-2xl bg-primary text-on-primary font-bold text-headline-md shadow-[0_20px_50px_rgba(192,193,255,0.4)] hover:scale-105 active:scale-95 transition-all">Start Your Free Assessment</button>
+<p class="font-label-md text-label-md text-on-surface-variant/60">No credit card required. Instant roadmap generation.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-unit-md mt-auto border-t border-white/5 bg-surface-container-lowest/50 backdrop-blur-md">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto gap-unit-md">
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="font-label-md font-bold text-primary">LearnPath AI Engineering</span>
+<p class="font-label-md text-label-md text-on-surface-variant">© 2024 LearnPath AI Engineering</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-cyan-400 transition-all" href="#">Industry Trends</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-cyan-400 transition-all" href="#">Privacy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-cyan-400 transition-all" href="#">Support</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Interactive Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                btn.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

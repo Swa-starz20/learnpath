@@ -1,0 +1,72 @@
+Fix Dashboard Intelligence Reactivity
+
+IMPORTANT
+
+This is a small stabilization task only.
+
+Do NOT:
+
+* redesign UI
+* create new pages
+* modify layouts
+* change styling
+* create new systems
+* refactor unrelated code
+
+The intelligence architecture is already implemented and integrated.
+
+Current Issue
+
+Dashboard reads intelligence state on mount but does not automatically re-render when intelligence data changes.
+
+As a result, updates from the Unified Intelligence Sync Engine may not appear until a page refresh or remount.
+
+Objective
+
+Make the Dashboard reactively update whenever intelligence state changes.
+
+Scope
+
+Investigate only:
+
+* DashboardPage.tsx
+* intelligenceSyncEngine.ts
+* existing intelligence/state listener mechanisms
+
+Requirements
+
+* subscribe Dashboard to intelligence state updates
+* trigger React re-render when intelligence state changes
+* reuse existing listeners/subscriptions if available
+* avoid polling
+* avoid duplicate subscriptions
+* prevent memory leaks with proper cleanup
+* keep implementation minimal and consistent with current architecture
+
+Constraints
+
+* no visual changes
+* no layout changes
+* no new components
+* no new state management libraries
+* no architectural redesign
+
+Validation
+
+Confirm that:
+
+* intelligence updates trigger Dashboard refresh automatically
+* readiness metrics update automatically
+* adaptive focus updates automatically
+* mentor intelligence updates automatically
+* no TypeScript errors
+* no UI regressions
+
+Output Only
+
+1. Files modified
+2. Subscription/reactivity mechanism used
+3. Validation results
+4. Any remaining gaps or recommendations
+
+Focus strictly on the Dashboard reactivity fix and maintain existing architecture.

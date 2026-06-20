@@ -10,9 +10,9 @@ spring:
 
   # ── Datasource ───────────────────────────────────────────────────────────────
   datasource:
-    url: ${SPRING_DATASOURCE_URL}         # REQUIRED — jdbc:postgresql://host:5432/learnpath_db
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/learnpath_db         # REQUIRED — jdbc:postgresql://host:5432/learnpath_db
+    username: postgres
+    password: postgres123
     driver-class-name: org.postgresql.Driver
     hikari:
       pool-name: LearnPath-Prod-Pool

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LearnPath AI | Security &amp; Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .ai-glow-border {
+            position: relative;
+        }
+        .ai-glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, #c0c1ff, #ddb7ff, #4cd7f6);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .ai-glow-border:focus-within::after {
+            opacity: 0.5;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-tertiary": "#490080",
+                "inverse-surface": "#dae2fd",
+                "surface-variant": "#2d3449",
+                "on-primary": "#1000a9",
+                "tertiary-fixed-dim": "#ddb7ff",
+                "on-secondary-fixed": "#001f26",
+                "surface-container-high": "#222a3d",
+                "surface-container-lowest": "#060e20",
+                "on-error": "#690005",
+                "error-container": "#93000a",
+                "on-primary-fixed-variant": "#2f2ebe",
+                "inverse-on-surface": "#283044",
+                "tertiary-fixed": "#f0dbff",
+                "surface-container-highest": "#2d3449",
+                "surface-dim": "#0b1326",
+                "secondary-container": "#03b5d3",
+                "primary": "#c0c1ff",
+                "surface-tint": "#c0c1ff",
+                "secondary-fixed-dim": "#4cd7f6",
+                "tertiary": "#ddb7ff",
+                "on-error-container": "#ffdad6",
+                "on-background": "#dae2fd",
+                "inverse-primary": "#494bd6",
+                "on-tertiary-fixed-variant": "#6900b3",
+                "on-primary-container": "#0d0096",
+                "background": "#0b1326",
+                "surface-container-low": "#131b2e",
+                "primary-container": "#8083ff",
+                "on-secondary-fixed-variant": "#004e5c",
+                "on-secondary": "#003640",
+                "primary-fixed": "#e1e0ff",
+                "outline-variant": "#464554",
+                "on-tertiary-container": "#400071",
+                "surface": "#0b1326",
+                "primary-fixed-dim": "#c0c1ff",
+                "on-surface-variant": "#c7c4d7",
+                "on-surface": "#dae2fd",
+                "tertiary-container": "#b76dff",
+                "on-secondary-container": "#00424e",
+                "outline": "#908fa0",
+                "surface-container": "#171f33",
+                "secondary": "#4cd7f6",
+                "on-tertiary-fixed": "#2c0051",
+                "on-primary-fixed": "#07006c",
+                "surface-bright": "#31394d",
+                "secondary-fixed": "#acedff",
+                "error": "#ffb4ab"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "sidebar-width": "280px",
+                "unit-xl": "64px",
+                "margin-mobile": "16px",
+                "unit-lg": "32px",
+                "unit-md": "16px",
+                "gutter": "24px",
+                "unit-sm": "8px",
+                "unit-xs": "4px",
+                "container-max": "1440px"
+              },
+              "fontFamily": {
+                "headline-md": ["Hanken Grotesk"],
+                "headline-lg": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "label-md": ["JetBrains Mono"],
+                "body-lg": ["Inter"],
+                "body-sm": ["Inter"],
+                "display-xl": ["Hanken Grotesk"],
+                "body-md": ["Inter"]
+              },
+              "fontSize": {
+                "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "500"}],
+                "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="flex min-h-screen bg-background">
+<!-- SideNavBar -->
+<aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface/30 backdrop-blur-xl border-r border-outline-variant/20 shadow-[0px_0px_30px_rgba(128,131,255,0.1)] flex flex-col h-full py-unit-lg z-[60]">
+<div class="px-unit-md mb-unit-xl">
+<div class="flex items-center gap-unit-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary leading-none">LearnPath AI</h1>
+<p class="text-body-sm text-on-surface-variant opacity-70">AI-Driven Learning</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-unit-xs px-unit-sm">
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all duration-300 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+<span class="font-body-md">Profile</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm bg-primary/10 text-primary border-r-4 border-primary hover:bg-surface-variant/50 transition-all duration-300 rounded-lg group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-body-md">Security</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all duration-300 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:rotate-45 transition-transform">settings</span>
+<span class="font-body-md">Preferences</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all duration-300 rounded-lg group" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md">Billing</span>
+</a>
+</nav>
+<div class="mt-auto px-unit-md space-y-unit-md">
+<div class="glass-panel p-unit-md rounded-xl text-center">
+<p class="text-body-sm font-bold mb-unit-sm">Upgrade to Pro</p>
+<button class="w-full py-unit-sm bg-gradient-to-r from-primary-container to-tertiary-container rounded-lg text-on-primary-container font-body-md font-bold active:scale-95 transition-transform">
+                    Go Unlimited
+                </button>
+</div>
+<div class="space-y-unit-xs">
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Help</span>
+</a>
+<a class="flex items-center gap-unit-md px-unit-md py-unit-sm text-error hover:text-on-error-container transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 h-unit-xl flex justify-between items-center px-unit-lg bg-surface/10 backdrop-blur-md border-b border-outline-variant/10">
+<div class="flex items-center gap-unit-md">
+<h2 class="font-headline-md text-headline-md font-extrabold text-primary">Security &amp; Access</h2>
+</div>
+<div class="flex items-center gap-unit-lg">
+<div class="hidden md:flex items-center bg-surface-container-low px-unit-md py-unit-xs rounded-full border border-outline-variant/20 focus-within:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-64 placeholder:text-on-surface-variant/50" placeholder="Search security settings..." type="text"/>
+<span class="text-label-md bg-surface-variant px-unit-xs rounded text-on-surface-variant">⌘K</span>
+</div>
+<div class="flex items-center gap-unit-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80">sparkles</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80 relative">
+                        notifications
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high border border-outline-variant/30 overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvwnh4xA7N-qTLM33IK4dU3OcJeY2MlrBpfjnLmvb1pLKL5jUyU5fBIOh67ZY61Cp1IvQvxSrol6o9R_b7fQ2UXiwxFImkS1-R8wPnBN9yzVnO-E9WVLDUd8Ve2aQsS3uoLu7Z-aHe2PaxtMTeraWLYlFGevvSzjnpiLZ03uKzjlAY_uF6Wgb0hF95kbDNLBUJqJaGlHkKuPc-nP-qbFOUH4hFqZxWxa9vRgK7DfFnO93XmKz9NIgbJjaf7IW3OTmbgtBSpjivefw"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-unit-lg max-w-container-max mx-auto w-full space-y-gutter">
+<!-- Breadcrumbs / Top Indicator -->
+<div class="flex items-center gap-unit-xs text-on-surface-variant">
+<span class="font-label-md">SETTINGS</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-label-md text-primary">SECURITY &amp; ACCESS</span>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Password Management -->
+<section class="col-span-12 lg:col-span-7 space-y-unit-md">
+<div class="glass-panel p-unit-lg rounded-xl">
+<div class="flex items-center gap-unit-md mb-unit-lg">
+<div class="p-unit-sm rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Password Management</h3>
+<p class="text-body-sm text-on-surface-variant">Update your account credentials to keep your profile secure.</p>
+</div>
+</div>
+<form class="space-y-unit-md">
+<div class="space-y-unit-xs">
+<label class="text-label-md text-on-surface-variant">CURRENT PASSWORD</label>
+<div class="ai-glow-border rounded-lg">
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 rounded-lg px-unit-md py-unit-sm text-body-md focus:border-secondary outline-none transition-all" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-unit-xs">
+<label class="text-label-md text-on-surface-variant">NEW PASSWORD</label>
+<div class="ai-glow-border rounded-lg">
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 rounded-lg px-unit-md py-unit-sm text-body-md focus:border-secondary outline-none transition-all" placeholder="Min. 12 characters" type="password"/>
+</div>
+</div>
+<div class="space-y-unit-xs">
+<label class="text-label-md text-on-surface-variant">CONFIRM NEW PASSWORD</label>
+<div class="ai-glow-border rounded-lg">
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 rounded-lg px-unit-md py-unit-sm text-body-md focus:border-secondary outline-none transition-all" placeholder="Repeat new password" type="password"/>
+</div>
+</div>
+</div>
+<div class="pt-unit-md flex justify-end">
+<button class="px-unit-lg py-unit-sm bg-primary text-on-primary rounded-full font-body-md font-bold shadow-[0px_10px_30px_rgba(192,193,255,0.3)] hover:brightness-110 active:scale-95 transition-all">
+                                    Update Password
+                                </button>
+</div>
+</form>
+</div>
+<!-- Two-Factor Authentication -->
+<div class="glass-panel p-unit-lg rounded-xl relative overflow-hidden group">
+<!-- Decorative background element -->
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary/10 blur-[60px] rounded-full group-hover:bg-secondary/20 transition-all duration-700"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-gutter">
+<div class="flex items-start gap-unit-md">
+<div class="p-unit-sm rounded-lg bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">vibration</span>
+</div>
+<div class="max-w-md">
+<h3 class="font-headline-md text-[24px] text-on-surface flex items-center gap-unit-xs">
+                                        Two-Factor Authentication (2FA)
+                                        <span class="bg-secondary/20 text-secondary text-[10px] px-unit-xs rounded font-bold uppercase tracking-wider">Recommended</span>
+</h3>
+<p class="text-body-sm text-on-surface-variant mt-unit-xs">Add an extra layer of security to your account by requiring more than just a password to log in. Use an authenticator app or SMS codes.</p>
+</div>
+</div>
+<div class="flex items-center gap-unit-md">
+<div class="text-right hidden md:block">
+<span class="block text-label-md text-on-surface-variant">STATUS</span>
+<span class="text-error font-bold text-body-sm">Deactivated</span>
+</div>
+<button class="px-unit-lg py-unit-sm border border-secondary text-secondary rounded-full font-body-md font-bold hover:bg-secondary/10 active:scale-95 transition-all whitespace-nowrap">
+                                    Configure 2FA
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Login History -->
+<section class="col-span-12 lg:col-span-5">
+<div class="glass-panel rounded-xl h-full flex flex-col">
+<div class="p-unit-lg border-b border-outline-variant/10">
+<h3 class="font-headline-md text-headline-md text-on-surface">Login History</h3>
+<p class="text-body-sm text-on-surface-variant">Review your recent activity across all devices.</p>
+</div>
+<div class="flex-1 overflow-y-auto max-h-[500px] p-unit-sm space-y-unit-xs">
+<!-- History Item 1 -->
+<div class="flex items-center justify-between p-unit-md rounded-lg hover:bg-surface-variant/30 transition-colors group">
+<div class="flex items-center gap-unit-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">laptop_mac</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">MacBook Pro 16"</p>
+<p class="text-body-sm text-on-surface-variant">San Francisco, USA • 192.168.1.1</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md text-secondary">CURRENT SESSION</p>
+<p class="text-body-sm text-on-surface-variant">Active now</p>
+</div>
+</div>
+<!-- History Item 2 -->
+<div class="flex items-center justify-between p-unit-md rounded-lg hover:bg-surface-variant/30 transition-colors group">
+<div class="flex items-center gap-unit-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">iPhone 15 Pro</p>
+<p class="text-body-sm text-on-surface-variant">San Francisco, USA • 172.16.0.42</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md text-on-surface-variant">2 HOURS AGO</p>
+<button class="text-body-sm text-error hover:underline">Revoke</button>
+</div>
+</div>
+<!-- History Item 3 -->
+<div class="flex items-center justify-between p-unit-md rounded-lg hover:bg-surface-variant/30 transition-colors group">
+<div class="flex items-center gap-unit-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">tablet_android</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">iPad Pro</p>
+<p class="text-body-sm text-on-surface-variant">New York, USA • 10.0.0.15</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md text-on-surface-variant">YESTERDAY, 4:15 PM</p>
+<button class="text-body-sm text-error hover:underline">Revoke</button>
+</div>
+</div>
+<!-- History Item 4 -->
+<div class="flex items-center justify-between p-unit-md rounded-lg hover:bg-surface-variant/30 transition-colors group">
+<div class="flex items-center gap-unit-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Chrome on Windows</p>
+<p class="text-body-sm text-on-surface-variant">London, UK • 81.12.4.99</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md text-on-surface-variant">OCT 12, 2023</p>
+<button class="text-body-sm text-error hover:underline">Revoke</button>
+</div>
+</div>
+</div>
+<div class="p-unit-md border-t border-outline-variant/10">
+<button class="w-full text-center text-body-sm text-primary hover:text-tertiary transition-colors font-bold">
+                                See full activity log
+                            </button>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="col-span-12">
+<div class="rounded-xl border border-error/30 bg-error/5 p-unit-lg flex flex-col md:flex-row md:items-center justify-between gap-gutter">
+<div class="flex items-start gap-unit-md">
+<div class="p-unit-sm rounded-lg bg-error/10 text-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<h3 class="font-headline-md text-[24px] text-error">Danger Zone</h3>
+<p class="text-body-sm text-on-surface-variant mt-unit-xs">Once you deactivate your account, there is no going back. All your AI learning progress, credits, and history will be permanently erased. Please be certain.</p>
+</div>
+</div>
+<div class="flex shrink-0">
+<button class="px-unit-lg py-unit-sm bg-error text-on-error rounded-lg font-body-md font-bold hover:brightness-110 active:scale-95 transition-all shadow-[0px_4px_20px_rgba(255,180,171,0.2)]">
+                                Deactivate Account
+                            </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer Info -->
+<footer class="mt-auto p-unit-lg border-t border-outline-variant/10 text-center">
+<p class="text-body-sm text-on-surface-variant/50">
+                LearnPath AI Security © 2024. Your data is encrypted with AES-256 and protected by high-fidelity neural guardians.
+            </p>
+</footer>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Simple search focus visual feedback
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+
+        // Pulsing AI border logic for important forms
+        const passwordFields = document.querySelectorAll('input[type="password"]');
+        passwordFields.forEach(field => {
+            field.addEventListener('focus', () => {
+                const container = field.closest('.ai-glow-border');
+                if (container) {
+                    container.classList.add('ai-thinking');
+                }
+            });
+            field.addEventListener('blur', () => {
+                const container = field.closest('.ai-glow-border');
+                if (container) {
+                    container.classList.remove('ai-thinking');
+                }
+            });
+        });
+    </script>
+</body></html>

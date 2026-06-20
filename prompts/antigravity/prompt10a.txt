@@ -1,0 +1,76 @@
+Backend Architecture Final Validation
+
+Review only: learnpath_backend_architecture.md
+
+Context:
+
+* Frontend Stable V1 is complete.
+* Backend implementation has NOT started.
+* This is the final architecture review before development begins.
+
+Perform a senior backend architecture audit.
+
+Validate:
+
+* Module boundaries
+* Data ownership boundaries
+* Database ownership
+* Table relationships
+* Aggregate boundaries
+* API ownership
+* Security architecture
+* JWT strategy
+* Intelligence engine integration
+* Placement system integration
+* Event ownership
+* Flyway migration ordering
+* Cross-module dependencies
+* Scalability
+* Maintainability
+* Extensibility
+
+Verify:
+
+* no circular dependencies
+* no duplicated ownership
+* no missing modules
+* no missing tables
+* no missing API groups
+* no missing intelligence data
+* no missing placement/interview/company readiness data
+* no security gaps
+* no Flyway ordering issues
+* no hidden implementation blockers
+
+Output ONLY:
+
+## Issues Found
+
+For each issue:
+
+* Severity (Critical / High / Medium / Low)
+* Description
+* Recommended Correction
+
+## Architecture Readiness Score
+
+Score out of 100 with a brief justification.
+
+## Final Verdict
+
+Either:
+
+ARCHITECTURE APPROVED FOR IMPLEMENTATION
+
+OR
+
+ARCHITECTURE REQUIRES CORRECTIONS
+
+If approved:
+
+* List the top 3 implementation priorities for Phase 1 Foundation.
+
+Do NOT generate code.
+Do NOT modify files.
+Do NOT redesign the system unless a genuine architectural issue exists.
+Keep the review concise and implementation-focused.

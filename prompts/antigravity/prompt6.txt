@@ -1,0 +1,431 @@
+Build the Shared Intelligence Infrastructure for LearnPath AI.
+
+IMPORTANT:
+Before generating anything, deeply study and align with ALL existing systems already implemented in the project:
+
+- Dashboard Intelligence System
+- Assessments Engine
+- AI Mentor System
+- Adaptive Roadmap Intelligence Engine
+- Courses Intelligence System
+
+Also study:
+- existing folder architecture
+- reusable UI patterns
+- config structures
+- animation patterns
+- state handling patterns
+- domain abstraction patterns
+- visual spacing hierarchy
+- component composition style
+
+CRITICAL:
+Maintain COMPLETE consistency with:
+- the existing LearnPath architecture
+- previously generated Antigravity systems
+- the original Stitch design direction
+- current visual hierarchy already implemented
+- existing futuristic engineering aesthetic
+
+This is NOT a new standalone feature.
+
+This phase builds:
+THE CORE INTELLIGENCE OPERATING LAYER
+that powers the entire LearnPath ecosystem.
+
+==================================================
+PRODUCT CONTEXT
+==================================================
+
+LearnPath AI is NOT:
+- a course marketplace
+- an LMS
+- a static roadmap platform
+- a placement dashboard
+
+LearnPath AI IS:
+an AI-native adaptive operating system for engineering education.
+
+The ecosystem already works like this:
+
+Assessments
+→ identify strengths & weaknesses
+
+Roadmaps
+→ generate adaptive career direction
+
+Courses
+→ execute learning progression
+
+AI Mentor
+→ guide and personalize learning
+
+This phase connects ALL systems together through:
+shared intelligence architecture.
+
+==================================================
+CRITICAL PRODUCT DIRECTION
+==================================================
+
+LearnPath supports ALL engineering domains.
+
+DO NOT make CS-only assumptions.
+
+Supported engineering domains include:
+- Computer Engineering
+- AI/ML
+- Robotics
+- Mechanical
+- Electrical
+- Electronics
+- Civil
+- Aerospace
+- Biomedical
+- Automobile
+- Chemical
+- Mechatronics
+
+Architecture MUST remain:
+- modular
+- scalable
+- config-driven
+- reusable
+- AI-ready
+- domain-independent
+
+==================================================
+VERY IMPORTANT IMPLEMENTATION RULES
+==================================================
+
+This phase is architecture-focused.
+
+DO NOT:
+- redesign existing UI
+- create new pages
+- create giant monolithic files
+- generate unnecessary frontend sections
+- add backend/server code
+- create fake API integrations
+- introduce unnecessary abstractions
+- break existing systems
+- duplicate existing logic
+
+AVOID:
+- overengineering
+- excessive comments
+- unnecessary mock datasets
+- massive placeholder content
+- token-heavy code generation
+
+Keep implementations:
+- lightweight
+- modular
+- deterministic
+- scalable
+- cleanly typed
+- future backend compatible
+
+The goal is:
+MAXIMUM ARCHITECTURAL VALUE
+with MINIMAL token usage.
+
+==================================================
+OBJECTIVE
+==================================================
+
+Build the foundational intelligence architecture powering:
+
+- adaptive learning
+- skill dependency tracking
+- roadmap synchronization
+- AI recommendations
+- mentor awareness
+- progression intelligence
+- learning velocity
+- assessment-course alignment
+- unlock systems
+- adaptive difficulty preparation
+
+This layer should feel like:
+“the intelligence brain beneath the LearnPath UI.”
+
+==================================================
+CREATE
+==================================================
+
+FOLDERS:
+
+/src/types
+/src/engine
+/src/store
+/src/lib
+
+==================================================
+1. GLOBAL TYPES SYSTEM
+==================================================
+
+Create:
+
+/src/types/domain.ts
+/src/types/skill.ts
+/src/types/course.ts
+/src/types/roadmap.ts
+/src/types/assessment.ts
+/src/types/progression.ts
+/src/types/ai.ts
+
+Requirements:
+- shared reusable interfaces
+- domain-independent typing
+- scalable for all engineering domains
+- no duplicated structures
+- clean separation of concerns
+- align with existing configs already implemented
+
+Include reusable models for:
+- EngineeringDomain
+- SkillNode
+- SkillDependency
+- CourseModule
+- LessonUnit
+- RoadmapNode
+- AssessmentMetric
+- AIInsight
+- LearningVelocity
+- ProgressState
+- RecommendationResult
+- XPState
+- SkillSyncState
+
+IMPORTANT:
+Do NOT overcomplicate typings.
+Keep them production-scalable but lightweight.
+
+==================================================
+2. SKILL GRAPH ENGINE
+==================================================
+
+Create:
+
+/src/engine/skillGraphEngine.ts
+
+Purpose:
+Transform skills into interconnected intelligence nodes.
+
+This is one of the MOST IMPORTANT systems in LearnPath.
+
+Skills should no longer behave like visual tags.
+
+They should behave like:
+interconnected engineering intelligence nodes.
+
+Example:
+
+Graphs
+→ depends on Trees
+→ improves System Design
+→ unlocks Distributed Systems
+→ linked to DSA course
+→ weak in assessment
+→ required for roadmap milestone
+
+Requirements:
+- dependency mapping
+- unlock relationships
+- prerequisite awareness
+- roadmap linkage
+- assessment weakness tracking
+- course synchronization support
+- adaptive recommendation support
+
+Architecture:
+- config-driven
+- reusable
+- lightweight
+- deterministic
+- no UI logic
+- no hardcoded page behavior
+
+Include helper functions such as:
+- getSkillDependencies
+- getUnlockedSkills
+- calculateSkillReadiness
+- getWeakSkillClusters
+- getNextRecommendedSkills
+
+==================================================
+3. RECOMMENDATION ENGINE
+==================================================
+
+Create:
+
+/src/engine/recommendationEngine.ts
+
+Purpose:
+Generate adaptive learning recommendations across the platform.
+
+This engine orchestrates:
+- roadmap progression
+- course recommendations
+- reinforcement suggestions
+- learning direction
+
+Inputs:
+- assessment performance
+- roadmap progress
+- completed modules
+- weak skills
+- learning velocity
+- confidence scores
+- unlocked milestones
+
+Outputs:
+- recommended course
+- suggested reinforcement
+- next roadmap node
+- adaptive difficulty adjustment
+- suggested practice lab
+- mentor guidance trigger
+
+Requirements:
+- deterministic mock intelligence only
+- AI-ready architecture
+- reusable scoring utilities
+- modular functions
+- no API calls
+- no backend logic
+
+IMPORTANT:
+Focus on architecture quality,
+NOT excessive recommendation datasets.
+
+==================================================
+4. PROGRESSION ENGINE
+==================================================
+
+Create:
+
+/src/engine/progressionEngine.ts
+
+Purpose:
+Central progression intelligence layer shared across ALL systems.
+
+Handle:
+- XP calculations
+- mastery scoring
+- streak calculations
+- readiness scoring
+- completion percentages
+- unlock thresholds
+- confidence scaling
+- progression weighting
+
+Requirements:
+- shared reusable logic
+- deterministic calculations
+- no UI dependencies
+- lightweight utility-focused architecture
+
+This engine should become:
+the central progression authority for LearnPath.
+
+==================================================
+5. CENTRAL LEARNING STORE
+==================================================
+
+Create:
+
+/src/store/useLearningStore.ts
+
+Purpose:
+Centralized intelligence state management layer.
+
+Store:
+- selected engineering domain
+- active roadmap
+- completed lessons
+- unlocked skills
+- earned XP
+- AI confidence
+- adaptive recommendations
+- learning velocity
+- active specialization
+- synced roadmap nodes
+
+Requirements:
+- lightweight state architecture
+- scalable
+- frontend-only
+- future backend compatible
+- preserve existing project patterns
+- avoid unnecessary complexity
+
+Use the SAME architectural style already used in the project.
+
+IMPORTANT:
+This store should prepare the platform for:
+future mentor memory,
+adaptive learning,
+and real AI orchestration.
+
+==================================================
+6. SHARED UTILITIES
+==================================================
+
+Create:
+
+/src/lib/xp.ts
+/src/lib/scoring.ts
+/src/lib/sync.ts
+
+Purpose:
+Shared reusable utilities for:
+- XP scaling
+- scoring normalization
+- roadmap synchronization
+- recommendation weighting
+- progression calculations
+- confidence normalization
+
+Requirements:
+- utility-focused
+- lightweight
+- reusable
+- no duplicated logic
+
+==================================================
+ARCHITECTURE CONSISTENCY
+==================================================
+
+Ensure the generated infrastructure aligns with:
+- current Roadmap Intelligence architecture
+- current Courses system structure
+- current Assessments logic
+- existing domain configs
+- current engineering abstraction model
+
+Preserve:
+- naming consistency
+- folder consistency
+- clean import structure
+- reusable patterns
+- scalability discipline
+
+==================================================
+FINAL IMPORTANT NOTE
+==================================================
+
+This phase should NOT feel like:
+“adding more frontend.”
+
+It should feel like:
+“building the intelligence operating system beneath LearnPath.”
+
+Focus on:
+- architecture quality
+- intelligence orchestration
+- modularity
+- future scalability
+- ecosystem cohesion
+
+while keeping generation efficient enough to avoid unnecessary Antigravity free-tier token consumption.

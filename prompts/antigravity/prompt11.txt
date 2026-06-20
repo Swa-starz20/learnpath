@@ -1,0 +1,287 @@
+Backend Phase 1 Foundation – Production-Ready Foundation Layer
+
+Context:
+
+The backend architecture has been fully approved and validated.
+
+Generate ONLY Phase 1 Foundation of the LearnPath backend system.
+
+This phase establishes the core platform infrastructure that all future modules will depend on.
+
+Do NOT generate any Phase 2+ functionality.
+
+Focus on creating a scalable, maintainable, enterprise-grade foundation following Spring Boot best practices and clean architecture principles.
+
+Tech Stack:
+
+* Spring Boot 3.x
+* Java 17
+* PostgreSQL 18
+* Maven
+* Docker
+* Docker Compose
+* Flyway
+* Spring Security 6
+* JWT Authentication
+* Jakarta Validation
+* Lombok (optional, minimal usage)
+
+Architecture Requirements:
+
+Use a modular package structure aligned with the approved architecture:
+
+* auth
+* user
+* security
+* config
+* common
+* exception
+
+Apply:
+
+* Clean Architecture principles
+* Layered architecture (Controller → Service → Repository)
+* Constructor injection only
+* DTO pattern for all API communication
+* Separation of domain and transport models
+* Centralized exception handling
+* Validation-first request processing
+* Secure-by-default configuration
+* Production-ready configuration structure
+
+Implement:
+
+1. Project Structure
+
+   * Root package organization
+   * Module package layout
+   * Configuration packages
+   * Shared utilities package
+   * Exception handling package
+
+2. Authentication Module
+
+   * Registration workflow
+   * Login workflow
+   * Current user retrieval workflow
+   * JWT token generation
+   * JWT token validation
+   * Authentication service layer
+
+3. User Module
+
+   * User entity
+   * UserProfile entity
+   * User repository
+   * User service
+   * User DTOs
+
+4. Security Module
+
+   * JWT authentication filter
+   * Security configuration
+   * Authentication entry point
+   * Password encoding
+   * Role-based authorization foundation
+
+5. Common Module
+
+   * API response wrapper
+   * Common constants
+   * Utility classes
+   * Base response models
+
+6. Config Module
+
+   * Application configuration
+   * Security configuration
+   * JWT configuration
+   * Database configuration
+
+7. Exception Module
+
+   * Global exception handler
+   * Custom exceptions
+   * Validation error handling
+   * Authentication error handling
+
+Database Design:
+
+Create foundational entities only:
+
+### User
+
+Fields:
+
+* id (UUID)
+* email (unique)
+* password_hash
+* first_name
+* last_name
+* active
+* created_at
+* updated_at
+
+### Role
+
+Fields:
+
+* id
+* name
+* description
+
+### UserProfile
+
+Fields:
+
+* id
+* user_id
+* avatar_url
+* timezone
+* preferred_language
+* created_at
+* updated_at
+
+Relationships:
+
+* User ↔ Role (Many-to-Many)
+* User ↔ UserProfile (One-to-One)
+
+Persistence Requirements:
+
+* JPA/Hibernate mappings
+* Proper indexes
+* Foreign key constraints
+* Audit timestamps
+* Flyway migration scripts
+* Initial role seed data
+
+Authentication API:
+
+### Register
+
+POST /api/auth/register
+
+Requirements:
+
+* Validate email format
+* Validate password strength
+* Prevent duplicate accounts
+* Assign default USER role
+* Return authenticated user response
+
+### Login
+
+POST /api/auth/login
+
+Requirements:
+
+* Email/password authentication
+* JWT generation
+* Secure authentication flow
+* Standardized response format
+
+### Current User
+
+GET /api/auth/me
+
+Requirements:
+
+* JWT protected endpoint
+* Return authenticated user profile
+* Role information included
+
+Security Requirements:
+
+* BCrypt password hashing
+* Stateless authentication
+* JWT Bearer token support
+* Public auth endpoints
+* Protected user endpoints
+* Role-based authorization foundation
+* Security filter chain configuration
+* Unauthorized access handling
+
+Configuration Requirements:
+
+Provide:
+
+* application.yml
+* application-dev.yml
+* application-prod.yml
+* Docker Compose configuration
+* Environment variable support
+* JWT secret configuration
+* Database configuration
+
+Docker Requirements:
+
+Create:
+
+* Spring Boot service
+* PostgreSQL service
+
+Include:
+
+* Persistent database volume
+* Environment variables
+* Network configuration
+* Health checks where appropriate
+
+Flyway Requirements:
+
+Generate:
+
+* Initial schema migration
+* User tables
+* Role tables
+* User profile tables
+* Relationship tables
+* Seed roles migration
+
+Code Quality Requirements:
+
+* Meaningful package structure
+* Clear naming conventions
+* JavaDoc where useful
+* Validation annotations
+* Consistent API responses
+* Proper logging setup
+* No field injection
+* No circular dependencies
+
+Explicitly Exclude:
+
+Do NOT implement:
+
+* assessments module
+* roadmap module
+* skills module
+* courses module
+* mentor module
+* placements module
+* analytics module
+* intelligence module
+* progression module
+* event-driven workflows
+* recommendation engines
+
+These modules will be implemented in later phases.
+
+Output Requirements:
+
+Generate the complete Phase 1 foundation implementation.
+
+After generation provide:
+
+1. Project Structure Overview
+2. Files Created
+3. Database Tables Created
+4. Flyway Migrations Created
+5. API Endpoints Implemented
+6. Security Components Implemented
+7. Docker Services Configured
+8. Validation Rules Applied
+9. Phase 1 Completion Verification
+
+Generate ONLY Phase 1 Foundation and nothing beyond the approved scope.

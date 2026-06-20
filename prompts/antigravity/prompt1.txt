@@ -1,0 +1,375 @@
+Build the Student Dashboard page for LearnPath AI.
+
+IMPORTANT:
+Match EXACTLY the visual style of the provided LearnPath Stitch UI designs.
+
+There is a folder in the project named `stitch-design` that contains all exported Stitch-generated UI designs, layouts, references, and visual assets. Carefully analyze and closely follow the styling, spacing, typography, color palette, component structure, glow effects, and overall visual language from that folder before generating any UI.
+
+Use the `stitch-design` folder as the primary visual reference source for:
+
+* layout composition
+* dashboard structure
+* spacing system
+* typography hierarchy
+* card styling
+* gradients and glow effects
+* animations
+* futuristic UI patterns
+* color palette
+* glassmorphism implementation
+* roadmap visuals
+* analytics styling
+
+The generated dashboard should visually feel like a direct extension of the Stitch-generated designs already present in the project.
+
+This is NOT a generic SaaS dashboard.
+
+The interface must feel like:
+
+* a futuristic AI operating system
+* cyber-intelligence platform
+* premium AI career command center
+
+---
+
+## TECH STACK
+
+Use:
+
+* React
+* TypeScript
+* TailwindCSS
+* ShadCN UI
+* Framer Motion
+* Recharts
+
+The project already has:
+
+* DashboardLayout
+* Sidebar
+* Navbar
+* Routing
+* Tailwind configured
+
+Generate ONLY:
+
+* dashboard content
+* reusable dashboard components
+
+DO NOT generate:
+
+* layout wrappers
+* sidebar
+* navbar
+* routing
+* backend logic
+* API integration
+
+---
+
+## VISUAL STYLE (VERY IMPORTANT)
+
+The UI MUST closely match the LearnPath Stitch designs.
+
+Aesthetic:
+
+* Futuristic AI-native dashboard
+* Cyberpunk minimalism
+* Premium engineering intelligence system
+* Deep navy/slate backgrounds
+* Purple neon glow
+* Cyan holographic highlights
+* Subtle glassmorphism
+* Thin futuristic typography
+* Floating UI panels
+* High-end cinematic dashboard feel
+
+Design Characteristics:
+
+* Smooth gradients
+* Glowing borders
+* Soft shadows
+* Backdrop blur
+* Spacious layouts
+* Floating cards
+* Rounded 2xl corners
+* Thin separator lines
+* AI system aesthetic
+* Minimal but highly immersive
+
+Inspiration:
+
+* Linear
+* Vercel AI
+* Arc Browser
+* Neural interfaces
+* Jarvis HUD
+* Sci-fi command center UI
+
+---
+
+## COLOR SYSTEM
+
+Primary Background:
+
+* slate-950
+* navy-black gradients
+
+Accent Colors:
+
+* Purple neon
+* Indigo
+* Cyan glow
+
+Avoid:
+
+* Bright generic colors
+* Material UI aesthetics
+* Flat startup UI
+
+---
+
+## TYPOGRAPHY & FONTS
+
+Typography should feel:
+
+* modern
+* futuristic
+* engineering-focused
+* minimal
+* elegant
+
+Use:
+
+* thin uppercase labels
+* tracking-wide sections
+* subtle text hierarchy
+* clean spacing with premium readability
+
+Recommended Font Pairing:
+
+Primary UI Font:
+
+* `Inter`
+* `Plus Jakarta Sans`
+* `Satoshi`
+
+Use for:
+
+* body text
+* dashboard labels
+* analytics cards
+* navigation elements
+
+Display / Futuristic Accent Font:
+
+* `Space Grotesk`
+* `Orbitron`
+* `Clash Display`
+
+Use for:
+
+* section headings
+* AI insight titles
+* roadmap labels
+* futuristic metrics
+
+Typography Styling Guidelines:
+
+* Use medium-to-light font weights
+* Maintain high readability on dark backgrounds
+* Use subtle letter spacing for futuristic aesthetics
+* Avoid bulky or overly decorative fonts
+* Ensure responsive typography scaling across devices
+
+The typography should enhance:
+
+* premium AI-system aesthetics
+* cinematic dashboard immersion
+* clarity of analytics and roadmap data
+* overall user experience and visual sophistication
+
+---
+
+## PAGE STRUCTURE
+
+### 1. TOP ANALYTICS BAR
+
+Create floating glass analytics cards:
+
+* Learning streak
+* Career readiness
+* Upcoming interviews
+* AI insight panel
+
+Cards should:
+
+* glow subtly
+* use gradient borders
+* have hover lift animations
+
+---
+
+### 2. ENGINEERING ROADMAP SECTION
+
+Build:
+
+* horizontal roadmap progression system
+* active/current/upcoming states
+* glowing progress connector line
+* futuristic node progression
+
+Each roadmap node should show:
+
+* status
+* title
+* category
+* lock/completion state
+
+Visual style:
+
+* holographic cards
+* glowing active state
+* subtle animation
+
+---
+
+### 3. SKILL PROFICIENCY PANEL
+
+Build:
+
+* radar chart
+* AI proficiency visualization
+* strengths vs weaknesses
+
+Include:
+
+* Core engineering
+* Coding
+* Aptitude
+* Communication
+* System design
+
+Panel styling:
+
+* holographic analytics feel
+* glassmorphism container
+* neon cyan visualization
+
+---
+
+### 4. AI RECOMMENDATIONS SECTION
+
+Create recommendation cards for:
+
+* courses
+* technologies
+* internships
+* projects
+
+Cards should include:
+
+* AI match %
+* skill gap label
+* estimated duration
+* tags
+* futuristic preview image
+
+Visual style:
+
+* premium content cards
+* cinematic hover effects
+* neon border glow
+
+---
+
+### 5. AI INSIGHT PANEL
+
+Add:
+
+* contextual AI-generated insight section
+* adaptive recommendations
+* career progression suggestions
+
+Style:
+
+* floating AI system message
+* subtle purple glow
+* futuristic assistant aesthetic
+
+---
+
+### 6. QUICK ACTIONS
+
+Include futuristic action buttons:
+
+* Start Assessment
+* Continue Roadmap
+* Ask AI Mentor
+
+Buttons should:
+
+* glow on hover
+* feel premium
+* have smooth motion
+
+---
+
+## 7. ANIMATIONS
+
+Use Framer Motion for:
+
+* fade-in
+* stagger animations
+* hover lift
+* glow transitions
+* smooth card appearance
+
+Animations should feel:
+
+* subtle
+* premium
+* cinematic
+* AI-native
+
+---
+
+## 8. RESPONSIVENESS
+
+Desktop:
+
+* premium dashboard experience
+
+Tablet:
+
+* adaptive stacked sections
+
+Mobile:
+
+* futuristic mobile dashboard
+* collapsible sections
+* preserved visual hierarchy
+
+Ensure:
+
+* typography remains readable on smaller screens
+* spacing scales proportionally
+* charts and roadmap sections remain visually immersive
+* touch interactions feel smooth and premium
+
+---
+
+## 9. CODE QUALITY
+
+Requirements:
+
+* clean TypeScript
+* reusable components
+* modular architecture
+* production-ready structure
+* responsive Tailwind design
+
+Export:
+
+* DashboardPage.tsx
+* reusable dashboard components only

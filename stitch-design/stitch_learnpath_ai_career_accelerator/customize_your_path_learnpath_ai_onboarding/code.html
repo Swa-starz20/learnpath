@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Personalize Your Path | LearnPath AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(76, 215, 246, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+        .step-progress-glow {
+            box-shadow: 0 0 15px rgba(192, 193, 255, 0.5);
+        }
+        .neon-accent {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+        }
+        .interest-card.active {
+            border-color: #4cd7f6;
+            background: rgba(76, 215, 246, 0.1);
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.2);
+        }
+        .interest-card.active .icon-container {
+            color: #4cd7f6;
+            text-shadow: 0 0 10px rgba(76, 215, 246, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#2c0051",
+                        "inverse-primary": "#494bd6",
+                        "surface-container-highest": "#2d3449",
+                        "outline": "#908fa0",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "surface-container": "#171f33",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-dim": "#0b1326",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "outline-variant": "#464554",
+                        "background": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary-container": "#400071",
+                        "tertiary-container": "#b76dff",
+                        "on-secondary-container": "#00424e",
+                        "surface-bright": "#31394d",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#131b2e",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary": "#490080",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ddb7ff",
+                        "primary-container": "#8083ff",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-primary": "#1000a9",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-fixed": "#f0dbff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-high": "#222a3d",
+                        "on-background": "#dae2fd",
+                        "primary": "#c0c1ff",
+                        "on-primary-fixed": "#07006c",
+                        "inverse-on-surface": "#283044",
+                        "secondary-container": "#03b5d3",
+                        "secondary": "#4cd7f6",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "on-error": "#690005",
+                        "surface-variant": "#2d3449",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "primary-fixed": "#e1e0ff",
+                        "on-secondary": "#003640",
+                        "surface": "#0b1326",
+                        "surface-tint": "#c0c1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit-lg": "32px",
+                        "container-max": "1440px",
+                        "sidebar-width": "280px",
+                        "unit-xs": "4px",
+                        "unit-sm": "8px",
+                        "unit-xl": "64px",
+                        "margin-mobile": "16px",
+                        "unit-md": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-xl": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col relative selection:bg-primary/30">
+<!-- Background Atmospheric Elements -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[120px]"></div>
+</div>
+<!-- Navigation Shell (Suppressed items as per task: Login/Signup context) -->
+<header class="fixed top-0 w-full z-50 bg-surface-container/30 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(99,102,241,0.1)]">
+<div class="flex justify-between items-center px-unit-lg h-20 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">LearnPath</span>
+</div>
+<div class="flex items-center gap-unit-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant mr-unit-sm">Step 2 of 3</span>
+<div class="flex gap-1">
+<div class="h-1.5 w-6 rounded-full bg-primary/30"></div>
+<div class="h-1.5 w-12 rounded-full bg-primary step-progress-glow"></div>
+<div class="h-1.5 w-6 rounded-full bg-primary/30"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-margin-mobile z-10">
+<div class="max-w-[1000px] w-full">
+<!-- Header Section -->
+<div class="text-center mb-unit-xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-unit-sm">Forge Your Learning Path</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Select your primary engineering discipline. Our AI will curate a specialized curriculum tailored to the specific complexities of your chosen field.
+                </p>
+</div>
+<!-- Bento Grid Interests -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-unit-xl">
+<!-- Software Engineering -->
+<button class="interest-card glass-panel glass-card p-unit-lg rounded-xl flex flex-col items-start text-left transition-all duration-300 relative overflow-hidden group" onclick="selectInterest(this)">
+<div class="neon-accent absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="icon-container mb-unit-md transition-all duration-300">
+<span class="material-symbols-outlined text-[40px]" data-icon="terminal">terminal</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-[20px] mb-unit-xs">Software Engineering</h3>
+<p class="font-body-sm text-body-sm text-outline group-hover:text-on-surface-variant transition-colors">
+                        Full-stack, systems architecture, and distributed patterns.
+                    </p>
+</button>
+<!-- AI/ML -->
+<button class="interest-card glass-panel glass-card p-unit-lg rounded-xl flex flex-col items-start text-left transition-all duration-300 relative overflow-hidden group" onclick="selectInterest(this)">
+<div class="neon-accent absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="icon-container mb-unit-md transition-all duration-300">
+<span class="material-symbols-outlined text-[40px]" data-icon="neurology">neurology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-[20px] mb-unit-xs">AI &amp; Machine Learning</h3>
+<p class="font-body-sm text-body-sm text-outline group-hover:text-on-surface-variant transition-colors">
+                        Neural networks, LLMs, and high-performance inference.
+                    </p>
+</button>
+<!-- Cloud Architecture -->
+<button class="interest-card glass-panel glass-card p-unit-lg rounded-xl flex flex-col items-start text-left transition-all duration-300 relative overflow-hidden group" onclick="selectInterest(this)">
+<div class="neon-accent absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="icon-container mb-unit-md transition-all duration-300">
+<span class="material-symbols-outlined text-[40px]" data-icon="cloud_done">cloud_done</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-[20px] mb-unit-xs">Cloud Architecture</h3>
+<p class="font-body-sm text-body-sm text-outline group-hover:text-on-surface-variant transition-colors">
+                        Scalable infrastructure, serverless, and global orchestration.
+                    </p>
+</button>
+<!-- Robotics -->
+<button class="interest-card glass-panel glass-card p-unit-lg rounded-xl flex flex-col items-start text-left transition-all duration-300 relative overflow-hidden group" onclick="selectInterest(this)">
+<div class="neon-accent absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="icon-container mb-unit-md transition-all duration-300">
+<span class="material-symbols-outlined text-[40px]" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-[20px] mb-unit-xs">Robotics &amp; IoT</h3>
+<p class="font-body-sm text-body-sm text-outline group-hover:text-on-surface-variant transition-colors">
+                        Embedded systems, edge computing, and sensor fusion.
+                    </p>
+</button>
+</div>
+<!-- Additional Details / AI Insight -->
+<div class="glass-panel rounded-xl p-unit-md mb-unit-xl border-primary/20 flex items-center gap-unit-md">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-primary">
+<span class="font-bold">AI Suggestion:</span> Based on market trends, <span class="text-secondary font-bold">Cloud Architecture</span> is currently seeing 40% higher adoption in enterprise environments.
+                </p>
+</div>
+<!-- Actions -->
+<div class="flex justify-between items-center">
+<button class="flex items-center gap-unit-sm px-unit-lg py-3 rounded-full border border-white/10 hover:bg-white/5 transition-all active:scale-95 text-on-surface font-body-md">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                    Back
+                </button>
+<button class="flex items-center gap-unit-sm px-unit-xl py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:brightness-110 shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all active:scale-95 text-white font-body-md font-bold disabled:opacity-50 disabled:cursor-not-allowed" id="next-btn">
+                    Next Step
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-unit-xl border-t border-white/5 bg-surface-container-lowest mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-unit-lg max-w-container-max mx-auto gap-unit-md">
+<span class="font-label-md text-label-md font-bold text-on-surface">LearnPath AI</span>
+<div class="flex gap-unit-lg">
+<a class="font-body-sm text-body-sm text-outline hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-outline hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-outline hover:text-primary transition-colors" href="#">Security Architecture</a>
+</div>
+<span class="font-body-sm text-body-sm text-outline">© 2024 LearnPath AI. Secure &amp; Encrypted.</span>
+</div>
+</footer>
+<script>
+        function selectInterest(element) {
+            // Remove active class from all
+            document.querySelectorAll('.interest-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Add active class to selected
+            element.classList.add('active');
+            
+            // Enable next button with a little animation
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.classList.add('scale-105');
+            setTimeout(() => nextBtn.classList.remove('scale-105'), 200);
+        }
+
+        // Atmosphere Micro-interactions
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const root = document.documentElement;
+            // Subtle shift of background glow based on mouse
+            // (Simulated with JS for high-fidelity feel)
+        });
+    </script>
+</body></html>

@@ -1,0 +1,366 @@
+Design the complete backend architecture for LearnPath AI based on the current repository state and act as a senior backend architect and backend engineer responsible for designing a production-ready, scalable, maintainable, and implementation-ready backend blueprint.
+
+IMPORTANT
+
+Before generating any architecture, thoroughly analyze the entire existing frontend architecture, project structure, domain models, TypeScript types, state management patterns, intelligence systems, configuration layers, and data flow.
+
+Study and understand:
+
+* Dashboard
+* Assessments Engine
+* Adaptive Roadmap Intelligence Engine
+* Courses Intelligence System
+* AI Mentor System
+* Placement Intelligence System
+* Interview Intelligence Workspace
+* Company Readiness Intelligence
+* Shared Intelligence Infrastructure
+* Adaptive Intelligence Layer
+* Learning Store
+* Intelligence Sync Engine
+* Existing domain models
+* Existing TypeScript types
+* Existing data/config architecture
+* Existing frontend routing structure
+* Existing frontend feature modules
+* Existing frontend state management
+* Existing frontend API integration patterns
+* Existing frontend intelligence orchestration logic
+
+The frontend should be treated as:
+
+frontend-stable-v1
+
+Your responsibility is to autonomously analyze the repository and derive the backend architecture directly from the frontend requirements.
+
+Do not make assumptions without justification from the repository.
+
+If a design decision is made, explain the reasoning behind it.
+
+You must identify potential architectural risks, integration gaps, scalability concerns, and future extensibility requirements.
+
+This is a backend architecture and system-design task.
+
+Do NOT generate implementation code.
+
+Do NOT generate controllers.
+
+Do NOT generate entities.
+
+Do NOT generate repositories.
+
+Do NOT generate services.
+
+Do NOT generate SQL.
+
+Do NOT generate project files.
+
+Do NOT modify the repository.
+
+TECHNOLOGY STACK
+
+Backend:
+
+* Spring Boot 3.x
+* Java 17
+
+Database:
+
+* PostgreSQL 18
+
+Infrastructure:
+
+* Docker
+* Docker Compose
+
+Security:
+
+* Spring Security
+* JWT Authentication
+
+Development:
+
+* Maven
+
+Future Deployment:
+
+* AWS
+
+PRIMARY OBJECTIVE
+
+Design a complete backend architecture that fully supports the existing LearnPath frontend and all current intelligence systems while remaining extensible for future growth.
+
+The backend must support:
+
+* all engineering domains
+* adaptive intelligence
+* roadmap progression
+* assessments
+* mentor interactions
+* placement readiness
+* interview readiness
+* company readiness
+* recommendation systems
+* analytics and progress tracking
+* personalized learning journeys
+* future AI integrations
+* future enterprise-scale enhancements
+
+ARCHITECTURE REQUIREMENTS
+
+You must work autonomously and produce a complete backend blueprint with no ambiguity.
+
+The architecture must:
+
+* be logically consistent
+* avoid conflicting responsibilities
+* avoid duplicated ownership
+* avoid circular dependencies
+* avoid unclear module boundaries
+* avoid overengineering
+* avoid unnecessary complexity
+* minimize future refactoring
+* support clean separation of concerns
+* support maintainability and scalability
+
+Use a Modular Monolith Architecture.
+
+Do NOT use:
+
+* Microservices
+* Kafka
+* Redis
+* RabbitMQ
+* Kubernetes
+* Event Streaming Platforms
+* Distributed Service Meshes
+
+The architecture should remain practical for:
+
+* final-year project implementation
+* portfolio presentation
+* placement interviews
+* production-ready learning platform foundations
+
+TASKS
+
+1. Frontend Architecture Analysis
+
+Analyze and document:
+
+* Core business domains
+* Feature boundaries
+* Shared state structures
+* Intelligence orchestration flows
+* User lifecycle flows
+* Learning lifecycle flows
+* Assessment lifecycle flows
+* Recommendation lifecycle flows
+* Frontend-to-backend dependency mapping
+* Existing domain ownership patterns
+
+Identify:
+
+* Critical backend requirements
+* Missing backend capabilities
+* Shared infrastructure requirements
+* Cross-module dependencies
+
+2. Backend Architecture Overview
+
+Design:
+
+* Overall backend architecture
+* Modular monolith structure
+* Layered architecture strategy
+* Domain ownership model
+* Internal module communication strategy
+* Shared infrastructure strategy
+
+Explain why each architectural decision is appropriate.
+
+3. Backend Module Structure
+
+Identify all required modules based on frontend analysis.
+
+Examples may include:
+
+* Authentication
+* User Management
+* Profile Management
+* Skills
+* Assessments
+* Roadmaps
+* Courses
+* Learning Progress
+* AI Mentor
+* Placement Readiness
+* Interview Readiness
+* Company Readiness
+* Recommendations
+* Analytics
+* Notifications
+* Intelligence Engine
+
+Only include modules justified by repository analysis.
+
+For each module provide:
+
+* Purpose
+* Responsibilities
+* Owned data
+* Dependencies
+* Integration points
+
+4. Database Architecture
+
+Design:
+
+* Database domains
+* Tables
+* Relationships
+* Ownership boundaries
+* Aggregate boundaries
+* Data lifecycle considerations
+
+For each major table provide:
+
+* Purpose
+* Ownership module
+* Key relationships
+
+Do NOT generate SQL.
+
+5. API Architecture
+
+Design:
+
+* API grouping strategy
+* Module ownership
+* Endpoint categories
+* Request flow patterns
+* Response standards
+* Validation strategy
+* Error handling strategy
+* Versioning strategy
+
+Do NOT generate endpoint implementations.
+
+Do NOT generate controller code.
+
+6. Security Architecture
+
+Design:
+
+* Authentication flow
+* Registration flow
+* JWT strategy
+* Access token lifecycle
+* Refresh token lifecycle
+* Authorization model
+* Role strategy
+* Permission strategy
+* Security hardening recommendations
+
+Ensure the design follows Spring Security best practices.
+
+7. Docker Architecture
+
+Design:
+
+* Containers
+* Services
+* Networking
+* Environment configuration
+* Development setup
+* Production-ready deployment structure
+
+Keep the setup simple and practical.
+
+8. Frontend → Backend Integration Map
+
+Create a complete mapping:
+
+Frontend System
+↓
+Backend Module
+
+For every major LearnPath subsystem.
+
+Include:
+
+* Data ownership
+* API ownership
+* Integration responsibilities
+
+9. Risk Assessment
+
+Identify:
+
+* Architectural risks
+* Scalability risks
+* Security risks
+* Data consistency risks
+* Integration risks
+
+Provide mitigation strategies.
+
+10. Recommended Build Order
+
+Provide a phased implementation roadmap.
+
+Include:
+
+Phase 1:
+Foundation
+
+Phase 2:
+Core User Systems
+
+Phase 3:
+Learning Systems
+
+Phase 4:
+Intelligence Systems
+
+Phase 5:
+Readiness Systems
+
+Phase 6:
+Optimization and Analytics
+
+For each phase provide:
+
+* Objectives
+* Dependencies
+* Deliverables
+
+OUTPUT FORMAT
+
+Provide only the following sections:
+
+1. Frontend Architecture Analysis
+2. Backend Architecture Overview
+3. Module Structure
+4. Database Design
+5. API Architecture
+6. Security Design
+7. Docker Design
+8. Frontend → Backend Integration Map
+9. Risk Assessment
+10. Recommended Build Order
+
+QUALITY REQUIREMENTS
+
+Before finalizing the architecture:
+
+* Validate module boundaries.
+* Validate ownership boundaries.
+* Validate database relationships.
+* Validate API responsibilities.
+* Validate security flows.
+* Validate scalability assumptions.
+* Validate maintainability.
+* Validate future extensibility.
+
+The final output must be implementation-ready, internally consistent, production-oriented, and detailed enough that a backend developer can begin development with minimal ambiguity and without requiring major architectural redesign.

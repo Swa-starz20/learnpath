@@ -1,0 +1,254 @@
+Build Phase 3 of the Placement Intelligence System:
+
+COMPANY READINESS INTELLIGENCE
+
+IMPORTANT
+
+Before generating anything:
+
+Study and preserve ALL existing LearnPath systems:
+
+* Dashboard
+* Assessments Engine
+* Adaptive Roadmap Intelligence
+* Courses Intelligence
+* AI Mentor
+* Placement Intelligence Foundation
+* Interview Intelligence Workspace
+* Shared Intelligence Infrastructure
+* Adaptive Intelligence Layer
+
+Reuse existing architecture.
+
+Reuse existing selectors.
+
+Reuse existing adaptive state.
+
+Reuse existing placement readiness calculations.
+
+DO NOT create duplicate intelligence systems.
+
+DO NOT create duplicate recommendation engines.
+
+DO NOT redesign existing pages.
+
+DO NOT modify layouts.
+
+DO NOT touch styling.
+
+DO NOT regenerate existing placement pages.
+
+If any errors, exceptions, missing dependencies, type issues, import issues, build failures, runtime issues, integration conflicts, or architectural inconsistencies are encountered during implementation, automatically identify and fix them while preserving existing functionality, then continue with the assigned task. Do not stop at reporting errors; resolve them and proceed with implementation wherever possible.
+
+Create the Company Readiness Intelligence layer.
+
+This sits after:
+
+Placement Readiness
+↓
+Interview Readiness
+↓
+Company Readiness
+
+The system should answer:
+
+* Which companies match my profile?
+* What is my readiness score for each company?
+* What skills are blocking me?
+* What should I improve first?
+* Which company is the best fit right now?
+* Which company is a stretch target?
+
+PAGE
+
+/src/pages/CompanyReadinessPage.tsx
+
+COMPONENTS
+
+/src/components/placements/company/
+
+Create only:
+
+* CompanyReadinessHero.tsx
+* CompanyMatchCard.tsx
+* CompanyCompatibilityMatrix.tsx
+* CompanyGapAnalysis.tsx
+* PlacementStrategyPanel.tsx
+* CompanyInsightsPanel.tsx
+
+DATA
+
+/src/data/company/
+
+Create only:
+
+* companyProfiles.ts
+* companyBenchmarks.ts
+
+Include a compact but realistic set.
+
+Software / IT:
+
+* TCS
+* Infosys
+* Accenture
+* Capgemini
+* Cognizant
+* Wipro
+* IBM
+* Oracle
+
+Engineering:
+
+* Bosch
+* Siemens
+* L&T
+* Tata Technologies
+* ABB
+
+Keep dataset lightweight.
+
+Avoid huge company databases.
+
+Reuse existing:
+
+* placement readiness
+* interview readiness
+* roadmap readiness
+* assessments
+* adaptive behavior
+* weak skills
+* mentor insights
+* learning velocity
+
+Do NOT create new scoring engines.
+
+Only create company-specific weighting logic.
+
+Hero
+
+Display:
+
+* Best Match Company
+* Overall Company Readiness
+* Interview Readiness
+* Placement Readiness
+* AI Confidence
+
+---
+
+Section 1
+
+Company Match Grid
+
+Display:
+
+* company
+* match score
+* readiness score
+* confidence score
+
+---
+
+Section 2
+
+Compatibility Matrix
+
+Compare:
+
+* aptitude
+* technical
+* communication
+* projects
+* domain expertise
+
+against company benchmark.
+
+---
+
+Section 3
+
+Gap Analysis
+
+Display:
+
+* missing skills
+* weak skills
+* critical blockers
+* recommended roadmap nodes
+* recommended courses
+
+---
+
+Section 4
+
+Placement Strategy
+
+Display:
+
+Best Fit Company
+
+Stretch Target
+
+Safe Target
+
+Immediate Next Action
+
+---
+
+Section 5
+
+AI Company Insights
+
+Display:
+
+* mentor guidance
+* adaptive recommendations
+* readiness blockers
+* improvement priorities
+
+Must match existing LearnPath visual language.
+
+Reuse:
+
+* glassmorphism
+* Hanken Grotesk
+* violet/cyan/fuchsia palette
+* Framer Motion
+* premium spacing hierarchy
+* intelligence-first UX
+
+No new design system.
+
+Config-driven.
+
+Domain-aware.
+
+Reusable.
+
+Scalable.
+
+Keep generated data compact.
+
+Avoid large mock datasets.
+
+Avoid hardcoded CS assumptions.
+
+Support all engineering domains.
+
+After implementation provide:
+
+1. Files created
+2. Files modified
+3. Existing intelligence reused
+4. Selectors consumed
+5. Validation results
+6. Future Phase opportunities
+
+Build only Company Readiness Intelligence.
+
+Do not build Resume Intelligence.
+
+Do not build Application Tracking.
+
+Do not build Backend integrations.

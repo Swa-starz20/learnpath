@@ -72,13 +72,19 @@ public class SecurityConfig {
                         // Explicit public auth endpoints (register + login only)
                         .requestMatchers("/api/v1/auth/register").permitAll()
                         .requestMatchers("/api/v1/auth/login").permitAll()
+                        // Phase 2 — public catalog read endpoints (no auth required)
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/domains/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/courses/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/roadmaps/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/skills").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/skills/{id}").permitAll()
                         // Public health check
                         .requestMatchers("/actuator/health").permitAll()
                         // Swagger/OpenAPI (for development)
                         .requestMatchers("/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         // Admin-only endpoints
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
-                        // All other endpoints (including /auth/me) require authentication
+                        // All other endpoints (including /auth/me, user mutations, progression) require authentication
                         .anyRequest().authenticated()
                 )
 

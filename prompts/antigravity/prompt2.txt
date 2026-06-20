@@ -1,0 +1,408 @@
+Build the **AI Mentor Page** for **LearnPath AI**.
+
+IMPORTANT:
+This page MUST visually and architecturally align with:
+
+* the existing LearnPath Dashboard already implemented
+* the Tailwind design token system already configured
+* the glassmorphism utilities and animation primitives already available
+* the premium futuristic UI style designed in Stitch
+
+This is NOT a generic chatbot interface.
+
+The experience should feel like:
+
+* an AI engineering copilot
+* a neural learning assistant
+* a futuristic productivity operating system
+* a cinematic AI command center
+* an intelligent mentor deeply integrated into the user’s learning roadmap
+
+The UI should feel cohesive with the Dashboard page already built:
+same spacing system, same glow language, same typography hierarchy, same card styling, same gradients, same motion behavior, and same premium AI aesthetic.
+
+The page should look production-ready and portfolio-level.
+
+---
+
+# TECH STACK
+
+Use:
+
+* React
+* TypeScript
+* TailwindCSS
+* ShadCN UI
+* Framer Motion
+* Lucide React Icons
+
+Generate:
+
+* `MentorPage.tsx`
+* reusable AI mentor/chat components
+
+DO NOT generate:
+
+* sidebar
+* navbar
+* routing
+* backend
+* APIs
+* authentication logic
+
+The project already contains:
+
+* `DashboardLayout`
+* Tailwind design tokens
+* glass utilities
+* animation utilities
+* reusable dashboard components
+
+The generated UI MUST integrate seamlessly into the existing architecture.
+
+---
+
+# DESIGN LANGUAGE
+
+Match EXACTLY the visual identity already established in LearnPath AI.
+
+Use:
+
+* deep navy/slate layered backgrounds
+* subtle radial gradients
+* neon cyan/purple accent glows
+* cinematic glassmorphism
+* holographic borders
+* soft blur overlays
+* premium AI dashboard aesthetics
+* futuristic thin typography
+* layered depth and lighting
+* subtle animated gradients
+* intelligent HUD-style panels
+
+The interface should feel inspired by:
+
+* Linear
+* Vercel AI
+* Perplexity Pro
+* Jarvis HUD
+* Neural interfaces
+* modern AI operating systems
+* premium SaaS dashboards
+
+Avoid:
+
+* generic chatbot layouts
+* plain white cards
+* oversized rounded bubbles
+* consumer-style messaging apps
+* cluttered interfaces
+
+Everything should feel elegant, intelligent, minimal, and futuristic.
+
+---
+
+# PAGE LAYOUT
+
+Create a cinematic 3-column AI workspace layout.
+
+Structure:
+
+```text
+| Chat History | Main AI Conversation | AI Context Panel |
+```
+
+The layout should feel immersive and highly interactive.
+
+Use layered glass panels with subtle borders and glow effects.
+
+---
+
+# 1. LEFT SIDEBAR — CHAT HISTORY PANEL
+
+Build a futuristic session/history panel.
+
+Include:
+
+* “New Session” glowing action button
+* categorized conversation history
+* recent mentor sessions
+* hover animations
+* active session highlighting
+* subtle animated indicators
+* search/filter input
+* AI session labels
+
+Example sessions:
+
+* Resume Optimization
+* Mock Interview Prep
+* Kubernetes Guidance
+* System Design Review
+* Python Debugging
+* Career Roadmap Review
+* DSA Preparation
+
+Design Requirements:
+
+* compact futuristic cards
+* glowing active state
+* smooth hover transitions
+* subtle blur backgrounds
+* dashboard-consistent spacing
+
+---
+
+# 2. MAIN AI CONVERSATION AREA
+
+This is the centerpiece of the page.
+
+Build a premium AI mentor conversation interface.
+
+Include:
+
+* AI assistant messages
+* user messages
+* contextual engineering guidance
+* roadmap-aware responses
+* futuristic message containers
+* animated AI typing indicator
+* glowing AI assistant orb/avatar
+* intelligent prompt suggestions
+* smooth message transitions
+* subtle stagger animations
+
+The AI mentor should feel:
+
+* intelligent
+* calm
+* futuristic
+* deeply contextual
+* technically capable
+
+Example AI interactions:
+
+* explaining engineering concepts
+* reviewing resumes
+* debugging code
+* preparing interviews
+* recommending roadmap steps
+* suggesting learning resources
+
+Message Design:
+
+* glassmorphism message cards
+* subtle neon borders
+* differentiated AI/user styling
+* elegant spacing
+* readable typography
+* premium motion effects
+
+---
+
+# 3. RIGHT CONTEXT PANEL — AI INTELLIGENCE PANEL
+
+Create a floating contextual intelligence panel.
+
+Purpose:
+This panel makes the AI feel deeply integrated into the LearnPath ecosystem.
+
+Include sections for:
+
+### Active Learning Context
+
+* current roadmap node
+* active learning track
+* progress percentage
+* estimated completion
+
+### Skill Intelligence
+
+* skill radar summary
+* strengths
+* weaknesses
+* AI confidence score
+
+### AI Sync Status
+
+* roadmap synced
+* assessment synced
+* mentor memory active
+* recommendation engine connected
+
+### Quick Resources
+
+* bookmarked resources
+* recommended articles
+* coding exercises
+* interview prep links
+
+### Learning Insights
+
+* personalized AI observations
+* productivity insights
+* suggested next actions
+
+Design Requirements:
+
+* stacked glass cards
+* subtle glow separators
+* animated status indicators
+* compact futuristic widgets
+
+---
+
+# 4. FUTURISTIC INPUT SYSTEM
+
+Build a premium AI input experience.
+
+Include:
+
+* floating glass input container
+* glowing send button
+* attachment button
+* voice input icon
+* animated focus states
+* keyboard shortcut hint
+* contextual placeholder text
+
+Example placeholder:
+
+```text
+Ask your AI mentor anything about learning, coding, interviews, or career growth...
+```
+
+The input area should feel:
+
+* cinematic
+* responsive
+* intelligent
+* premium
+* highly interactive
+
+---
+
+# 5. QUICK AI SUGGESTIONS
+
+Generate intelligent suggestion chips/cards.
+
+Examples:
+
+* Explain Quantum Computing
+* Review my Resume
+* Debug my Python Script
+* Prepare me for React Interviews
+* Suggest my next roadmap step
+* Help me learn Kubernetes
+* Optimize my LinkedIn Profile
+
+Requirements:
+
+* animated hover glow
+* futuristic chip styling
+* responsive wrapping layout
+* subtle motion interactions
+
+---
+
+# 6. ANIMATIONS & MICROINTERACTIONS
+
+Use Framer Motion extensively but elegantly.
+
+Include:
+
+* staggered component entrances
+* hover lift effects
+* glowing pulse animations
+* animated typing indicator
+* smooth panel transitions
+* subtle floating motion
+* animated gradients
+* fade/blur transitions
+* intelligent loading states
+
+Animations should feel:
+
+* smooth
+* premium
+* cinematic
+* subtle
+* performance-friendly
+
+Avoid excessive motion.
+
+---
+
+# 7. RESPONSIVENESS
+
+Desktop:
+
+* immersive 3-column AI workspace
+
+Tablet:
+
+* collapsible context panel
+* adaptive spacing
+
+Mobile:
+
+* full-screen conversational layout
+* collapsible history drawer
+* optimized floating input
+* touch-friendly interactions
+
+The responsive behavior should remain visually premium across all breakpoints.
+
+---
+
+# 8. COMPONENT ARCHITECTURE
+
+Create reusable modular components.
+
+Suggested structure:
+
+```text
+components/mentor/
+├── ChatHistoryPanel.tsx
+├── ChatSessionItem.tsx
+├── MentorChatArea.tsx
+├── ChatMessage.tsx
+├── TypingIndicator.tsx
+├── MentorInput.tsx
+├── SuggestionChips.tsx
+├── AIContextPanel.tsx
+├── SkillInsightCard.tsx
+├── ResourceCard.tsx
+└── AssistantOrb.tsx
+```
+
+Requirements:
+
+* clean TypeScript interfaces
+* reusable props
+* scalable architecture
+* production-ready organization
+* dashboard-consistent styling
+* maintainable component structure
+
+---
+
+# FINAL REQUIREMENTS
+
+The final result should feel like:
+
+* a premium AI learning operating system
+* a futuristic engineering mentor console
+* a deeply integrated AI productivity workspace
+* a flagship feature of LearnPath AI
+
+The UI quality should match:
+
+* the existing Dashboard page
+* the Stitch-generated visual direction
+* modern premium AI SaaS products
+
+Export:
+
+* `MentorPage.tsx`
+* reusable mentor/chat components only

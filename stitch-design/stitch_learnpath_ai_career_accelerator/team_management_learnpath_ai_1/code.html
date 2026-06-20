@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LearnPath AI | Team Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "surface-bright": "#31394d",
+                        "secondary-container": "#03b5d3",
+                        "surface-container": "#171f33",
+                        "primary-container": "#8083ff",
+                        "tertiary": "#ddb7ff",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#acedff",
+                        "on-primary-fixed": "#07006c",
+                        "secondary": "#4cd7f6",
+                        "surface-variant": "#2d3449",
+                        "outline": "#908fa0",
+                        "on-error": "#690005",
+                        "on-surface": "#dae2fd",
+                        "surface-container-high": "#222a3d",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#f0dbff",
+                        "surface-tint": "#c0c1ff",
+                        "tertiary-container": "#b76dff",
+                        "primary-fixed": "#e1e0ff",
+                        "on-secondary-fixed": "#001f26",
+                        "on-secondary": "#003640",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-secondary-container": "#00424e",
+                        "on-tertiary-fixed": "#2c0051",
+                        "inverse-primary": "#494bd6",
+                        "on-background": "#dae2fd",
+                        "background": "#0b1326",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "primary": "#c0c1ff",
+                        "outline-variant": "#464554",
+                        "on-primary": "#1000a9",
+                        "surface-dim": "#0b1326",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-container-low": "#131b2e",
+                        "inverse-on-surface": "#283044",
+                        "surface": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "on-tertiary-container": "#400071",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary": "#490080",
+                        "on-primary-container": "#0d0096",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit-xs": "4px",
+                        "margin-mobile": "16px",
+                        "unit-lg": "32px",
+                        "unit-md": "16px",
+                        "unit-xl": "64px",
+                        "container-max": "1440px",
+                        "sidebar-width": "280px",
+                        "gutter": "24px",
+                        "unit-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "display-xl": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+        }
+        .neon-glow-indigo {
+            box-shadow: 0px 10px 30px rgba(99, 102, 241, 0.2);
+        }
+        .ai-thinking {
+            border: 2px solid transparent;
+            background-image: linear-gradient(#0b1326, #0b1326), linear-gradient(to right, #6366f1, #a855f7, #06b6d4);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            animation: border-pulse 3s ease-in-out infinite;
+        }
+        @keyframes border-pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; filter: hue-rotate(90deg); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] bg-surface-container/30 backdrop-blur-xl border-r border-white/10 shadow-[0_10px_30px_rgba(99,102,241,0.1)] flex flex-col py-unit-lg px-unit-md z-50">
+<div class="mb-unit-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">LearnPath</h1>
+<p class="text-label-md font-label-md text-secondary tracking-widest uppercase opacity-70">Aether Intelligence</p>
+</div>
+<nav class="flex-grow space-y-unit-sm">
+<a class="flex items-center gap-unit-md py-3 px-4 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-unit-md py-3 px-4 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Academy</span>
+</a>
+<a class="flex items-center gap-unit-md py-3 px-4 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md text-body-md">Billing</span>
+</a>
+<a class="flex items-center gap-unit-md py-3 px-4 rounded-xl text-primary bg-primary-container/10 border-r-2 border-primary transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Team Management</span>
+</a>
+</nav>
+<div class="mt-auto pt-unit-lg space-y-unit-sm border-t border-white/5">
+<div class="p-4 rounded-2xl glass-panel mb-unit-md">
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-3">Maximize your squad's power.</p>
+<button class="w-full py-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg font-body-md text-body-md font-semibold text-white hover:brightness-110 neon-glow-indigo transition-all">
+                    Upgrade to Pro
+                </button>
+</div>
+<a class="flex items-center gap-unit-md py-2 px-4 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-unit-md py-2 px-4 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] min-h-screen relative">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] z-40 bg-background/50 backdrop-blur-2xl h-16 px-gutter flex justify-between items-center border-b border-white/5">
+<div class="flex items-center gap-unit-md flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-black/20 border border-white/10 rounded-full py-2 pl-10 pr-4 text-body-sm focus:ring-1 focus:ring-secondary/50 focus:border-secondary outline-none transition-all" placeholder="Search team members..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-unit-lg">
+<div class="flex items-center gap-unit-sm">
+<button class="p-2 text-on-surface-variant hover:text-secondary-fixed-dim transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary-fixed-dim transition-colors">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+</div>
+<div class="h-8 w-px bg-white/10 mx-2"></div>
+<div class="flex items-center gap-unit-md cursor-pointer group">
+<img class="w-9 h-9 rounded-full border border-primary/30 group-hover:border-primary transition-all object-cover" data-alt="Close-up portrait of a high-tech corporate executive with a modern, confident expression. The lighting is soft and professional with cool blue and indigo accents reflecting the company's branding. The background is a clean, minimalist office setting with a shallow depth of field, emphasizing the subject's professional demeanor and technological expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl8s7zl1RCLSuj7X6TysjLnxl_-iSBAYeJvfy80Fv4oTViknkG0rr6fCus_U0QHmAJwh8Et-ueWnBM6QdKeodLnyDtMY_QaOtjqaagiw7K7ej2eeQo5i-54k1tjOUKXy9x6WMU7JJUY1gtJZPQhrQkpgrx_I2DPmRc37-f1dgkHX4JoKXqlGB2EN3Icw3-1uy9jZvflB8ry-uX3KQ_tG087pvLhfBilGnYVs4j5P8WwsgyfixJbVDChRNse7GoRAF4xlywJk7r5m8"/>
+<div class="hidden lg:block">
+<p class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Marcus Thorne</p>
+<p class="text-label-md font-label-md text-secondary tracking-tight">Admin</p>
+</div>
+</div>
+</div>
+</header>
+<section class="pt-24 pb-12 px-gutter max-w-container-max mx-auto">
+<!-- Header & Primary Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Team Management</h2>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">Orchestrate your workforce, monitor learning milestones, and optimize seat distribution with real-time AI-driven insights.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl font-body-md font-bold text-white shadow-[0_8px_20px_rgba(99,102,241,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined">person_add</span>
+                    Invite New Members
+                </button>
+</div>
+<!-- Executive Summary (Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-12">
+<!-- Seats Occupied -->
+<div class="glass-panel p-unit-lg rounded-3xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-primary/10"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary/10 rounded-2xl text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<span class="text-label-md font-label-md text-secondary-fixed-dim">Capacity: 84%</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-1">Seats Occupied</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">42 <span class="text-on-surface-variant/40">/ 50</span></h3>
+<div class="mt-6 h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[84%] rounded-full shadow-[0_0_10px_rgba(192,193,255,0.5)]"></div>
+</div>
+</div>
+<!-- Pending Invites -->
+<div class="glass-panel p-unit-lg rounded-3xl relative overflow-hidden group">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-tertiary-container/10 rounded-2xl text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forward_to_inbox</span>
+</div>
+<span class="text-label-md font-label-md text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span>
+                            Expiring soon
+                        </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-1">Pending Invites</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">08</h3>
+<div class="mt-6 flex gap-1">
+<div class="h-1 flex-1 bg-tertiary rounded-full"></div>
+<div class="h-1 flex-1 bg-tertiary rounded-full"></div>
+<div class="h-1 flex-1 bg-white/10 rounded-full"></div>
+<div class="h-1 flex-1 bg-white/10 rounded-full"></div>
+</div>
+</div>
+<!-- Progress Visualizer -->
+<div class="glass-panel p-unit-lg rounded-3xl relative overflow-hidden group ai-thinking">
+<div class="flex justify-between items-center mb-6">
+<div class="p-3 bg-secondary-container/10 rounded-2xl text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<span class="material-symbols-outlined text-primary-container animate-pulse">colors_spark</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-1">Avg. Team Progress</p>
+<div class="flex items-end gap-3">
+<h3 class="font-headline-md text-headline-md text-on-surface">76.4%</h3>
+<span class="text-secondary mb-1 flex items-center text-label-md">+4.2% <span class="material-symbols-outlined text-[16px]">trending_up</span></span>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex -space-x-2">
+<img class="w-7 h-7 rounded-full border border-background" data-alt="Detailed professional headshot of a woman with a creative and energetic expression. The environment is a vibrant studio with soft neon purple and indigo highlights. The image is crisp, with a high-end commercial aesthetic, focusing on the individual's approachable yet authoritative presence within a modern AI-centric business landscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc4CqBEOQh9BYjfDN_EHTaFuTMD0zdRjqrib4e_iw5eE9QNmpps6OjMHC-hg74Lgf8he_TO1s0GxHuKvmqqfmrh0rWn4KQRF5nD7EuBHgt1H-m34qq_8Y8hLD6sExZEBOeMRdQYoCGwO7k4NpoUB2CtU749qRncGVYktwb76XVcgGfCVmsS1MZtu3w9Gwv_QeBtrRkWuB2-LjIBG6NkxyRH0h9GRPXaf6Vi7N8ocfPPQI3TIoi3uU__Q7uE1bG7yzZ0KrT1xmaTb8"/>
+<img class="w-7 h-7 rounded-full border border-background" data-alt="Close-up of a diverse professional male in a modern workspace. The lighting is low-key with sharp cyan and white backlighting that outlines his profile, suggesting a sophisticated, tech-forward environment. He wears high-tech minimalist clothing. The focus is sharp on his confident expression, portraying a successful digital nomad or tech leader." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsc2QHoEczM0BvHE-QkowWsNznVuuZjPui12DgLz2jc1wrbKU6Wfxo5jQtUxkR2biUOR6AuhxHc7YtMeJnxVeqw0wVZm0DpQt4q5Lrhcg2ruKejPN4lGIIiLcKB6HVCmcQuMkZkbbX7HKgP2rwxtVItDGcZKfPB2S32gDG6QV2CUOo86rENYYeojklmxb8EJPLqMC8U4cVMefekxvPPQL0WmjJT97Z0J9IDT1_EQYOzFqi_KTi9VDMLud6CjZtq_sk-p6Kdjgsots"/>
+<div class="w-7 h-7 rounded-full border border-background bg-surface-variant flex items-center justify-center text-[10px] text-white font-bold">+39</div>
+</div>
+<p class="text-label-md font-label-md text-secondary-fixed-dim">Projected: 80% by June</p>
+</div>
+</div>
+</div>
+<!-- Filters & Table -->
+<div class="glass-panel rounded-[2rem] overflow-hidden">
+<div class="p-unit-lg border-b border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-gutter">
+<h4 class="font-headline-md text-[24px] text-on-surface">Member Directory</h4>
+<div class="flex flex-wrap items-center gap-unit-md">
+<div class="relative">
+<select class="appearance-none bg-surface-container-high border border-white/10 text-on-surface text-body-sm rounded-xl px-4 py-2.5 pr-10 focus:ring-1 focus:ring-primary outline-none transition-all cursor-pointer">
+<option>All Roles</option>
+<option>Admin</option>
+<option>Editor</option>
+<option>Viewer</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-high border border-white/10 text-on-surface text-body-sm rounded-xl px-4 py-2.5 pr-10 focus:ring-1 focus:ring-primary outline-none transition-all cursor-pointer">
+<option>Status: Active</option>
+<option>Status: Inactive</option>
+<option>Status: Pending</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<button class="p-2.5 rounded-xl border border-white/10 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto scrollbar-hide">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-white/[0.02]">
+<th class="py-5 px-8 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Name</th>
+<th class="py-5 px-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Role</th>
+<th class="py-5 px-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest text-center">Last Active</th>
+<th class="py-5 px-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Progress</th>
+<th class="py-5 px-8 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<!-- Member Row 1 -->
+<tr class="group hover:bg-white/[0.03] transition-colors">
+<td class="py-5 px-8">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="High-resolution portrait of a young male professional in a sharp, modern office environment. The scene is illuminated with cold digital blue and deep violet light. He has a focused and determined expression, suggesting success in a data-driven technological field. The background features blurred digital displays and glass partitions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcp9uZ_XiTyCHTWhXGrlsX5eRDwWZOVCyQOhiTYfaaPNw2TjvKNYATMX0476JEkgrv_02QPZu6MrI8WseQZGGj4GBIs_-fPZ3b15KJU8lwoMy3RwghXxSFAhSyDUKs6gJOF1-uolLRefZ__9m9BrW62_zgGGHYJKpkgckiEwR0OwtA8bqk9ZcKYp9sc61WGniKtZYXH93GYhPYyj-_s_ixEBtbQdxdA3-VYkDWfxVsmjL8gbXodjWHxAXN6H3nlJDnh-1-GJr4lwM"/>
+<span class="absolute -bottom-1 -right-1 w-3 h-3 bg-secondary rounded-full border-2 border-background"></span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Alex Rivera</p>
+<p class="text-body-sm text-on-surface-variant/60">alex.r@learnpath.ai</p>
+</div>
+</div>
+</td>
+<td class="py-5 px-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-label-md font-label-md border border-primary/20">Admin</span>
+</td>
+<td class="py-5 px-6 text-center">
+<p class="text-body-sm text-on-surface-variant">2 mins ago</p>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[92%]"></div>
+</div>
+<span class="text-body-sm font-label-md text-secondary">92%</span>
+</div>
+</td>
+<td class="py-5 px-8 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all rounded-lg hover:bg-primary/10">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-all rounded-lg hover:bg-error/10">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Member Row 2 -->
+<tr class="group hover:bg-white/[0.03] transition-colors">
+<td class="py-5 px-8">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Professional portrait of a woman in a high-tech corporate setting. She is smiling confidently, framed by soft ambient lighting with hints of purple and indigo. The aesthetic is clean, professional, and sophisticated, emphasizing her role as a key contributor in an AI-driven organization. Depth of field is shallow, creating a focused, premium look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSN65BDWdE4HNGxdl7Y9m803isjy2hofuYcC-t2EXOprWRM6Qdmj66FECj4RZEY_IwptXjG6-0FsZTDz5C6rznN2pMMn0wZol6qde2HASphVjsEEh7Xa1ay5CHut0vzVMbPvYIXkB_7QImYrzElBCGQMcCShXDWZI8NlGUIyKfQxHUt7odDrzGujdkvXMZUdbk2-mDdwsujcJXYptIbSBI8ExOHup_GY64KSaLe9A1a0IGYuo-t8dvWuXZ4oJiaGcpa6gCnx-2iyE"/>
+<span class="absolute -bottom-1 -right-1 w-3 h-3 bg-secondary rounded-full border-2 border-background"></span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Elena Vance</p>
+<p class="text-body-sm text-on-surface-variant/60">elena.v@learnpath.ai</p>
+</div>
+</div>
+</td>
+<td class="py-5 px-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-label-md font-label-md border border-white/5">Editor</span>
+</td>
+<td class="py-5 px-6 text-center">
+<p class="text-body-sm text-on-surface-variant">1 hour ago</p>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[45%]"></div>
+</div>
+<span class="text-body-sm font-label-md text-primary">45%</span>
+</div>
+</td>
+<td class="py-5 px-8 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all rounded-lg hover:bg-primary/10">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-all rounded-lg hover:bg-error/10">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Member Row 3 -->
+<tr class="group hover:bg-white/[0.03] transition-colors">
+<td class="py-5 px-8">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Sophisticated portrait of a male executive in a sleek, minimalist environment. The image is styled with a futuristic dark mode aesthetic, utilizing deep shadows and vibrant cyan glowing elements in the background. His expression is thoughtful and intelligent, representing the leadership quality expected in a cutting-edge AI company. High contrast and premium finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAmCXOE2gz9pPDwgemySlwV1JKVqoIvqzC8LiU6Vr6l6GQ0lxX8Nd0Nprd_CGH99IqPILyh3LWqunBshznquoyLL2xmo6JBI2xzPXt40QhPLNmyNNrPaJs4SSBMXq2pQIPq8Au6QN3d-mCJo2eyKNQ4MpFyCw9FFWqW3aOusT9rgfH0EYzetUJrfdE3eKZHf930Mj5b-qgXc8agxOpMzXIupf6AuPA_9k9c8JR6XCZkjWSTnEf985ztRBPgxtvcGR61CoBFuiY5cY"/>
+<span class="absolute -bottom-1 -right-1 w-3 h-3 bg-outline rounded-full border-2 border-background"></span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Jordan Smith</p>
+<p class="text-body-sm text-on-surface-variant/60">j.smith@learnpath.ai</p>
+</div>
+</div>
+</td>
+<td class="py-5 px-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-label-md font-label-md border border-white/5">Viewer</span>
+</td>
+<td class="py-5 px-6 text-center">
+<p class="text-body-sm text-on-surface-variant">Yesterday</p>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[12%]"></div>
+</div>
+<span class="text-body-sm font-label-md text-tertiary-container">12%</span>
+</div>
+</td>
+<td class="py-5 px-8 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all rounded-lg hover:bg-primary/10">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-all rounded-lg hover:bg-error/10">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 bg-white/[0.01] flex items-center justify-between">
+<p class="text-body-sm text-on-surface-variant">Showing 1 to 3 of 42 members</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-lg border border-white/10 text-on-surface-variant hover:text-on-surface transition-all disabled:opacity-30" disabled="">Previous</button>
+<button class="px-4 py-2 rounded-lg border border-white/10 text-on-surface-variant hover:text-on-surface transition-all">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="px-gutter py-unit-lg border-t border-white/5 text-center mt-auto">
+<p class="text-label-md font-label-md text-on-surface-variant opacity-40">© 2024 LearnPath AI • Aether Intelligence Systems • Protected by Neural Encryption</p>
+</footer>
+</main>
+<!-- Floating AI Assistant Button (Contextual for Dashboard) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-tr from-indigo-600 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-[0_10px_40px_rgba(99,102,241,0.5)] hover:scale-110 active:scale-90 transition-all z-50 group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div class="absolute right-full mr-4 bg-surface-container-high px-4 py-2 rounded-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+<p class="text-body-sm font-semibold">Analyze Team Gaps</p>
+</div>
+</button>
+<script>
+        // Micro-interaction: Sidebar active state toggle logic (Simplified for demo)
+        document.querySelectorAll('aside nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('aside nav a').forEach(l => {
+                    l.classList.remove('text-primary', 'bg-primary-container/10', 'border-r-2', 'border-primary');
+                    l.classList.add('text-on-surface-variant');
+                });
+                link.classList.remove('text-on-surface-variant');
+                link.classList.add('text-primary', 'bg-primary-container/10', 'border-r-2', 'border-primary');
+            });
+        });
+
+        // Simple parallax effect for glass cards
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.glass-panel');
+            const x = (window.innerWidth / 2 - e.pageX) / 50;
+            const y = (window.innerHeight / 2 - e.pageY) / 50;
+            
+            cards.forEach(card => {
+                if(card.classList.contains('ai-thinking')) {
+                   // No transform on the thinking card to keep the pulse clean
+                } else {
+                    card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+                }
+            });
+        });
+    </script>
+</body></html>

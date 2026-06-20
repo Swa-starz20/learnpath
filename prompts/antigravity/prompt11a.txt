@@ -1,0 +1,120 @@
+Backend Phase 1 Stabilization & Verification
+
+Context:
+
+Architecture: Approved
+Phase 1 Foundation: Generated
+
+Current status:
+
+* mvn clean package -DskipTests = SUCCESS
+* Application startup failed
+* Integration tests failed
+* Backend is not yet production-runnable
+
+Goal:
+
+Make Phase 1 fully runnable and verified.
+
+Scope:
+
+ONLY fix and stabilize existing Phase 1.
+
+Do NOT generate:
+
+* assessments
+* roadmap
+* courses
+* mentor
+* placements
+* intelligence
+* new modules
+
+Tasks
+
+1. Fix JWT configuration
+
+* locate all JWT config sources
+* remove weak/default secrets
+* enforce HS256-compatible secret length
+* make secrets environment-driven
+* update all affected config files
+
+2. Fix environment configuration
+
+* validate .env.example
+* remove hidden defaults
+* document all required variables
+
+3. Fix Docker configuration
+
+* validate docker-compose
+* validate PostgreSQL service
+* validate startup order
+* validate health checks
+
+4. Fix Flyway configuration
+
+* validate migrations
+* validate ordering
+* validate PostgreSQL compatibility
+
+5. Fix Spring Boot startup
+
+* application context
+* SecurityConfig
+* JwtService
+* JwtAuthenticationFilter
+* repositories
+* Tomcat startup
+
+6. Fix integration tests
+
+* review AuthControllerIntegrationTest
+* resolve Windows/Testcontainers issues
+* remove brittle assumptions
+* ensure tests execute successfully
+
+7. Verify auth flow
+
+* register
+* login
+* /me endpoint
+* JWT generation
+* JWT validation
+* role extraction
+* stateless security
+
+Validation
+
+Actually validate against the repository.
+
+Target state:
+
+* mvn clean test passes
+* mvn spring-boot:run starts successfully
+* docker compose up -d works
+* Flyway runs successfully
+* JWT initializes successfully
+* no bean creation failures
+* no startup failures
+
+Output only:
+
+1. Files Modified
+2. Root Causes Found
+3. Fixes Applied
+4. Validation Results
+5. Remaining Blockers
+
+If successful, end with exactly:
+
+PHASE 1 FOUNDATION VERIFIED AND STABLE
+
+If any blocker remains, clearly state:
+
+PHASE 1 NOT READY FOR PHASE 2
+
+Do not generate Phase 2.
+Do not redesign architecture.
+Do not create new modules.

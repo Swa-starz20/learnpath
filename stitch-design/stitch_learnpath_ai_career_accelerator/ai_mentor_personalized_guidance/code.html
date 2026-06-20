@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LearnPath AI | AI Mentor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+        }
+        .ai-glow-border {
+            position: relative;
+        }
+        .ai-glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #c0c1ff, #ddb7ff, #4cd7f6);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0.4;
+            filter: blur(8px);
+            animation: pulse-glow 4s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            0% { opacity: 0.2; transform: scale(0.98); }
+            100% { opacity: 0.5; transform: scale(1.02); }
+        }
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background: #c0c1ff;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-4px); }
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#2d3449",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary": "#003640",
+                      "surface-tint": "#c0c1ff",
+                      "secondary-container": "#03b5d3",
+                      "primary": "#c0c1ff",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-primary": "#1000a9",
+                      "surface-container-high": "#222a3d",
+                      "surface-bright": "#31394d",
+                      "outline-variant": "#464554",
+                      "on-surface": "#dae2fd",
+                      "surface-container-low": "#131b2e",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "on-primary-fixed": "#07006c",
+                      "primary-fixed": "#e1e0ff",
+                      "on-tertiary-fixed-variant": "#6900b3",
+                      "on-tertiary-container": "#400071",
+                      "surface": "#0b1326",
+                      "surface-container-highest": "#2d3449",
+                      "tertiary-fixed-dim": "#ddb7ff",
+                      "tertiary-container": "#b76dff",
+                      "primary-container": "#8083ff",
+                      "surface-container": "#171f33",
+                      "on-secondary-fixed": "#001f26",
+                      "on-tertiary": "#490080",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "background": "#0b1326",
+                      "surface-container-lowest": "#060e20",
+                      "inverse-on-surface": "#283044",
+                      "error-container": "#93000a",
+                      "inverse-surface": "#dae2fd",
+                      "on-tertiary-fixed": "#2c0051",
+                      "surface-dim": "#0b1326",
+                      "error": "#ffb4ab",
+                      "tertiary": "#ddb7ff",
+                      "secondary": "#4cd7f6",
+                      "on-secondary-container": "#00424e",
+                      "inverse-primary": "#494bd6",
+                      "on-primary-container": "#0d0096",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-background": "#dae2fd",
+                      "outline": "#908fa0",
+                      "on-surface-variant": "#c7c4d7",
+                      "secondary-fixed": "#acedff",
+                      "tertiary-fixed": "#f0dbff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit-sm": "8px",
+                      "unit-md": "16px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "unit-xs": "4px",
+                      "unit-xl": "64px",
+                      "sidebar-width": "280px",
+                      "unit-lg": "32px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "body-sm": ["Inter"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "display-xl": ["Hanken Grotesk"],
+                      "label-md": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="flex h-screen overflow-hidden">
+<!-- SideNavBar (JSON Derived) -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container/30 backdrop-blur-xl border-r border-white/10 shadow-[0_0_30px_rgba(192,193,255,0.1)] flex flex-col p-unit-md gap-unit-sm z-50">
+<div class="flex items-center gap-3 px-2 mb-8">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-[0_0_15px_rgba(192,193,255,0.5)]">
+<span class="material-symbols-outlined text-on-primary">psychology</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary leading-tight">LearnPath AI</h1>
+<p class="font-body-sm text-body-sm text-secondary opacity-80">AI Pulse: Active</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 transition-all transition-all duration-300 ease-in-out hover:scale-[1.02] hover:text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<!-- Roadmap -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 transition-all transition-all duration-300 ease-in-out hover:scale-[1.02] hover:text-primary" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="font-body-md text-body-md">Roadmap</span>
+</a>
+<!-- AI Mentor (ACTIVE) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-container text-on-primary-container font-bold shadow-[0_0_15px_rgba(128,131,255,0.4)] transition-all duration-300 ease-in-out hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-body-md text-body-md">AI Mentor</span>
+</a>
+<!-- Assessments -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 transition-all transition-all duration-300 ease-in-out hover:scale-[1.02] hover:text-primary" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body-md text-body-md">Assessments</span>
+</a>
+<!-- Courses -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:text-primary" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Courses</span>
+</a>
+<!-- Placements -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:text-primary" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body-md text-body-md">Placements</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-white/5 flex flex-col gap-2">
+<button class="w-full py-3 rounded-xl bg-gradient-to-r from-primary to-tertiary text-on-primary font-bold shadow-lg hover:brightness-110 transition-all mb-4">
+                Upgrade to Pro
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Help</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar (JSON Derived - Adjusted for Sidebar) -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface/50 backdrop-blur-lg border-b border-white/10 flex items-center justify-between px-gutter z-40">
+<div class="flex items-center gap-unit-md flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-lowest/50 border border-white/10 rounded-full py-2 pl-10 pr-4 text-body-sm focus:outline-none focus:border-primary/50 transition-all" placeholder="Search knowledge base..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-unit-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">auto_awesome</button>
+</div>
+<button class="bg-primary/10 text-primary px-4 py-1.5 rounded-full border border-primary/20 font-body-sm hover:bg-primary hover:text-on-primary transition-all">
+                Start Assessment
+            </button>
+<img alt="User Avatar" class="w-10 h-10 rounded-full border border-white/20 object-cover" data-alt="A professional headshot of a young male engineering student with a warm, confident expression. He is set against a clean, out-of-focus background of a modern tech laboratory with soft blue and purple LED lighting, maintaining the premium glassmorphism aesthetic of the LearnPath brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByzxIdMl4vPOVqQHdfDoX_o-4wt6IrruTe_oSmIwWK9DWppA-BuLkYzwMZN4oQsx-ujAsNCy2Zc5qM5MDPfE0RS5lEoH4OCtbKHGxSVrvAkQTqHNuc4O7tfCt9tDV2s7M2mAOLxlQnDpGN8mfnIm_yrPMcP41pwX6AOf0ulnTJdaz02V3rSmwXdyeWtki9Fb2h_N8xkH_IbqYnVA3OuR3GZrzXLnYivwS8Cia1sBiNY8iioZQtmPWrLQPLV91TnQToX8YVWvgzl2c"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width pt-16 flex-1 flex h-full">
+<!-- Chat History (Left Panel) -->
+<div class="w-72 glass-panel border-r border-white/10 flex flex-col">
+<div class="p-gutter border-b border-white/5">
+<h3 class="font-headline-md text-[18px] font-bold text-on-surface mb-4">Chat History</h3>
+<button class="w-full py-2.5 px-4 rounded-xl border border-dashed border-primary/30 text-primary hover:bg-primary/5 flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="font-body-sm">New Session</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-unit-md space-y-6">
+<!-- Category: Career -->
+<div>
+<span class="font-label-md text-label-md text-primary/60 uppercase tracking-widest block mb-3 px-2">Career Prep</span>
+<div class="space-y-1">
+<div class="p-3 rounded-lg bg-primary/10 border-l-2 border-primary group cursor-pointer">
+<p class="font-body-sm font-medium text-on-surface truncate">Resume Prep</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Updated 2h ago</p>
+</div>
+<div class="p-3 rounded-lg hover:bg-white/5 group cursor-pointer transition-colors">
+<p class="font-body-sm text-on-surface-variant truncate group-hover:text-on-surface">Mock Interview: Frontend</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1">Updated Yesterday</p>
+</div>
+</div>
+</div>
+<!-- Category: Learning -->
+<div>
+<span class="font-label-md text-label-md text-secondary/60 uppercase tracking-widest block mb-3 px-2">Learning</span>
+<div class="space-y-1">
+<div class="p-3 rounded-lg hover:bg-white/5 group cursor-pointer transition-colors">
+<p class="font-body-sm text-on-surface-variant truncate group-hover:text-on-surface">Math Help: Calculus II</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1">Updated 3d ago</p>
+</div>
+<div class="p-3 rounded-lg hover:bg-white/5 group cursor-pointer transition-colors">
+<p class="font-body-sm text-on-surface-variant truncate group-hover:text-on-surface">Roadmap Review</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1">Updated 5d ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Interface (Main Panel) -->
+<div class="flex-1 flex flex-col relative">
+<div class="flex-1 overflow-y-auto p-gutter pb-40 space-y-gutter" id="chat-container">
+<!-- AI Welcome Message -->
+<div class="flex gap-4 max-w-3xl">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-surface-container-high ai-glow-border flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="space-y-4">
+<div class="glass-panel p-unit-md rounded-2xl rounded-tl-none">
+<p class="font-body-md text-on-surface">Hello Alex! I've been monitoring your progress on the <span class="text-primary font-bold">Cloud Infrastructure</span> roadmap. You've completed 85% of the Docker module.</p>
+<p class="font-body-md text-on-surface mt-2">How can I assist you today? We could review your resume for the upcoming internships or dive into the next chapter of Kubernetes orchestration.</p>
+</div>
+<!-- Smart Prompts -->
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full glass-panel text-body-sm text-secondary hover:border-secondary/40 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+                                Explain Quantum Computing
+                            </button>
+<button class="px-4 py-2 rounded-full glass-panel text-body-sm text-secondary hover:border-secondary/40 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">description</span>
+                                Review my resume
+                            </button>
+<button class="px-4 py-2 rounded-full glass-panel text-body-sm text-secondary hover:border-secondary/40 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+                                Debug Python Script
+                            </button>
+</div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex gap-4 max-w-3xl ml-auto flex-row-reverse">
+<img alt="User" class="w-10 h-10 rounded-full flex-shrink-0 border border-white/20" data-alt="A small circular avatar profile picture of a young male engineering student. The image is crisp and clear, showing a smiling face with professional lighting, fitting into the dark-themed dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3HULXqFJm9mRquKDnW4tcteaxGLZ4BBFvroMAlV723br-IgGOrpYVDQQuCH97TKosIduxdQvUQJ6v3mj1yle69uLkAk-gYeyi-8kIXOK29t74knoVDGFhhPKmQ-mZHCmVkn0EHcqGz8Z_TJBhN5NyeUQ1JY580RyABKreE7OtuIGbBIcJvBPoP3hyEEOfip5s9kaCpGIyTb5_IuftemIrV7Nf2CL-GNxtk7D2G-GxzWV-Jl9oMdUj4yLjYKIS7LrIKyV6DLyG2XM"/>
+<div class="bg-primary/20 border border-primary/30 p-unit-md rounded-2xl rounded-tr-none">
+<p class="font-body-md text-on-surface">Can you explain the main difference between Docker Swarm and Kubernetes in simple terms?</p>
+</div>
+</div>
+<!-- AI Typing Animation -->
+<div class="flex gap-4 max-w-3xl" id="typing-indicator">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-surface-container-high ai-glow-border flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+</div>
+<div class="glass-panel px-4 py-3 rounded-2xl rounded-tl-none flex items-center gap-1">
+<div class="typing-dot"></div>
+<div class="typing-dot"></div>
+<div class="typing-dot"></div>
+</div>
+</div>
+</div>
+<!-- Input Bar -->
+<div class="absolute bottom-0 left-0 right-0 p-gutter bg-gradient-to-t from-surface to-transparent pt-10">
+<div class="max-w-4xl mx-auto glass-panel p-2 rounded-2xl flex items-end gap-2 shadow-2xl">
+<div class="flex-1 min-h-[48px] px-4 py-3 text-body-md text-on-surface focus:outline-none whitespace-pre-wrap" contenteditable="true" data-placeholder="Ask your mentor anything...">Ask your mentor anything...</div>
+<div class="flex items-center gap-2 pb-1 pr-1">
+<button class="w-10 h-10 rounded-xl hover:bg-white/5 text-on-surface-variant flex items-center justify-center transition-all">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="w-10 h-10 rounded-xl hover:bg-white/5 text-on-surface-variant flex items-center justify-center transition-all">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center transition-all shadow-[0_0_15px_rgba(192,193,255,0.4)]">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+<p class="text-center text-label-md text-on-surface-variant/40 mt-3 font-label-md">LearnPath AI can make mistakes. Verify important info.</p>
+</div>
+</div>
+<!-- Context Panel (Right Panel) -->
+<div class="w-80 glass-panel border-l border-white/10 flex flex-col hidden xl:flex">
+<div class="p-gutter border-b border-white/5">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-tertiary text-[18px]" style="font-variation-settings: 'FILL' 1;">colors_spark</span>
+<h3 class="font-headline-md text-[18px] font-bold text-on-surface">AI Context</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Syncing with your progress...</p>
+</div>
+<div class="p-gutter space-y-8">
+<!-- Skill Levels -->
+<div>
+<h4 class="font-label-md text-label-md text-primary/60 uppercase tracking-widest mb-4">Core Skills</h4>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between mb-1">
+<span class="text-body-sm text-on-surface">Cloud Architecture</span>
+<span class="text-body-sm text-primary">85%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary shadow-[0_0_10px_rgba(192,193,255,0.6)]" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="text-body-sm text-on-surface">Docker/K8s</span>
+<span class="text-body-sm text-secondary">62%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary shadow-[0_0_10px_rgba(76,215,246,0.6)]" style="width: 62%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Node -->
+<div>
+<h4 class="font-label-md text-label-md text-tertiary/60 uppercase tracking-widest mb-4">Active Node</h4>
+<div class="glass-panel p-unit-md rounded-xl border-l-4 border-tertiary">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary">hub</span>
+<div>
+<p class="font-body-md font-bold text-on-surface leading-tight">Container Orchestration</p>
+<p class="text-body-sm text-on-surface-variant mt-1">Status: In Progress</p>
+</div>
+</div>
+<button class="w-full mt-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-body-sm text-tertiary transition-all">
+                            View Node Details
+                        </button>
+</div>
+</div>
+<!-- Resources -->
+<div>
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-4">Quick Resources</h4>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-body-sm text-on-surface-variant hover:text-primary cursor-pointer group">
+<span class="material-symbols-outlined text-[18px]">article</span>
+                            Swarm vs K8s Docs
+                        </li>
+<li class="flex items-center gap-3 text-body-sm text-on-surface-variant hover:text-primary cursor-pointer group">
+<span class="material-symbols-outlined text-[18px]">movie</span>
+                            Video: Pod Lifecycle
+                        </li>
+</ul>
+</div>
+</div>
+<!-- Footer (JSON Derived) -->
+<footer class="mt-auto py-unit-md bg-surface-container-lowest/50 backdrop-blur-md border-t border-white/5 flex flex-col items-center gap-2 text-center">
+<p class="font-label-md text-label-md text-primary font-bold">LearnPath AI</p>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">© 2024 LearnPath AI Engineering</p>
+</footer>
+</div>
+</main>
+<script>
+        // Micro-interactions and focus handling
+        const editableInput = document.querySelector('[contenteditable="true"]');
+        
+        editableInput.addEventListener('focus', () => {
+            if (editableInput.innerText === 'Ask your mentor anything...') {
+                editableInput.innerText = '';
+                editableInput.classList.remove('text-on-surface-variant/40');
+            }
+        });
+
+        editableInput.addEventListener('blur', () => {
+            if (editableInput.innerText === '') {
+                editableInput.innerText = 'Ask your mentor anything...';
+                editableInput.classList.add('text-on-surface-variant/40');
+            }
+        });
+
+        // Simple scroll to bottom
+        const chatContainer = document.getElementById('chat-container');
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        // Visual pulsate for the AI avatar
+        setInterval(() => {
+            const glow = document.querySelector('.ai-glow-border');
+            glow.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                glow.style.transform = 'scale(1)';
+            }, 500);
+        }, 3000);
+    </script>
+</body></html>

@@ -1,0 +1,462 @@
+Design a world-class futuristic AI-powered educational SaaS platform called LearnPath — an intelligent personalized learning and career acceleration platform for engineering students.
+
+The platform combines:
+
+* AI-powered roadmap generation
+* Psychometric intelligence
+* Skill-gap analytics
+* Personalized recommendations
+* AI chatbot mentorship
+* Adaptive learning systems
+* Career guidance
+* Progress tracking
+* Industry trend alignment
+
+The UI/UX should feel like a premium next-generation SaaS product used by top global EdTech and AI companies.
+
+---
+
+## DESIGN STYLE & VISUAL DIRECTION
+
+Core Design Language:
+
+* Futuristic
+* Minimal
+* Intelligent
+* AI-native
+* Premium SaaS
+* Glassmorphism
+* Clean and elegant
+* Highly interactive
+* Modern dashboard-centric architecture
+
+Visual Feel:
+
+* Combination of Linear + Stripe + Vercel + Notion + Duolingo + Framer + Coursera
+* Sophisticated AI dashboard aesthetics
+* Rich gradients and soft glows
+* Smooth card elevation
+* Subtle blur effects
+* Intelligent spacing and hierarchy
+* Dynamic data visualizations
+* Advanced analytics appearance
+* Modern startup-level polish
+
+UI Personality:
+
+* Smart
+* Motivating
+* Trustworthy
+* Productive
+* Data-driven
+* Human-centered AI
+
+---
+
+## COLOR SYSTEM
+
+Primary Palette:
+
+* Indigo
+* Purple
+* Cyan
+* Electric blue
+* White
+* Dark slate
+* Deep black gradients
+
+Accent Colors:
+
+* Neon cyan highlights
+* Soft purple glows
+* Gradient indigo transitions
+
+Dark Mode:
+
+* Premium deep slate backgrounds
+* Frosted glass cards
+* Ambient AI glow effects
+
+Light Mode:
+
+* Clean white surfaces
+* Soft gradient borders
+* Elegant shadows
+
+---
+
+## TYPOGRAPHY
+
+Typography Style:
+
+* Clean SaaS typography
+* Modern sans-serif
+* Highly readable
+* Premium hierarchy
+
+Visual Hierarchy:
+
+* Large hero headings
+* Compact dashboard typography
+* Clear data emphasis
+* Minimal clutter
+
+---
+
+## PLATFORM PURPOSE
+
+LearnPath helps engineering students:
+
+* Discover ideal career paths
+* Analyze strengths and weaknesses
+* Receive personalized AI-generated learning roadmaps
+* Track skill development
+* Prepare for placements and higher studies
+* Get adaptive recommendations
+* Interact with AI mentors
+* Understand psychometric insights
+* Align with emerging industry trends
+
+---
+
+## TARGET USERS
+
+Primary Users:
+
+* Engineering students
+* Career aspirants
+* Placement-focused learners
+* Self-learners
+* Final-year students
+
+Secondary Users:
+
+* Admins
+* Instructors
+* Mentors
+* Placement coordinators
+
+---
+
+## GENERATE COMPLETE RESPONSIVE UI/UX
+
+Create a fully connected modern SaaS ecosystem with consistent reusable components.
+
+---
+
+1. LANDING PAGE
+
+---
+
+Create a premium AI startup-style landing page including:
+
+Hero Section:
+
+* Bold futuristic headline
+* AI-powered roadmap visualization
+* Animated dashboard preview
+* CTA buttons
+* Floating AI graphics
+* Interactive mockups
+* Career journey visualization
+
+Features Section:
+
+* AI recommendation engine
+* Psychometric intelligence
+* Adaptive learning
+* Skill-gap analytics
+* AI chatbot mentor
+* Career tracking
+* Industry trend sync
+
+Interactive Showcase:
+
+* Animated recommendation flow
+* Roadmap generation process
+* Skill graph visualization
+* AI prediction cards
+
+Psychometric Intelligence Section:
+
+* Personality analytics
+* Behavioral insights
+* Career compatibility
+* Emotional intelligence metrics
+* Learning style analysis
+
+Testimonials:
+
+* Modern testimonial cards
+* Student success stories
+* Placement outcomes
+
+Statistics Section:
+
+* Learning metrics
+* Career success analytics
+* AI recommendation accuracy
+
+CTA Section:
+
+* Strong conversion-focused CTA
+* Modern SaaS design
+* Interactive elements
+
+Footer:
+
+* Minimal professional footer
+* Navigation
+* Social links
+* AI branding
+
+---
+
+2. AUTHENTICATION SYSTEM
+
+---
+
+Design:
+
+* Login page
+* Signup page
+* Forgot password page
+* OTP verification screens
+* Multi-step onboarding
+
+Features:
+
+* Glassmorphism auth cards
+* Social login options
+* Smooth transitions
+* Animated backgrounds
+* Modern input systems
+* Password strength indicators
+
+---
+
+3. STUDENT DASHBOARD
+
+---
+
+Create a premium AI-powered dashboard experience.
+
+Main Features:
+
+* Personalized roadmap timeline
+* AI recommendation feed
+* Weekly goals
+* Learning streaks
+* Skill heatmaps
+* Progress analytics
+* Upcoming milestones
+* Career readiness score
+* Internship recommendations
+* Certifications tracker
+
+Dashboard Components:
+
+* Sidebar navigation
+* Top navbar
+* Smart widgets
+* AI insights cards
+* Progress rings
+* Interactive graphs
+* Activity feed
+
+Visualizations:
+
+* Radar charts
+* Skill graphs
+* Progress bars
+* AI analytics
+* Dynamic charts
+
+---
+
+4. PSYCHOMETRIC ASSESSMENT MODULE
+
+---
+
+This should feel highly intelligent and futuristic.
+
+Design:
+
+* Multi-step assessment experience
+* Progress indicators
+* Interactive question cards
+* Gamified UX
+* Personality radar charts
+
+Modules:
+
+* Personality test UI
+* Aptitude test UI
+* Behavioral analysis
+* Learning style analysis
+* Career compatibility engine
+* Emotional intelligence metrics
+
+Results Dashboard:
+
+* Strengths analysis
+* Weakness analysis
+* Career alignment scores
+* Recommended domains
+* AI-generated personality insights
+* Cognitive profile visualization
+
+---
+
+5. AI CHATBOT INTERFACE
+
+---
+
+Design a highly polished AI mentor assistant.
+
+Features:
+
+* Conversational UI
+* Sidebar conversation history
+* AI suggestions
+* Smart prompts
+* Typing animations
+* AI avatar
+* Voice/chat inspired interface
+
+Capabilities Display:
+
+* Career guidance
+* Roadmap explanation
+* Learning support
+* Resume guidance
+* Interview preparation
+
+UI Style:
+
+* ChatGPT + Linear + Notion inspired
+* Premium AI assistant aesthetic
+
+---
+
+6. COURSE RECOMMENDATION MODULE
+
+---
+
+Features:
+
+* AI recommendation cards
+* Smart filtering
+* Skill tags
+* Difficulty indicators
+* Estimated completion time
+* Bookmark/save system
+* Course roadmap integration
+* Resource categorization
+
+Visual Design:
+
+* Interactive cards
+* Clean filtering UI
+* Personalized recommendation feed
+* Trending technologies section
+
+---
+
+7. ADMIN DASHBOARD
+
+---
+
+Design a modern enterprise-grade admin panel.
+
+Features:
+
+* User management
+* Analytics dashboard
+* Platform metrics
+* Recommendation monitoring
+* Course moderation
+* Reports
+* Psychometric insights overview
+* AI engine statistics
+
+Visualizations:
+
+* User growth charts
+* Engagement analytics
+* Recommendation performance
+* Heatmaps
+
+---
+
+8. INSTRUCTOR DASHBOARD
+
+---
+
+Features:
+
+* Upload courses
+* Manage resources
+* Create assessments
+* Track learners
+* Student analytics
+* Content approval workflows
+* Engagement tracking
+
+UI Style:
+
+* Clean educational CMS
+* Modern dashboard architecture
+
+---
+
+## GLOBAL REQUIREMENTS
+
+Design Requirements:
+
+* Fully responsive
+* Mobile-first
+* SaaS-grade quality
+* Production-ready aesthetics
+* Reusable component system
+* Consistent design language
+* Dashboard-first architecture
+* Modern sidebar navigation
+* Accessibility-friendly
+* Smooth microinteractions
+* Elegant hover states
+* Advanced UI polish
+
+Animations:
+
+* Smooth transitions
+* Framer-motion inspired
+* Subtle hover animations
+* Scroll-based interactions
+* Dynamic loading states
+
+Component System:
+
+* Reusable cards
+* Reusable buttons
+* Consistent charts
+* Modular widgets
+* Unified spacing system
+
+Charts & Data Visualization:
+
+* Futuristic analytics
+* AI-generated insights
+* Skill graphs
+* Progress tracking
+* Interactive dashboards
+
+Mobile Experience:
+
+* Optimized navigation
+* Responsive dashboard layouts
+* Mobile sidebar
+* Touch-friendly interactions
+
+Final Goal:
+The final UI should feel like a billion-dollar AI EdTech startup product ready for production launch and investor demo presentation.

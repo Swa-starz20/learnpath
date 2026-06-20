@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forgot Password | LearnPath AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#2c0051",
+                        "inverse-primary": "#494bd6",
+                        "surface-container-highest": "#2d3449",
+                        "outline": "#908fa0",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "surface-container": "#171f33",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-dim": "#0b1326",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "outline-variant": "#464554",
+                        "background": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary-container": "#400071",
+                        "tertiary-container": "#b76dff",
+                        "on-secondary-container": "#00424e",
+                        "surface-bright": "#31394d",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#131b2e",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary": "#490080",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ddb7ff",
+                        "primary-container": "#8083ff",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-primary": "#1000a9",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-fixed": "#f0dbff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-high": "#222a3d",
+                        "on-background": "#dae2fd",
+                        "primary": "#c0c1ff",
+                        "on-primary-fixed": "#07006c",
+                        "inverse-on-surface": "#283044",
+                        "secondary-container": "#03b5d3",
+                        "secondary": "#4cd7f6",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "on-error": "#690005",
+                        "surface-variant": "#2d3449",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "primary-fixed": "#e1e0ff",
+                        "on-secondary": "#003640",
+                        "surface": "#0b1326",
+                        "surface-tint": "#c0c1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit-lg": "32px",
+                        "container-max": "1440px",
+                        "sidebar-width": "280px",
+                        "unit-xs": "4px",
+                        "unit-sm": "8px",
+                        "unit-xl": "64px",
+                        "margin-mobile": "16px",
+                        "unit-md": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-xl": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            overflow-x: hidden;
+        }
+        .ambient-glow-1 {
+            background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+        }
+        .ambient-glow-2 {
+            background: radial-gradient(circle at 80% 70%, rgba(76, 215, 246, 0.1) 0%, transparent 50%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+        }
+        .neon-glow:hover {
+            box-shadow: 0px 0px 30px rgba(76, 215, 246, 0.4);
+        }
+        .input-focus-glow:focus {
+            box-shadow: inset 0px 0px 10px rgba(76, 215, 246, 0.1);
+            border-color: #4cd7f6;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center relative">
+<div class="fixed inset-0 ambient-glow-1 pointer-events-none"></div>
+<div class="fixed inset-0 ambient-glow-2 pointer-events-none"></div>
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-unit-lg h-20 w-full max-w-container-max mx-auto border-b border-white/5 bg-surface-container/30 backdrop-blur-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="auto_stories">auto_stories</span>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">LearnPath</span>
+</div>
+<div class="hidden md:flex gap-unit-md">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Help Center</a>
+</div>
+</header>
+<main class="relative z-10 w-full max-w-[480px] px-margin-mobile md:px-0">
+<div class="glass-card rounded-xl p-unit-lg shadow-xl animate-in fade-in zoom-in duration-500">
+<div class="text-center mb-unit-lg">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-unit-md">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="lock_reset">lock_reset</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface mb-unit-xs">Reset Password</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Enter your email associated with your LearnPath AI account to receive a secure recovery link.
+                </p>
+</div>
+<form class="space-y-unit-md" onsubmit="return false;">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-outline tracking-wider uppercase" for="email">Email Address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-secondary transition-colors" data-icon="mail">mail</span>
+<input class="w-full bg-black/20 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-on-surface font-body-md placeholder:text-outline/50 focus:ring-0 focus:outline-none input-focus-glow transition-all" id="email" placeholder="name@company.com" required="" type="email"/>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-headline-md text-headline-md h-[56px] rounded-lg neon-glow active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+<span>Send Reset Link</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<div class="mt-unit-lg pt-unit-md border-t border-white/5 text-center">
+<a class="inline-flex items-center gap-2 font-body-md text-body-md text-secondary hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span>Return to Login</span>
+</a>
+</div>
+</div>
+<div class="mt-unit-xl flex flex-col items-center space-y-4">
+<div class="p-4 rounded-xl border border-secondary/20 bg-secondary/5 backdrop-blur-sm flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                        LearnPath AI uses end-to-end encrypted protocols. Your password security is managed by our decentralized identity vault.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<footer class="fixed bottom-0 w-full py-unit-md bg-surface-container-lowest border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-unit-lg max-w-container-max mx-auto gap-unit-md">
+<span class="font-body-sm text-body-sm text-outline">© 2024 LearnPath AI. Secure &amp; Encrypted.</span>
+<div class="flex gap-unit-md">
+<a class="font-body-sm text-body-sm text-outline hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-outline hover:text-primary transition-colors" href="#">Security Architecture</a>
+</div>
+</div>
+</footer>
+<div class="fixed top-20 right-10 pointer-events-none opacity-20">
+<img class="w-[400px] h-auto animate-[pulse_8s_infinite]" data-alt="A highly detailed 3D digital render of a glowing, translucent spherical AI core floating in a dark, minimalist space. The core emits soft indigo and cyan light refractions that illuminate the surrounding dark slate atmosphere. The aesthetic is clean, sophisticated, and futuristic, with a subtle grainy texture and glassmorphic depth effects that align with a premium educational platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXZo2A9RhYzzcjaDevcWRxgE3Km95QDnGin67vQXszH8mTiphtKrPF8NQzoYbUr869khpJhQ9eN42jMbpbPhQqF9cMxpPjvb2WJ10KCdPH69fT426wW0X_WTWbzC1yUhT1f1aBA0tpgCL2RQSlGNuUxYnWkGugMRVv7seLcWXsE7GO0InIAkpMBNFrhbYPfMnni3vm6xKw8BRG3jnb1XcJ5bz6SBIebzLYcro4JeCQ1VxzAMlh0mTMp-M43F_iwLGqits7z3GHoCM"/>
+</div>
+<script>
+        document.querySelector('form').addEventListener('submit', (e) => {
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Sending...`;
+            btn.classList.add('opacity-80', 'pointer-events-none');
+            
+            setTimeout(() => {
+                btn.innerHTML = `<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span> Sent Successfully`;
+                btn.classList.remove('from-primary-container', 'to-secondary-container');
+                btn.classList.add('bg-secondary', 'text-on-secondary');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.add('from-primary-container', 'to-secondary-container');
+                    btn.classList.remove('bg-secondary', 'text-on-secondary', 'opacity-80', 'pointer-events-none');
+                }, 3000);
+            }, 1500);
+        });
+    </script>
+</body></html>

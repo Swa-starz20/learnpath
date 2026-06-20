@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .neon-glow-indigo {
+            box-shadow: 0px 10px 30px rgba(99, 102, 241, 0.15);
+        }
+        .ai-pulse {
+            position: relative;
+        }
+        .ai-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #8083ff, #ddb7ff, #4cd7f6);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0.5;
+            animation: pulse-border 3s ease-in-out infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.01); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #4cd7f6;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ddb7ff",
+                      "on-secondary": "#003640",
+                      "background": "#0b1326",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "surface-dim": "#0b1326",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "on-tertiary-fixed-variant": "#6900b3",
+                      "surface-variant": "#2d3449",
+                      "surface-container-high": "#222a3d",
+                      "surface-tint": "#c0c1ff",
+                      "tertiary-container": "#b76dff",
+                      "on-surface": "#dae2fd",
+                      "surface-container-highest": "#2d3449",
+                      "surface-container-low": "#131b2e",
+                      "outline-variant": "#464554",
+                      "inverse-surface": "#dae2fd",
+                      "tertiary-fixed": "#f0dbff",
+                      "primary": "#c0c1ff",
+                      "on-tertiary": "#490080",
+                      "surface-container-lowest": "#060e20",
+                      "outline": "#908fa0",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#001f26",
+                      "on-background": "#dae2fd",
+                      "surface-bright": "#31394d",
+                      "on-tertiary-fixed": "#2c0051",
+                      "on-surface-variant": "#c7c4d7",
+                      "on-primary": "#1000a9",
+                      "secondary-container": "#03b5d3",
+                      "on-primary-fixed": "#07006c",
+                      "on-secondary-container": "#00424e",
+                      "on-error": "#690005",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "inverse-primary": "#494bd6",
+                      "secondary-fixed": "#acedff",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "primary-fixed": "#e1e0ff",
+                      "on-primary-container": "#0d0096",
+                      "inverse-on-surface": "#283044",
+                      "primary-container": "#8083ff",
+                      "on-tertiary-container": "#400071",
+                      "error": "#ffb4ab",
+                      "secondary": "#4cd7f6",
+                      "tertiary": "#ddb7ff",
+                      "on-error-container": "#ffdad6",
+                      "surface-container": "#171f33",
+                      "surface": "#0b1326"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit-md": "16px",
+                      "unit-lg": "32px",
+                      "sidebar-width": "280px",
+                      "container-max": "1440px",
+                      "unit-xs": "4px",
+                      "gutter": "24px",
+                      "unit-xl": "64px",
+                      "margin-mobile": "16px",
+                      "unit-sm": "8px"
+              },
+              "fontFamily": {
+                      "label-md": ["JetBrains Mono"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "body-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "display-xl": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- SideNavBar -->
+<aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface-container/30 backdrop-blur-xl border-r border-white/10 flex flex-col py-unit-md z-50">
+<div class="px-gutter mb-unit-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">LearnPath AI</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enterprise Admin</p>
+</div>
+<nav class="flex-1 space-y-unit-sm">
+<a class="flex items-center gap-unit-md px-gutter py-unit-sm text-secondary font-bold border-r-2 border-secondary bg-secondary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Overview</span>
+</a>
+<a class="flex items-center gap-unit-md px-gutter py-unit-sm text-on-surface-variant hover:bg-white/5 hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">User Management</span>
+</a>
+<a class="flex items-center gap-unit-md px-gutter py-unit-sm text-on-surface-variant hover:bg-white/5 hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-body-md text-body-md">Course Moderation</span>
+</a>
+<a class="flex items-center gap-unit-md px-gutter py-unit-sm text-on-surface-variant hover:bg-white/5 hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-body-md text-body-md">AI Engine Stats</span>
+</a>
+<a class="flex items-center gap-unit-md px-gutter py-unit-sm text-on-surface-variant hover:bg-white/5 hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+</nav>
+<div class="px-gutter mt-auto pt-unit-md border-t border-white/5 space-y-unit-sm">
+<div class="flex items-center gap-unit-sm mb-unit-md">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="font-label-md text-label-md text-secondary">System Status: Active</span>
+</div>
+<a class="flex items-center gap-unit-md py-unit-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-sm text-body-sm">Settings</span>
+</a>
+<a class="flex items-center gap-unit-md py-unit-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-sm text-body-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width min-h-screen">
+<!-- TopNavBar -->
+<header class="h-16 fixed top-0 right-0 w-[calc(100%-280px)] bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-gutter z-40">
+<div class="flex items-center gap-gutter w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-black/20 border border-white/10 rounded-lg pl-10 pr-4 py-2 text-body-sm font-body-sm focus:outline-none focus:border-secondary transition-all" placeholder="Search system logs, users, or courses..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-unit-md">
+<button class="text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-white/10 mx-unit-xs"></div>
+<div class="flex items-center gap-unit-sm">
+<div class="text-right hidden xl:block">
+<p class="font-label-md text-label-md text-on-surface leading-none">Admin Profile</p>
+<p class="font-body-sm text-[10px] text-on-surface-variant">System Overseer</p>
+</div>
+<img alt="Administrator Avatar" class="w-10 h-10 rounded-full border border-primary/30" data-alt="A professional and high-fidelity close-up portrait of a tech executive in a dark, futuristic environment. Subtle purple and blue rim lighting highlights their features against a blurred background of glowing server racks. The image has a cinematic, premium feel with sharp focus and deep shadows, emphasizing expertise and technological leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi-TgB9NMhza7OvhK1GBCkLEFVrF9enn8HdwxVoQB5wn31UsDFOzMoWg9vk7BqbCeO9UgruWhgqWpfu3ijNltZ0fsgd9fRHz8Wy2npKBvQnv6yECqyRf--sASOKTcM0d2Lk_98uv29JKT7vvzD7n1rfofB6wyiMxViU_2lo9K8ZUfFsYsD8bEtyvYycAvujVEjMxOwLwciw5pZAoeGshVrxMItJ7sxHMzr1MB6FLDgfQ-q19AdTVQ1WOQPm-bdBBJga1PFcod2cyc"/>
+</div>
+</div>
+</header>
+<div class="pt-24 pb-unit-xl px-gutter max-w-container-max mx-auto">
+<!-- Welcome Header -->
+<div class="mb-unit-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-unit-xs">Welcome back, Admin.</h2>
+<div class="flex items-center gap-unit-sm">
+<div class="px-unit-sm py-1 bg-secondary/10 border border-secondary/20 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-label-md text-label-md text-secondary">System Status: Healthy</span>
+</div>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Last synchronization: 2 minutes ago</span>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-unit-lg">
+<!-- Card 1 -->
+<div class="glass-card p-unit-lg rounded-xl neon-glow-indigo">
+<div class="flex justify-between items-start mb-unit-md">
+<span class="material-symbols-outlined text-secondary">group</span>
+<span class="font-label-md text-label-md text-secondary bg-secondary/10 px-2 py-0.5 rounded">+12%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Active Users</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">124k</h3>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-unit-lg rounded-xl">
+<div class="flex justify-between items-start mb-unit-md">
+<span class="material-symbols-outlined text-tertiary">school</span>
+<span class="font-label-md text-label-md text-tertiary bg-tertiary/10 px-2 py-0.5 rounded">+5%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Course Completion</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">68%</h3>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-unit-lg rounded-xl ai-pulse">
+<div class="flex justify-between items-start mb-unit-md">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">spark</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">AI Precision</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">94.2%</h3>
+</div>
+<!-- Card 4 -->
+<div class="glass-card p-unit-lg rounded-xl">
+<div class="flex justify-between items-start mb-unit-md">
+<span class="material-symbols-outlined text-secondary">bolt</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Live</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Platform Uptime</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">99.9%</h3>
+</div>
+</div>
+<!-- Bento Grid Section -->
+<div class="grid grid-cols-12 gap-gutter mb-unit-lg">
+<!-- Analytics Chart -->
+<div class="col-span-12 lg:col-span-8 glass-card p-unit-lg rounded-xl">
+<div class="flex justify-between items-center mb-unit-lg">
+<div>
+<h4 class="font-headline-md text-body-lg font-bold text-on-surface">User Growth &amp; Engagement</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Last 30 days active sessions</p>
+</div>
+<select class="bg-surface-container border-none text-body-sm font-label-md text-on-surface rounded-lg px-4 py-2 ring-1 ring-white/10">
+<option>Monthly</option>
+<option>Weekly</option>
+</select>
+</div>
+<div class="relative h-[300px] w-full mt-4 flex items-end gap-2 px-2">
+<!-- Simulated Chart Bars/Area -->
+<div class="flex-1 flex flex-col justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary/20 to-secondary rounded-t-sm transition-all duration-500 group-hover:to-primary" style="height: 40%"></div>
+<div class="w-full h-1 bg-white/5 mt-1"></div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary/20 to-secondary rounded-t-sm transition-all duration-500 group-hover:to-primary" style="height: 60%"></div>
+<div class="w-full h-1 bg-white/5 mt-1"></div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary/20 to-secondary rounded-t-sm transition-all duration-500 group-hover:to-primary" style="height: 55%"></div>
+<div class="w-full h-1 bg-white/5 mt-1"></div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary/20 to-secondary rounded-t-sm transition-all duration-500 group-hover:to-primary" style="height: 85%"></div>
+<div class="w-full h-1 bg-white/5 mt-1"></div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary/20 to-secondary rounded-t-sm transition-all duration-500 group-hover:to-primary" style="height: 70%"></div>
+<div class="w-full h-1 bg-white/5 mt-1"></div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary/20 to-secondary rounded-t-sm transition-all duration-500 group-hover:to-primary" style="height: 95%"></div>
+<div class="w-full h-1 bg-white/5 mt-1"></div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary/20 to-secondary rounded-t-sm transition-all duration-500 group-hover:to-primary" style="height: 80%"></div>
+<div class="w-full h-1 bg-white/5 mt-1"></div>
+</div>
+<!-- SVG Line Overlay (Simulated) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="none">
+<path d="M0,200 Q150,50 300,180 T600,80 T900,120" fill="none" opacity="0.8" stroke="url(#cyan-grad)" stroke-width="3"></path>
+<defs>
+<lineargradient id="cyan-grad" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#4cd7f6"></stop>
+<stop offset="100%" stop-color="#8083ff"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<!-- AI Performance Widget -->
+<div class="col-span-12 lg:col-span-4 glass-card p-unit-lg rounded-xl">
+<h4 class="font-headline-md text-body-lg font-bold text-on-surface mb-unit-md">Recommendation Accuracy</h4>
+<div class="space-y-unit-md mt-6">
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-body-sm text-body-sm text-on-surface">Coding</span>
+<span class="font-label-md text-label-md text-secondary">98.2%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 98.2%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-body-sm text-body-sm text-on-surface">Soft Skills</span>
+<span class="font-label-md text-label-md text-tertiary">91.5%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 91.5%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-body-sm text-body-sm text-on-surface">System Design</span>
+<span class="font-label-md text-label-md text-primary">94.8%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 94.8%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-body-sm text-body-sm text-on-surface">Data Science</span>
+<span class="font-label-md text-label-md text-secondary">89.4%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim" style="width: 89.4%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-white/5 text-center">
+<button class="font-label-md text-label-md text-primary hover:underline flex items-center gap-2 mx-auto">
+                            View Detailed Engine Logs <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="px-unit-lg py-unit-md flex justify-between items-center border-b border-white/10">
+<h4 class="font-headline-md text-body-lg font-bold text-on-surface">Recent Course Moderation</h4>
+<button class="px-4 py-2 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:opacity-90 transition-all">Review Queue</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-white/5 font-label-md text-label-md text-on-surface-variant">
+<th class="px-unit-lg py-4 font-medium uppercase tracking-wider">Course Name</th>
+<th class="px-unit-lg py-4 font-medium uppercase tracking-wider">Author</th>
+<th class="px-unit-lg py-4 font-medium uppercase tracking-wider">Category</th>
+<th class="px-unit-lg py-4 font-medium uppercase tracking-wider">Status</th>
+<th class="px-unit-lg py-4 font-medium uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-unit-lg py-4 font-body-md text-body-md text-on-surface">Advanced Rust Architectures</td>
+<td class="px-unit-lg py-4 font-body-sm text-body-sm text-on-surface-variant">Dr. Aris Thorne</td>
+<td class="px-unit-lg py-4 font-body-sm text-body-sm">
+<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md">Systems</span>
+</td>
+<td class="px-unit-lg py-4">
+<span class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                        Pending
+                                    </span>
+</td>
+<td class="px-unit-lg py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-unit-lg py-4 font-body-md text-body-md text-on-surface">Generative AI for Designers</td>
+<td class="px-unit-lg py-4 font-body-sm text-body-sm text-on-surface-variant">S. Yamaguchi</td>
+<td class="px-unit-lg py-4 font-body-sm text-body-sm">
+<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md">Design</span>
+</td>
+<td class="px-unit-lg py-4">
+<span class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                                        Approved
+                                    </span>
+</td>
+<td class="px-unit-lg py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-unit-lg py-4 font-body-md text-body-md text-on-surface">Shadow IT Risk Mitigation</td>
+<td class="px-unit-lg py-4 font-body-sm text-body-sm text-on-surface-variant">Marcus Vane</td>
+<td class="px-unit-lg py-4 font-body-sm text-body-sm">
+<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md">Security</span>
+</td>
+<td class="px-unit-lg py-4">
+<span class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-sm">flag</span>
+                                        Flagged
+                                    </span>
+</td>
+<td class="px-unit-lg py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-unit-lg py-4 font-body-md text-body-md text-on-surface">Neural Network Foundations</td>
+<td class="px-unit-lg py-4 font-body-sm text-body-sm text-on-surface-variant">Prof. L. Chen</td>
+<td class="px-unit-lg py-4 font-body-sm text-body-sm">
+<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md">AI/ML</span>
+</td>
+<td class="px-unit-lg py-4">
+<span class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                                        Approved
+                                    </span>
+</td>
+<td class="px-unit-lg py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- Visual background noise / decorative elements -->
+<div class="fixed top-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[-5%] left-[-5%] w-[30%] h-[30%] bg-secondary/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
+<script>
+        // Micro-interactions for hover states
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,123 @@
+The LearnPath application is currently experiencing critical runtime failures and white-screen rendering issues after integrating the new Psychometric Assessment Engine. Your mission is to perform a complete runtime stabilization and integration repair across the entire application WITHOUT redesigning or regenerating the project.
+
+This is a debugging and recovery task — NOT a UI generation task.
+
+PRIMARY OBJECTIVE:
+Restore full application functionality so that ALL pages render correctly, including previously working modules such as Dashboard and AI Mentor, while preserving the existing visual system and architecture.
+
+STRICT RULES:
+
+* DO NOT regenerate pages
+* DO NOT redesign components
+* DO NOT overwrite existing UI
+* DO NOT replace layouts
+* DO NOT rewrite App.tsx from scratch
+* DO NOT modify the design language
+* DO NOT remove animations
+* DO NOT alter Tailwind configuration unless absolutely required for runtime stability
+
+ONLY perform targeted fixes necessary to eliminate runtime failures and restore rendering.
+
+You must systematically inspect and repair:
+
+ROUTING & APP INTEGRATION
+
+* broken route definitions
+* invalid nested routes
+* incorrect lazy imports
+* malformed router configuration
+* duplicate route declarations
+* broken breadcrumb/sub-navigation integration
+* invalid path references
+
+IMPORT / EXPORT FAILURES
+
+* incorrect named exports
+* incorrect default exports
+* missing exports
+* duplicate component names
+* circular dependencies
+* invalid import paths
+* unresolved aliases
+* barrel export conflicts
+
+REACT & TYPESCRIPT ISSUES
+
+* missing React imports
+* missing hook imports
+* invalid hook usage
+* malformed JSX
+* invalid TS interfaces/types
+* incompatible prop definitions
+* undefined variables
+* invalid async usage
+* hydration/runtime crashes
+
+FRAMER MOTION FIXES
+
+* broken motion imports
+* invalid AnimatePresence usage
+* incorrect motion component syntax
+* animation wrapper conflicts
+
+RECHARTS FIXES
+
+* invalid chart imports
+* unsupported chart props
+* tooltip/render crashes
+* responsive container issues
+* undefined dataset references
+
+ASSESSMENT MODULE VALIDATION
+Ensure these routes render successfully:
+
+* /assessments
+* /assessments/personality
+* /assessments/aptitude
+* /assessments/behavioral
+* /assessments/results
+
+Ensure these reusable components compile correctly:
+
+* QuestionCard
+* AssessmentCard
+* AssessmentTimer
+* CognitiveRadarChart
+* AnimatedMetricCard
+* CompatibilityCard
+* NeuralInsightWidget
+* AIInsightPanel
+* AdaptiveProgressBar
+
+APPLICATION STABILITY REQUIREMENTS
+After repairs:
+
+1. ALL routes must render successfully
+2. NO white screens anywhere in the app
+3. Browser console must contain ZERO runtime import/export errors
+4. Hot reload must work correctly
+5. Existing Dashboard and Mentor pages must remain visually unchanged
+6. Existing glassmorphism + neon design system must remain intact
+7. Framer Motion animations must continue functioning
+8. Recharts visualizations must render without crashing
+
+DEBUGGING PRIORITY ORDER:
+
+1. Fix compile/runtime blockers first
+2. Restore route rendering
+3. Resolve import/export conflicts
+4. Resolve component crashes
+5. Resolve chart/animation failures
+6. Validate all assessment pages
+7. Validate existing pages still work
+
+IMPORTANT:
+Only repair what is necessary for runtime stabilization.
+Preserve the existing architecture, styling, animations, and component hierarchy exactly as much as possible.
+
+At the end:
+
+* verify every route manually
+* verify no console errors remain
+* verify all pages are visible and interactive
+* verify no component crashes occur during navigation
