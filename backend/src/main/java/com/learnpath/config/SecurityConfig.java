@@ -78,6 +78,9 @@ public class SecurityConfig {
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/roadmaps/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/skills").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/skills/{id}").permitAll()
+                        // Phase 3A — public assessment template catalog (no auth required)
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/assessments/templates").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/assessments/templates/{id}").permitAll()
                         // Public health check
                         .requestMatchers("/actuator/health").permitAll()
                         // Swagger/OpenAPI (for development)
