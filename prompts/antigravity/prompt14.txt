@@ -1,0 +1,221 @@
+PHASE 3B — ASSESSMENT EVALUATION ENGINE
+
+Context
+
+Execution Environment:
+
+* You are running on Gemini Flash (not Claude Sonnet)
+* Optimize for precision, correctness, and minimal token usage
+* Avoid unnecessary explanations or verbosity
+* Focus on delivering complete, production-ready implementation
+* Autonomously detect, diagnose, and fix any issues encountered
+* Do NOT ask for clarification — resolve all problems independently
+* Ensure system stability, consistency, and production safety at all times
+
+Current State:
+
+* backend-phase3a-stable exists and is functional
+* Phase 1, Phase 2, and Phase 3A are fully verified
+* PostgreSQL is configured and operational
+* Flyway migrations V1–V8 are applied successfully
+* Assessment persistence layer is already implemented
+
+Existing Tables:
+
+assessment_templates
+assessment_questions
+assessment_options
+assessment_sessions
+assessment_answers
+assessment_results
+
+Goal
+
+Build a complete Assessment Evaluation Engine that transforms raw assessment answers into structured evaluation metrics and updates system state accordingly.
+
+Strictly DO NOT implement:
+
+* mentor systems
+* intelligence modules
+* placement logic
+* recommendation engines
+* adaptive learning
+* AI/ML components
+
+Scope of Implementation
+
+You MUST implement:
+
+* assessment_metrics persistence layer
+* evaluation engine (core logic)
+* scoring engine (deterministic)
+* skill update integration
+* progression update integration
+* event-driven architecture for decoupling
+
+Database
+
+Create Flyway migration:
+
+V9__create_assessment_metrics.sql
+
+Create table:
+
+assessment_metrics
+
+Columns:
+
+* id UUID PRIMARY KEY
+* assessment_result_id UUID UNIQUE NOT NULL (FK)
+* user_id UUID NOT NULL
+* template_id UUID NOT NULL
+* technical_score DECIMAL(5,2)
+* aptitude_score DECIMAL(5,2)
+* behavioral_score DECIMAL(5,2)
+* communication_score DECIMAL(5,2)
+* domain_readiness_score DECIMAL(5,2)
+* overall_score DECIMAL(5,2)
+* computed_at TIMESTAMP NOT NULL
+
+Requirements:
+
+* Add appropriate indexes for performance
+* Ensure referential integrity
+* Ensure uniqueness of assessment_result_id
+* Ensure migration is idempotent and safe
+
+Evaluation Engine
+
+Create:
+
+AssessmentEvaluationService
+
+Responsibilities:
+
+* Validate assessment session completion
+* Prevent duplicate evaluations (idempotency required)
+* Aggregate answers from assessment_answers
+* Compute category-wise scores
+* Compute overall score
+* Persist assessment_result (if not already finalized)
+* Persist assessment_metrics
+* Trigger post-evaluation events
+
+Scoring Rules
+
+* Fully deterministic logic only
+* Use values from assessment_options
+* No randomness, no heuristics, no ML
+* No adaptive or recommendation logic
+* Ensure consistent scoring across executions
+
+Skill Integration
+
+On successful evaluation:
+
+* Update user_skills.confidence_score
+* Increase confidence for strong performance
+* Create missing user_skill records if they do not exist
+* Ensure updates are transactional and consistent
+* Avoid tight coupling with evaluation service
+
+Progression Integration
+
+On successful evaluation:
+
+Update user_progression:
+
+* mastery_score
+* total_xp
+
+Requirements:
+
+* Use deterministic calculations
+* Ensure no regression in progression data
+* Maintain transactional integrity
+* No adaptive or intelligence-based logic
+
+Events
+
+Create Spring Application Event:
+
+AssessmentCompletedEvent
+
+Requirements:
+
+* Publish event ONLY after successful evaluation and persistence
+* Use event listeners for:
+
+  * skill updates
+  * progression updates
+* Ensure loose coupling between services
+* Ensure event handling is reliable and does not break transaction flow
+
+Testing
+
+Create the following test classes:
+
+* AssessmentEvaluationServiceTest
+* AssessmentMetricsIntegrationTest
+* ProgressionIntegrationTest
+
+Tests MUST verify:
+
+* Correct metric generation
+* Accurate score calculations
+* Proper persistence of assessment_metrics
+* Skill updates are applied correctly
+* Progression updates are applied correctly
+* Duplicate evaluations are prevented
+* Transactional consistency is maintained
+
+Validation
+
+Conceptually execute:
+
+mvn clean compile
+mvn clean test
+mvn spring-boot
+
+Ensure:
+
+* All tests pass
+* No Flyway migration failures
+* No circular dependencies
+* No bean creation issues
+* No runtime exceptions
+* No data integrity violations
+* No duplicate evaluation scenarios
+
+Autonomous Error Handling
+
+You MUST:
+
+* Detect and fix compilation errors
+* Resolve missing dependencies and imports
+* Correct schema mismatches and migration issues
+* Fix transactional or service-layer bugs
+* Enforce idempotency in evaluation logic
+* Maintain clean architecture and separation of concerns
+* Ensure all components integrate seamlessly
+
+Output ONLY:
+
+1. Files created
+2. Files modified
+3. Database changes
+4. Events created
+5. Evaluation flow
+6. Validation results
+7. Remaining blockers
+
+If successful, end with:
+
+PHASE 3B ASSESSMENT EVALUATION COMPLETE
+
+Strict Constraints:
+
+* Do NOT generate Phase 4
+* Do NOT introduce mentor, intelligence, or placement modules
+* Do NOT add AI or adaptive logic
+* Stay strictly within defined scope

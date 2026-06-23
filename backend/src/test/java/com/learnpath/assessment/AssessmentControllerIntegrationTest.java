@@ -250,7 +250,7 @@ class AssessmentControllerIntegrationTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.data.sessionId").value(sessionId.toString()))
-                .andExpect(jsonPath("$.data.scorePercentage").value(0.0)); // Default 0.00 in Phase 3A
+                .andExpect(jsonPath("$.data.scorePercentage").value(100.0));
     }
 
     @Test

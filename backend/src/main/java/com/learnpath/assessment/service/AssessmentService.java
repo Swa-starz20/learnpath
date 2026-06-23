@@ -41,6 +41,7 @@ public class AssessmentService {
     private final AssessmentSessionRepository sessionRepository;
     private final AssessmentAnswerRepository answerRepository;
     private final AssessmentResultRepository resultRepository;
+    private final AssessmentEvaluationService evaluationService;
 
     public AssessmentService(
             AssessmentTemplateRepository templateRepository,
@@ -48,13 +49,15 @@ public class AssessmentService {
             AssessmentOptionRepository optionRepository,
             AssessmentSessionRepository sessionRepository,
             AssessmentAnswerRepository answerRepository,
-            AssessmentResultRepository resultRepository) {
+            AssessmentResultRepository resultRepository,
+            AssessmentEvaluationService evaluationService) {
         this.templateRepository = templateRepository;
         this.questionRepository = questionRepository;
         this.optionRepository = optionRepository;
         this.sessionRepository = sessionRepository;
         this.answerRepository = answerRepository;
         this.resultRepository = resultRepository;
+        this.evaluationService = evaluationService;
     }
 
     // ── Template operations (public) ──────────────────────────────────────────
@@ -197,32 +200,8 @@ public class AssessmentService {
     @Transactional
     public AssessmentResultResponse submitSession(UUID sessionId, UUID userId,
                                                   SubmitSessionRequest request) {
-        AssessmentSession session = sessionRepository.findById(sessionId)
-                .orElseThrow(() -> new ResourceNotFoundException("AssessmentSession", "id", sessionId));
-        assertOwnership(session.getUserId(), userId, "session");
-
-        if (!session.isInProgress()) {
-            throw new AppException(HttpStatus.BAD_REQUEST,
-                    "Session is not in progress and cannot be submitted.");
-        }
-
-        // Guard against double-result (belt and suspenders alongside the DB UNIQUE constraint)
-        if (resultRepository.existsBySessionId(sessionId)) {
-            throw new DuplicateResourceException("A result already exists for this session.");
-        }
-
-        // Transition session status
-        session.submit(request.timeSpentSeconds());
-        sessionRepository.save(session);
-
-        // Create result with score 0.00 (scoring engine is Phase 3B+)
-        AssessmentResult result = new AssessmentResult(
-                session, userId, session.getTemplate());
-        AssessmentResult savedResult = resultRepository.save(result);
-
-        log.info("Session {} submitted by user {}. Result {} created with score 0.00.",
-                sessionId, userId, savedResult.getId());
-        return AssessmentResultResponse.from(savedResult);
+        AssessmentResult result = evaluationService.evaluateSession(sessionId, userId, request.timeSpentSeconds());
+        return AssessmentResultResponse.from(result);
     }
 
     /**
