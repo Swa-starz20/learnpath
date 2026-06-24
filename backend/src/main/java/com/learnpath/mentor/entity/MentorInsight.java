@@ -31,6 +31,9 @@ public class MentorInsight {
     @Column(name = "generated_at", nullable = false, updatable = false)
     private Instant generatedAt;
 
+    @Column(name = "assessment_result_id")
+    private UUID assessmentResultId;
+
     @PrePersist
     protected void onCreate() {
         this.generatedAt = Instant.now();
@@ -45,6 +48,15 @@ public class MentorInsight {
         this.title = title;
         this.description = description;
         this.priority = priority;
+    }
+
+    public MentorInsight(UUID userId, String insightType, String title, String description, Integer priority, UUID assessmentResultId) {
+        this.userId = userId;
+        this.insightType = insightType;
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.assessmentResultId = assessmentResultId;
     }
 
     // Getters and Setters
@@ -98,5 +110,13 @@ public class MentorInsight {
 
     public Instant getGeneratedAt() {
         return generatedAt;
+    }
+
+    public UUID getAssessmentResultId() {
+        return assessmentResultId;
+    }
+
+    public void setAssessmentResultId(UUID assessmentResultId) {
+        this.assessmentResultId = assessmentResultId;
     }
 }

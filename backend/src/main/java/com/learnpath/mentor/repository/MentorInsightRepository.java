@@ -10,4 +10,5 @@ import java.util.UUID;
 @Repository
 public interface MentorInsightRepository extends JpaRepository<MentorInsight, UUID> {
     List<MentorInsight> findByUserIdOrderByGeneratedAtDesc(UUID userId);
+    boolean existsByUserIdAndInsightTypeAndAssessmentResultId(UUID userId, String insightType, UUID assessmentResultId);
 }
