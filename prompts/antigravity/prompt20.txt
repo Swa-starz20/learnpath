@@ -1,0 +1,514 @@
+Implement Phase 6B — Analytics Intelligence.
+
+====================================================
+IMPORTANT REQUIREMENTS
+====================================================
+
+Follow the existing backend architecture exactly.
+
+Do NOT modify previous modules unless absolutely required.
+
+Do NOT break existing APIs.
+
+Do NOT introduce placeholder implementations.
+
+Do NOT leave TODOs.
+
+Maintain production-quality code.
+
+====================================================
+EXECUTION CONTRACT
+====================================================
+
+Work as a Senior Backend Architect.
+
+Before writing any code:
+
+• Inspect the existing codebase completely.
+• Understand the architecture before implementation.
+• Reuse existing patterns.
+• Preserve package structure.
+• Preserve naming conventions.
+• Preserve coding style.
+• Preserve module boundaries.
+• Preserve event-driven architecture.
+• Preserve transaction boundaries.
+• Preserve security configuration.
+• Reuse existing services whenever possible.
+• Never duplicate business logic.
+
+During implementation:
+
+• Complete the entire phase before stopping.
+• Think through the entire implementation before modifying files.
+• Automatically resolve compilation errors.
+• Automatically resolve runtime errors.
+• Automatically resolve Flyway migration issues.
+• Automatically resolve dependency issues.
+• Automatically resolve bean creation issues.
+• Automatically resolve import issues.
+• Automatically resolve transaction issues.
+• Automatically resolve event listener issues.
+• Automatically resolve repository issues.
+• Automatically resolve entity mapping issues.
+• Automatically resolve integration test failures.
+• Automatically resolve unit test failures.
+• Automatically refactor whenever necessary.
+• Never stop after fixing only one error.
+• Continue iterating until the project is completely stable.
+
+If an equivalent implementation already exists:
+
+• Extend it.
+• Refactor it.
+• Reuse it.
+
+Do NOT create duplicate entities, services, repositories, DTOs, controllers, events or utilities.
+
+Maintain backward compatibility with all previous phases.
+
+Never remove existing functionality.
+
+Never modify previous Flyway migrations.
+
+Create ONLY new migrations.
+
+====================================================
+OBJECTIVE
+====================================================
+
+Build the Analytics Intelligence layer that transforms raw analytics data into actionable insights.
+
+Analytics Intelligence must consume data from:
+
+- Assessment module
+- Mentor module
+- Placement module
+- Progression module
+- Roadmap module
+
+without duplicating business logic.
+
+Analytics remains an aggregation module only.
+
+====================================================
+DATABASE
+====================================================
+
+Create
+
+V15__create_analytics_intelligence_tables.sql
+
+Create tables:
+
+analytics_insights
+
+- id
+- user_id
+- insight_type
+- title
+- description
+- priority
+- generated_at
+- assessment_result_id (nullable)
+- snapshot_id (nullable)
+
+analytics_recommendations
+
+- id
+- user_id
+- recommendation_type
+- title
+- description
+- action_url
+- completed
+- created_at
+
+analytics_trends
+
+- id
+- user_id
+- metric_name
+- previous_value
+- current_value
+- trend_direction
+- improvement_percent
+- calculated_at
+
+analytics_predictions
+
+- id
+- user_id
+- prediction_type
+- predicted_score
+- confidence
+- explanation
+- created_at
+
+Create indexes.
+
+Create foreign keys.
+
+Create update triggers where appropriate.
+
+Prevent duplicate active recommendations.
+
+====================================================
+ENTITY LAYER
+====================================================
+
+Create entities:
+
+AnalyticsInsight
+
+AnalyticsRecommendation
+
+AnalyticsTrend
+
+AnalyticsPrediction
+
+====================================================
+REPOSITORIES
+====================================================
+
+Create repositories for all entities.
+
+====================================================
+DTOS
+====================================================
+
+Create response DTOs:
+
+AnalyticsInsightResponse
+
+AnalyticsRecommendationResponse
+
+AnalyticsTrendResponse
+
+AnalyticsPredictionResponse
+
+====================================================
+SERVICE LAYER
+====================================================
+
+Create
+
+AnalyticsInsightGenerator
+
+AnalyticsRecommendationGenerator
+
+AnalyticsTrendAnalyzer
+
+AnalyticsPredictionService
+
+AnalyticsIntelligenceService
+
+Responsibilities
+
+--------------------------------
+
+AnalyticsTrendAnalyzer
+
+Calculate
+
+roadmap trend
+
+assessment trend
+
+XP growth
+
+mastery growth
+
+readiness improvement
+
+Return
+
+UP
+
+DOWN
+
+STABLE
+
+with percentage improvements.
+
+--------------------------------
+
+AnalyticsInsightGenerator
+
+Generate insights such as
+
+Excellent assessment improvement
+
+Roadmap progress slowing
+
+Assessment consistency
+
+XP growth
+
+Low activity warning
+
+Strong placement readiness
+
+High mentor engagement
+
+Streak milestone
+
+Duplicate prevention required.
+
+--------------------------------
+
+AnalyticsRecommendationGenerator
+
+Generate recommendations like
+
+Retake assessment
+
+Continue roadmap
+
+Practice aptitude
+
+Improve communication
+
+Strengthen technical skills
+
+Maintain streak
+
+Complete mentor suggestions
+
+No duplicate active recommendations.
+
+--------------------------------
+
+AnalyticsPredictionService
+
+Produce lightweight deterministic predictions.
+
+NO ML.
+
+Examples
+
+Estimated placement readiness next month
+
+Estimated roadmap completion
+
+Expected mastery score
+
+Expected XP after current roadmap
+
+Confidence values
+
+HIGH
+
+MEDIUM
+
+LOW
+
+====================================================
+EVENTS
+====================================================
+
+Consume existing events only.
+
+Use:
+
+AssessmentCompletedEvent
+
+MentorGeneratedEvent (if available)
+
+PlacementUpdatedEvent (if available)
+
+Otherwise consume only events already implemented.
+
+All listeners must use
+
+@TransactionalEventListener(AFTER_COMMIT)
+
+Propagation.REQUIRES_NEW
+
+Maintain complete event-driven decoupling.
+
+====================================================
+CONTROLLER
+====================================================
+
+Extend AnalyticsController.
+
+Add endpoints
+
+GET
+
+/api/v1/analytics/insights
+
+GET
+
+/api/v1/analytics/recommendations
+
+GET
+
+/api/v1/analytics/trends
+
+GET
+
+/api/v1/analytics/predictions
+
+====================================================
+TESTING
+====================================================
+
+Create
+
+AnalyticsInsightGeneratorTest
+
+AnalyticsTrendAnalyzerTest
+
+AnalyticsPredictionServiceTest
+
+AnalyticsIntelligenceIntegrationTest
+
+Run
+
+mvn clean compile
+
+Automatically fix every compilation error.
+
+Run
+
+mvn clean test
+
+Automatically fix every failing test.
+
+If any test fails:
+
+• Find the root cause.
+• Fix it.
+• Rerun the affected tests.
+• Rerun the complete suite.
+• Repeat until every test passes.
+
+====================================================
+QUALITY GATES
+====================================================
+
+Do NOT stop until ALL of the following are true:
+
+✓ No compilation errors
+
+✓ No runtime errors
+
+✓ No failing tests
+
+✓ No Spring Boot startup errors
+
+✓ No bean creation failures
+
+✓ No Flyway migration failures
+
+✓ No entity mapping errors
+
+✓ No dependency injection issues
+
+✓ No circular dependencies
+
+✓ No duplicate event processing
+
+✓ No duplicate active recommendations
+
+✓ No duplicate database records
+
+✓ No broken REST endpoints
+
+✓ No architecture violations
+
+✓ Previous phases continue to work
+
+If any quality gate fails,
+
+fix it automatically,
+
+rerun verification,
+
+and continue until every quality gate passes.
+
+====================================================
+VALIDATION
+====================================================
+
+Do not declare completion until ALL verification succeeds.
+
+Verify:
+
+✓ BUILD SUCCESS
+
+✓ mvn clean compile passes
+
+✓ mvn clean test passes
+
+✓ All previous tests remain green
+
+✓ Flyway migrated successfully to V15
+
+✓ Local PostgreSQL schema contains
+
+analytics_insights
+
+analytics_recommendations
+
+analytics_trends
+
+analytics_predictions
+
+✓ Indexes created
+
+✓ Foreign keys created
+
+✓ Triggers created
+
+✓ Spring Boot starts successfully
+
+✓ REST endpoints function correctly
+
+✓ Existing APIs remain unchanged
+
+✓ No regressions introduced
+
+Perform a complete self-review before returning.
+
+If any issue is detected,
+
+fix it automatically,
+
+rerun verification,
+
+and repeat until no issues remain.
+
+====================================================
+OUTPUT
+====================================================
+
+Return ONLY
+
+1. Files Created
+
+2. Files Modified
+
+3. Database Changes
+
+4. Events Consumed
+
+5. Validation Results
+
+6. Issues Automatically Resolved
+
+7. Remaining Blockers
+
+If Remaining Blockers is anything other than "None",
+
+continue working until it becomes "None".
+
+Do not stop midway.
+
+Do not ask for confirmation.
+
+Do not return partial implementations.
+
+Complete the entire phase before returning.

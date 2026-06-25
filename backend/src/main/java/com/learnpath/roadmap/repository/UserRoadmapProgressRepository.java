@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface UserRoadmapProgressRepository extends JpaRepository<UserRoadmapProgress, Long> {
+    List<UserRoadmapProgress> findByUserId(UUID userId);
     List<UserRoadmapProgress> findByUserIdAndCareerTrackId(UUID userId, Long careerTrackId);
     Optional<UserRoadmapProgress> findByUserIdAndRoadmapNodeId(UUID userId, Long roadmapNodeId);
     long countByUserIdAndCareerTrackIdAndStatus(UUID userId, Long careerTrackId, String status);

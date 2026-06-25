@@ -1,0 +1,319 @@
+PHASE 5A — PLACEMENT FOUNDATION (STRICT, AUTONOMOUS, ERROR-RESILIENT)
+
+Context
+
+Current verified state:
+
+* backend-phase4-stable
+* Flyway V1–V11 applied
+* Assessment Foundation complete
+* Assessment Evaluation complete
+* Mentor Foundation complete
+* Mentor Intelligence complete
+* 46 tests passing
+* Event-driven architecture verified
+
+Goal
+
+Implement **Phase 5A only (Placement Foundation)**.
+
+This phase must strictly establish:
+
+* placement profiles
+* placement targets
+* placement preferences
+
+No intelligence, no recommendation logic, no matching logic.
+
+System must remain stable, consistent, and fully buildable.
+
+You must autonomously:
+
+* detect and fix compilation errors
+* resolve dependency issues
+* prevent circular dependencies
+* maintain naming consistency
+* align with existing architecture patterns
+* ensure Flyway compatibility
+* ensure test stability
+
+Do NOT proceed to Phase 5B.
+
+---
+
+## DATABASE
+
+Create migration:
+
+V12__create_placement_tables.sql
+
+Tables:
+
+placement_profiles
+placement_targets
+placement_preferences
+
+### placement_profiles
+
+* id UUID PK
+* user_id UUID NOT NULL
+* domain_id BIGINT NULL
+* current_cgpa DECIMAL(4,2)
+* target_package_lpa DECIMAL(6,2)
+* preferred_location VARCHAR(200)
+* created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+* updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+
+Constraint:
+
+UNIQUE(user_id, domain_id)
+
+Use existing trigger:
+
+set_updated_at()
+
+---
+
+### placement_targets
+
+* id UUID PK
+* profile_id UUID NOT NULL FK → placement_profiles(id) ON DELETE CASCADE
+* company_name VARCHAR(255) NOT NULL
+* role_name VARCHAR(255) NOT NULL
+* priority INTEGER DEFAULT 1
+* created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+
+---
+
+### placement_preferences
+
+* id UUID PK
+* profile_id UUID NOT NULL FK → placement_profiles(id) ON DELETE CASCADE
+* prefers_remote BOOLEAN DEFAULT false
+* prefers_hybrid BOOLEAN DEFAULT false
+* prefers_onsite BOOLEAN DEFAULT false
+* preferred_company_size VARCHAR(50)
+* preferred_industry VARCHAR(100)
+* created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+* updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+
+---
+
+Indexes:
+
+* idx_placement_profiles_user
+* idx_placement_targets_profile
+* idx_placement_preferences_profile
+
+Ensure migration is idempotent-safe and Flyway-compatible.
+
+---
+
+## ENTITY LAYER
+
+Create:
+
+* PlacementProfile
+* PlacementTarget
+* PlacementPreference
+
+Rules:
+
+* UUID identifiers
+* Follow existing entity conventions
+* No bidirectional relationships unless already standard
+* No cross-module ownership
+* Use Lombok only if already used in project
+* Ensure equals/hashCode consistency
+
+---
+
+## REPOSITORIES
+
+Create repositories:
+
+* PlacementProfileRepository
+* PlacementTargetRepository
+* PlacementPreferenceRepository
+
+Include:
+
+* findByUserId
+* findByProfileId
+* existence checks for uniqueness enforcement
+
+---
+
+## DTOS
+
+Responses:
+
+* PlacementProfileResponse
+* PlacementTargetResponse
+* PlacementPreferenceResponse
+
+Requests:
+
+* CreatePlacementProfileRequest
+* UpdatePlacementProfileRequest
+* CreatePlacementTargetRequest
+* UpdatePlacementPreferenceRequest
+
+Requirements:
+
+* Bean Validation annotations
+* Null safety
+* Consistent naming with existing DTOs
+
+---
+
+## SERVICE LAYER
+
+Create:
+
+PlacementService
+
+Responsibilities:
+
+* createProfile
+* updateProfile
+* getProfile
+* addTarget
+* listTargets
+* updatePreferences
+* getPreferences
+
+Rules:
+
+* @Transactional on write methods
+* @Transactional(readOnly = true) on read methods
+* Enforce UNIQUE(user_id, domain_id)
+* Prevent duplicate profiles
+* Validate ownership via user_id
+* No business intelligence logic
+
+---
+
+## CONTROLLER
+
+Create:
+
+PlacementController
+
+Base path:
+
+/api/v1/placements
+
+Endpoints:
+
+GET    /profile
+POST   /profile
+PUT    /profile
+
+GET    /targets
+POST   /targets
+
+GET    /preferences
+PUT    /preferences
+
+Rules:
+
+* All endpoints authenticated
+* Extract user from JWT only
+* No request-based user_id
+* Proper HTTP status codes
+* Consistent response structure
+
+---
+
+## SECURITY
+
+* No public endpoints
+* Follow existing JWT security filters
+* Do not modify security configuration unless required for compilation
+
+---
+
+## TESTING
+
+Create:
+
+PlacementControllerIntegrationTest
+
+Verify:
+
+* profile creation
+* profile update
+* target creation
+* preference update
+* unauthorized access rejected
+* duplicate profile constraint enforced
+
+Tests must:
+
+* pass consistently
+* not break existing 46 tests
+* use existing test patterns
+
+---
+
+## ARCHITECTURE CONSTRAINTS
+
+STRICTLY DO NOT IMPLEMENT:
+
+* placement intelligence
+* recommendation engine
+* matching engine
+* career alignment
+* adaptive learning
+* AI integrations
+
+DO NOT MODIFY:
+
+* assessment module
+* mentor module
+* progression module
+* skills module
+
+Only extend system with placement foundation.
+
+---
+
+## VALIDATION (MANDATORY)
+
+Run and ensure success:
+
+mvn clean compile
+mvn clean test
+mvn spring-boot
+
+System must:
+
+* compile without errors
+* pass all tests
+* apply Flyway migration successfully
+* start without bean failures
+* have no circular dependencies
+
+If any issue occurs:
+
+* fix automatically
+* re-run validation
+* ensure stability before output
+
+---
+
+## OUTPUT FORMAT
+
+Return only:
+
+1. Files created
+2. Files modified
+3. Database tables created
+4. API endpoints created
+5. Validation results
+6. Remaining blockers
+
+End with:
+
+PHASE 5A PLACEMENT FOUNDATION COMPLETE

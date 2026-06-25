@@ -1,0 +1,14 @@
+Approved with one architectural adjustment:
+
+Do NOT persist readiness_score, technical_score, aptitude_score,
+communication_score, or behavioral_score inside placement_profiles.
+
+Create a dedicated placement_readiness table in V13.
+
+All readiness, fit score, and skill gap records must reference
+assessment_result_id to preserve historical snapshots and ensure
+idempotent event processing.
+
+Keep placement_profiles as user preferences/configuration only.
+
+Proceed with implementation.

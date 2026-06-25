@@ -50,10 +50,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, info
+        include: health, info, metrics, env
   endpoint:
     health:
-      show-details: when-authorized
+      show-details: always
 
 # ── Server ──────────────────────────────────────────────────────────────────
 server:

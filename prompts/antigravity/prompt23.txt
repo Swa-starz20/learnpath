@@ -1,0 +1,569 @@
+Implement Phase 8 — Platform Integration.
+
+IMPORTANT REQUIREMENTS
+
+Follow the existing backend architecture exactly.
+
+Before writing any code, inspect the existing repository and understand the current architecture, package structure, module boundaries, services, repositories, entities, DTOs, events, schedulers, controllers, configurations, exception handling, logging, and security implementation.
+
+Reuse existing services, repositories, DTOs, entities, event classes, utilities, and configurations wherever possible.
+
+Do NOT duplicate business logic already implemented in another module.
+
+Do NOT create parallel implementations if an existing implementation can be reused or extended.
+
+Maintain consistency with the existing coding style, naming conventions, dependency injection style, transactional boundaries, event-driven architecture, logging conventions, exception handling, package organization, and testing strategy.
+
+Do NOT modify previous modules unless absolutely required.
+
+Do NOT break existing APIs.
+
+Do NOT change existing endpoint contracts.
+
+Do NOT change existing event contracts.
+
+Do NOT modify database schemas unless explicitly required.
+
+Do NOT introduce placeholder implementations.
+
+Do NOT leave TODOs.
+
+Do NOT introduce mock implementations.
+
+Do NOT leave partially implemented features.
+
+Do NOT remove existing tests.
+
+Maintain production-quality code.
+
+All new functionality must integrate cleanly with the existing modules.
+
+After every logical implementation step:
+
+• resolve compilation errors immediately
+
+• resolve dependency issues immediately
+
+• resolve bean conflicts immediately
+
+• resolve transaction issues immediately
+
+• resolve Flyway issues immediately
+
+• resolve configuration issues immediately
+
+• resolve failing tests immediately
+
+Do not postpone fixes until the end.
+
+If multiple implementation approaches exist, choose the one that best preserves the current architecture while minimizing future maintenance.
+
+Before returning the final response, perform a complete consistency review across the entire codebase and automatically resolve every issue found.
+
+Do not stop midway.
+
+Do not ask for confirmation.
+
+Complete the entire phase before returning.
+
+====================================================
+OBJECTIVE
+====================================================
+
+Transform the existing backend into a fully integrated production-ready platform.
+
+This phase focuses on orchestration, aggregation, monitoring, documentation, scheduling, logging, production configuration, and complete integration testing.
+
+No ML.
+
+No AI.
+
+No recommendation logic.
+
+Only platform integration.
+
+====================================================
+PART 1 — DASHBOARD AGGREGATION
+====================================================
+
+Create a Dashboard module.
+
+Create
+
+dashboard/
+
+controller
+
+service
+
+dto
+
+Implement
+
+DashboardService
+
+DashboardController
+
+Create endpoint
+
+GET
+
+/api/v1/dashboard
+
+Return a single aggregated response containing:
+
+Authenticated User
+
+Profile
+
+XP
+
+Mastery Score
+
+Current Level
+
+Assessment Summary
+
+Latest Assessment Score
+
+Assessment Average
+
+Placement Readiness
+
+Current Roadmap Progress
+
+Roadmap Completion
+
+Active Mentor Insights
+
+Active Placement Recommendations
+
+Analytics Snapshot
+
+Learning Streak
+
+Unread Notification Count
+
+Latest Notifications (limit 5)
+
+Recent Activity
+
+All data must be obtained from existing services and repositories.
+
+Dashboard must remain an aggregation layer only.
+
+Reuse existing logic.
+
+Gracefully handle missing data.
+
+====================================================
+PART 2 — SCHEDULER
+====================================================
+
+Enable scheduling.
+
+Create
+
+scheduler/
+
+PlatformScheduler.java
+
+Implement scheduled jobs:
+
+Daily Analytics Snapshot
+
+Daily Placement Readiness Refresh
+
+Weekly Mentor Refresh
+
+Weekly Analytics Intelligence Refresh
+
+Weekly Notification Cleanup
+
+Monthly Snapshot Cleanup
+
+Use
+
+@EnableScheduling
+
+@Scheduled
+
+Schedulers must invoke existing services only.
+
+No duplicated logic.
+
+====================================================
+PART 3 — GLOBAL SEARCH
+====================================================
+
+Create
+
+search/
+
+controller
+
+service
+
+dto
+
+Implement
+
+GET
+
+/api/v1/search?q=...
+
+Search across
+
+Skills
+
+Courses
+
+Domains
+
+Roadmaps
+
+Mentor Recommendations
+
+Placement Targets
+
+Return grouped search results.
+
+Reuse existing repositories.
+
+Search module must remain an aggregation layer only.
+
+====================================================
+PART 4 — SWAGGER / OPENAPI
+====================================================
+
+Integrate
+
+springdoc-openapi
+
+Configure
+
+Swagger UI
+
+OpenAPI documentation
+
+JWT Bearer authentication
+
+API grouping
+
+Descriptions
+
+Schema examples
+
+Operation summaries
+
+Controller annotations
+
+Expose
+
+/swagger-ui.html
+
+/v3/api-docs
+
+====================================================
+PART 5 — ACTUATOR
+====================================================
+
+Enable Spring Boot Actuator.
+
+Expose
+
+/actuator/health
+
+/actuator/info
+
+/actuator/metrics
+
+/actuator/env
+
+Configure production-safe exposure.
+
+====================================================
+PART 6 — GLOBAL EXCEPTION HANDLING
+====================================================
+
+Improve global exception handling.
+
+Standardize REST error responses.
+
+Response format
+
+timestamp
+
+status
+
+error
+
+message
+
+path
+
+errorCode
+
+Handle
+
+ValidationException
+
+EntityNotFoundException
+
+AccessDeniedException
+
+AuthenticationException
+
+MethodArgumentNotValidException
+
+IllegalArgumentException
+
+Unexpected Exceptions
+
+Do not expose stack traces.
+
+====================================================
+PART 7 — LOGGING
+====================================================
+
+Implement centralized request logging.
+
+Use SLF4J.
+
+Create request logging interceptor or filter.
+
+Log
+
+Request Method
+
+URI
+
+Execution Time
+
+Authenticated User
+
+Response Status
+
+Errors
+
+Generate a Request ID for every request.
+
+Include Request ID in every log entry.
+
+====================================================
+PART 8 — PRODUCTION CONFIGURATION
+====================================================
+
+Create
+
+application-dev.yml
+
+application-test.yml
+
+application-prod.yml
+
+Separate
+
+Database
+
+Logging
+
+Swagger
+
+Actuator
+
+JWT
+
+Scheduling
+
+Profile-specific configuration.
+
+====================================================
+PART 9 — HEALTH COMPONENTS
+====================================================
+
+Create custom health indicators.
+
+Verify
+
+Database connectivity
+
+Flyway status
+
+Scheduler availability
+
+Return custom health details.
+
+====================================================
+PART 10 — FINAL INTEGRATION TESTS
+====================================================
+
+Create end-to-end integration tests covering complete user flow.
+
+Register
+
+↓
+
+Login
+
+↓
+
+Assessment
+
+↓
+
+Evaluation
+
+↓
+
+Mentor Generation
+
+↓
+
+Placement Intelligence
+
+↓
+
+Analytics
+
+↓
+
+Notifications
+
+↓
+
+Dashboard Aggregation
+
+↓
+
+Search
+
+↓
+
+Health
+
+↓
+
+Swagger Availability
+
+Ensure all previous tests remain green.
+
+====================================================
+ARCHITECTURE RULES
+====================================================
+
+Dashboard is an aggregation layer only.
+
+Search is an aggregation layer only.
+
+Schedulers invoke existing services.
+
+Do not duplicate calculations.
+
+Do not duplicate business rules.
+
+Reuse existing modules.
+
+Reuse existing services.
+
+Reuse existing repositories.
+
+Reuse existing events.
+
+Maintain transactional integrity.
+
+Maintain AFTER_COMMIT event architecture.
+
+Maintain package consistency.
+
+Avoid circular dependencies.
+
+Avoid duplicate beans.
+
+Avoid redundant configuration.
+
+====================================================
+VALIDATION
+====================================================
+
+Before completion automatically verify:
+
+✓ mvn clean compile
+
+✓ mvn clean test
+
+✓ BUILD SUCCESS
+
+✓ All previous tests remain green
+
+✓ Dashboard endpoint operational
+
+✓ Search endpoint operational
+
+✓ Swagger operational
+
+✓ Actuator operational
+
+✓ Scheduler starts correctly
+
+✓ Health endpoints operational
+
+✓ No Flyway validation errors
+
+✓ No Flyway checksum mismatches
+
+✓ No circular dependency issues
+
+✓ No duplicate beans
+
+✓ No repository initialization failures
+
+✓ No dependency injection failures
+
+✓ No endpoint conflicts
+
+✓ No runtime startup failures
+
+✓ No architectural inconsistencies
+
+✓ No compiler warnings requiring manual fixes
+
+If any validation fails:
+
+Automatically determine the root cause.
+
+Fix it.
+
+Rebuild.
+
+Retest.
+
+Repeat until every validation passes successfully.
+
+====================================================
+OUTPUT
+====================================================
+
+Return ONLY
+
+1. Files Created
+
+2. Files Modified
+
+3. New Endpoints
+
+4. Scheduled Jobs
+
+5. Swagger Configuration
+
+6. Actuator Configuration
+
+7. Logging Improvements
+
+8. Validation Results
+
+9. Remaining Blockers
+
+Do not include implementation details.
+
+Do not stop until the entire phase is completely implemented, validated, production-ready, and all verification steps pass successfully.

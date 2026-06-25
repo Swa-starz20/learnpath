@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/learnpath_test
+    username: test_user
+    password: test_password
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    root: WARN
+    com.learnpath: INFO
+    org.springframework.security: WARN
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

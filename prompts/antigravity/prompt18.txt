@@ -1,0 +1,216 @@
+PHASE 5B — PLACEMENT INTELLIGENCE
+
+Context:
+
+Phase 5A Placement Foundation is complete and verified.
+
+System State:
+
+* Flyway migrated through V12
+* Placement foundation tables exist
+* Placement APIs operational
+* Mentor Intelligence active
+* Assessment Evaluation Engine active
+* Skill + Progression event listeners active
+* All tests passing
+
+Objective:
+
+Implement a robust, event-driven Placement Intelligence system that is consistent, fault-tolerant, and self-correcting. The implementation must autonomously resolve compilation issues, logical inconsistencies, and integration gaps while preserving architectural integrity.
+
+Architecture Rules (STRICT)
+
+* Do NOT modify behavior from Phase 1–5A
+* No cross-module JPA entity relationships
+* Use UUID references only
+* Constructor injection only (no field injection)
+* Use @TransactionalEventListener(AFTER_COMMIT)
+* Maintain strict module decoupling via events
+* Ensure idempotency for all event-driven operations
+* Prevent duplicate records at DB + service level
+* Ensure null safety and defensive coding
+* Maintain transactional consistency
+
+Core Features
+
+1. Placement Readiness Engine
+
+Implement PlacementIntelligenceService:
+
+Compute:
+
+* readiness_score (0–100)
+* technical_score
+* aptitude_score
+* communication_score
+* behavioral_score
+
+Source:
+
+* AssessmentResult
+* AssessmentMetric
+
+Requirements:
+
+* Normalize scores
+* Handle missing metrics gracefully
+* Ensure deterministic output
+
+2. Company Fit Analysis
+
+Generate company fit scores per placement target:
+
+Fields:
+
+* target_company
+* target_role
+* fit_score
+* confidence_level
+
+Requirements:
+
+* Use readiness + skill signals
+* Avoid duplicate entries per (profile_id, company, role)
+* Persist efficiently with indexing
+
+3. Skill Gap Analysis
+
+Compare:
+
+* inferred required competencies (from readiness metrics)
+* current user skill confidence
+
+Generate:
+
+* gap_type
+* severity
+* recommended_action
+
+Requirements:
+
+* Avoid redundant gap entries
+* Ensure meaningful classification
+
+4. Placement Insights
+
+Generate actionable insights:
+
+Examples:
+
+* Low aptitude readiness
+* Communication weakness
+* Strong technical readiness
+* Interview readiness risk
+
+Requirements:
+
+* Deduplicate per assessment_result_id
+* Categorize insights (strength, weakness, warning)
+* Ensure relevance threshold
+
+5. Placement Recommendations
+
+Generate actionable recommendations:
+
+Types:
+
+* roadmap actions
+* course suggestions
+* assessment retakes
+* interview preparation
+
+Requirements:
+
+* Prevent active duplicates
+* Link to insight or gap where applicable
+* Maintain lifecycle (active/inactive)
+
+Database
+
+Create Flyway migration:
+
+V13__create_placement_intelligence_tables.sql
+
+Tables:
+
+* placement_insights
+* placement_recommendations
+* company_fit_scores
+* skill_gap_analysis
+
+Requirements:
+
+* Proper indexing (user_id, profile_id, assessment_result_id)
+* Unique constraints to enforce idempotency
+* Foreign keys using UUID references only
+* Timestamps + updated_at triggers
+* Optimized for read-heavy queries
+
+Events
+
+Consume:
+
+* AssessmentCompletedEvent
+
+On event:
+
+* Compute readiness
+* Generate insights
+* Generate recommendations
+* Generate company fit scores
+* Generate skill gap analysis
+
+Requirements:
+
+* Execute AFTER_COMMIT
+* Ensure idempotent processing
+* Handle replays safely
+
+Testing
+
+Create:
+
+* PlacementIntelligenceServiceTest
+* PlacementInsightGeneratorTest
+* PlacementRecommendationGeneratorTest
+* PlacementIntelligenceIntegrationTest
+
+Requirements:
+
+* Cover edge cases (missing data, duplicates, partial metrics)
+* Validate idempotency
+* Validate event-driven flow
+* Ensure no regression in existing modules
+
+Validation (MANDATORY)
+
+Ensure:
+
+* mvn clean compile passes
+* mvn clean test passes
+* No circular dependencies
+* No runtime exceptions
+* No duplicate data generation
+* All services wired correctly
+
+Autonomous Correction Requirements
+
+* Fix compilation errors automatically
+* Resolve missing dependencies
+* Align DTOs, entities, and repositories
+* Ensure consistent naming and structure
+* Correct transactional boundaries
+* Maintain backward compatibility
+
+Output ONLY:
+
+1. Files created
+2. Files modified
+3. Database changes
+4. Events consumed
+5. Validation results
+6. Remaining blockers (if any)
+
+Completion Condition:
+
+PHASE 5B PLACEMENT INTELLIGENCE COMPLETE

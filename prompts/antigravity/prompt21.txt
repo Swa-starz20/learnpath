@@ -1,0 +1,257 @@
+Implement **Phase 7A — Notification Foundation**.
+
+---
+
+## CORE DIRECTIVE
+
+You are implementing **Phase 7A (not Phase 7)** of a production-grade backend.
+
+* Follow existing architecture, naming, and package structure strictly.
+* Maintain full consistency with previous modules.
+* Do NOT break or modify existing APIs unless absolutely required.
+* Do NOT introduce placeholders, TODOs, or incomplete logic.
+* Reuse existing patterns (entities, services, repositories, controllers).
+* Keep the module clean, modular, and event-ready.
+* Ensure all code compiles, runs, and passes tests.
+
+### AUTONOMOUS EXECUTION REQUIREMENT
+
+You must:
+
+* Detect and fix all compilation, mapping, transactional, Flyway, and runtime issues.
+* Resolve dependency conflicts and missing imports.
+* Ensure entity relationships and constraints are correct.
+* Fix test failures automatically.
+* Ensure database schema aligns with entities.
+* Ensure controller endpoints are fully functional and secured.
+* Do NOT stop midway.
+* Do NOT ask for clarification.
+* Deliver a fully working phase.
+
+---
+
+## OBJECTIVE
+
+Build the **Notification Foundation module**.
+
+Scope:
+
+* Notification persistence
+* REST APIs
+* User preferences
+
+Out of scope:
+
+* AI logic
+* Scheduling
+* Recommendation systems
+
+---
+
+## DATABASE
+
+Create migration:
+
+**V16__create_notification_tables.sql**
+
+### Table: notifications
+
+* id (UUID, PK)
+* user_id (FK → users.id, ON DELETE CASCADE)
+* notification_type (VARCHAR)
+* title (VARCHAR)
+* message (TEXT)
+* priority (VARCHAR)
+* status (UNREAD, READ)
+* action_url (VARCHAR)
+* created_at (TIMESTAMPTZ, default NOW)
+* read_at (TIMESTAMPTZ)
+
+### Table: notification_preferences
+
+* id (UUID, PK)
+* user_id (UUID, UNIQUE, FK → users.id, ON DELETE CASCADE)
+* assessment_notifications (BOOLEAN)
+* mentor_notifications (BOOLEAN)
+* placement_notifications (BOOLEAN)
+* analytics_notifications (BOOLEAN)
+* roadmap_notifications (BOOLEAN)
+* email_enabled (BOOLEAN)
+* in_app_enabled (BOOLEAN)
+* created_at (TIMESTAMPTZ)
+* updated_at (TIMESTAMPTZ)
+
+### Requirements
+
+* Proper foreign keys
+* Indexes:
+
+  * notifications(user_id)
+  * notifications(status)
+  * notifications(created_at)
+* Partial/optimized indexes where useful
+* Trigger for updated_at (reuse existing function)
+* Ensure Flyway compatibility and ordering
+
+---
+
+## ENTITY LAYER
+
+Create:
+
+* Notification
+* NotificationPreference
+
+Requirements:
+
+* Proper JPA mappings
+* Enum handling for status
+* Auditing fields aligned with DB
+* Consistent annotations with existing entities
+
+---
+
+## REPOSITORIES
+
+Create repositories with methods for:
+
+* Fetch latest notifications (paged/sorted)
+* Fetch unread notifications
+* Count unread notifications
+* Fetch preferences by user_id
+
+Ensure efficient queries and indexing usage.
+
+---
+
+## DTOS
+
+Create:
+
+* NotificationResponse
+* NotificationPreferenceResponse
+* UpdateNotificationPreferenceRequest
+
+Ensure:
+
+* Clean mapping
+* No entity leakage
+* Consistent DTO patterns
+
+---
+
+## SERVICE LAYER
+
+Create:
+
+NotificationService
+
+Responsibilities:
+
+* createNotification
+* markAsRead
+* markAllAsRead
+* getUnreadCount
+* getLatestNotifications
+* getUnreadNotifications
+* getPreferences
+* updatePreferences
+
+Requirements:
+
+* Transactional correctness
+* Null safety
+* Validation handling
+* Reusable for future event listeners
+* No business logic duplication
+
+---
+
+## CONTROLLER
+
+Create:
+
+NotificationController
+
+Endpoints:
+
+* GET /api/v1/notifications
+* GET /api/v1/notifications/unread
+* GET /api/v1/notifications/count
+* PUT /api/v1/notifications/{id}/read
+* PUT /api/v1/notifications/read-all
+* GET /api/v1/notifications/preferences
+* PUT /api/v1/notifications/preferences
+
+Requirements:
+
+* JWT authentication enforced
+* Proper request/response mapping
+* Validation annotations
+* Consistent response structure
+
+---
+
+## TESTING
+
+Create:
+
+NotificationControllerIntegrationTest
+
+Ensure:
+
+* Full endpoint coverage
+* Authentication handling
+* Database interaction validation
+
+Run:
+
+mvn clean compile
+mvn clean test
+
+Fix all failures automatically.
+
+---
+
+## VALIDATION CHECKLIST
+
+Before completion ensure:
+
+* BUILD SUCCESS
+* All tests pass
+* Flyway migrated to V16
+* Tables exist:
+
+  * notifications
+  * notification_preferences
+* Indexes and constraints verified
+* Previous tests remain green
+* No regressions introduced
+
+---
+
+## OUTPUT FORMAT
+
+Return ONLY:
+
+1. Files Created
+
+2. Files Modified
+
+3. Database Changes
+
+4. Validation Results
+
+5. Remaining Blockers
+
+---
+
+## FINAL INSTRUCTION
+
+Complete the entire phase end-to-end.
+
+Resolve all errors autonomously.
+
+Ensure consistency with the existing system.
+
+Do not stop until everything is fully working.

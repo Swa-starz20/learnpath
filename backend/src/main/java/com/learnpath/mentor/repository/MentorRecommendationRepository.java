@@ -11,4 +11,5 @@ import java.util.UUID;
 public interface MentorRecommendationRepository extends JpaRepository<MentorRecommendation, UUID> {
     List<MentorRecommendation> findByUserIdOrderByCreatedAtDesc(UUID userId);
     boolean existsByUserIdAndRecommendationTypeAndCompletedFalse(UUID userId, String recommendationType);
+    List<MentorRecommendation> findByUserIdAndTitleContainingIgnoreCaseOrUserIdAndDescriptionContainingIgnoreCase(UUID userId1, String title, UUID userId2, String description);
 }

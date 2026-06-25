@@ -1,0 +1,51 @@
+Before you begin implementation, apply the following architectural constraints throughout Phase 7A.
+
+## Architecture Constraints
+
+1. `NotificationService.createNotification(...)` must be the **only public entry point** for creating notifications.
+
+   * No controller, event listener, repository, or future module should persist notifications directly.
+   * All notification creation must flow through NotificationService.
+
+2. Design the Notification module to be **event-ready**.
+
+   * Phase 7A should only provide the reusable infrastructure.
+   * Phase 7B will attach event listeners (Assessment, Mentor, Placement, Analytics, Roadmap, etc.) without requiring architectural changes.
+
+3. Maintain strict separation of concerns.
+
+   * Controllers → Services only.
+   * Services → Repositories only.
+   * Repositories must never contain business logic.
+
+4. Follow all existing backend conventions used in previous modules:
+
+   * Package structure
+   * Entity mappings
+   * DTO patterns
+   * Validation
+   * Exception handling
+   * Transaction boundaries
+   * Repository naming
+   * REST endpoint style
+
+5. If any compilation, Flyway, Hibernate mapping, repository query, transactional, security, integration test, or runtime issue occurs:
+
+   * Detect it automatically.
+   * Fix it before completion.
+   * Re-run compilation and tests until everything passes.
+
+6. Verify before returning:
+
+   * `mvn clean compile` → BUILD SUCCESS
+   * `mvn clean test` → BUILD SUCCESS
+   * All previous tests remain green.
+   * Flyway migrates successfully to V16.
+   * PostgreSQL contains:
+
+     * notifications
+     * notification_preferences
+   * JWT security works for all notification endpoints.
+   * No regressions are introduced.
+
+Return only the required completion summary after all verification succeeds.

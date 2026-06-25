@@ -21,4 +21,6 @@ public interface DomainRepository extends JpaRepository<Domain, Long> {
 
     /** Checks whether a domain with the given code exists. */
     boolean existsByCode(String code);
+
+    List<Domain> findByNameContainingIgnoreCaseAndActiveTrue(String query);
 }

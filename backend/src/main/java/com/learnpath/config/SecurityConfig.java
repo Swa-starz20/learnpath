@@ -81,10 +81,12 @@ public class SecurityConfig {
                         // Phase 3A — public assessment template catalog (no auth required)
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/assessments/templates").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/v1/assessments/templates/{id}").permitAll()
-                        // Public health check
+                        // Public health check and info
                         .requestMatchers("/actuator/health").permitAll()
+                        .requestMatchers("/actuator/info").permitAll()
+                        .requestMatchers("/actuator/**").hasRole("ADMIN")
                         // Swagger/OpenAPI (for development)
-                        .requestMatchers("/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers("/v3/api-docs/**", "/v3/api-docs", "/swagger-ui/**", "/swagger-ui.html", "/api-docs/**").permitAll()
                         // Admin-only endpoints
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                         // All other endpoints (including /auth/me, user mutations, progression) require authentication

@@ -1,0 +1,226 @@
+# LearnPath Backend — Phase 6A: Analytics Foundation
+
+Follow the PRD, backend architecture, and all previously completed phases strictly. Maintain consistency with existing modules and patterns.
+
+You are implementing **Phase 6A (Analytics Foundation)** — not Phase 6B. Do NOT introduce predictive analytics, AI logic, or intelligence features.
+
+You must autonomously detect, fix, and resolve any compilation errors, migration issues, test failures, or inconsistencies during implementation. Do not stop until the system is stable, consistent, and fully functional.
+
+---
+
+## Objectives
+
+Implement the Analytics Foundation module with:
+
+* Clean schema design
+* Stable CRUD APIs
+* Full integration with existing system
+* Zero regressions
+
+Strictly exclude:
+
+* Predictive analytics
+* AI insights
+* Recommendation logic
+
+---
+
+## Database
+
+Create Flyway migration:
+
+V14__create_analytics_tables.sql
+
+Create tables:
+
+### analytics_snapshots
+
+* UUID primary key
+* user_id (FK)
+* overall_progress
+* roadmap_completion
+* assessment_average
+* readiness_score
+* total_xp
+* mastery_score
+* snapshot_time
+* created_at
+* updated_at
+
+### analytics_activity_logs
+
+* UUID primary key
+* user_id (FK)
+* activity_type
+* activity_reference
+* metadata (JSONB)
+* created_at
+
+### analytics_learning_streaks
+
+* UUID primary key
+* user_id (UNIQUE, FK)
+* current_streak
+* longest_streak
+* last_activity_date
+* updated_at
+
+Requirements:
+
+* Add indexes for user_id and frequently queried fields
+* Add update triggers where needed
+* Ensure referential integrity
+* Ensure Flyway migration is idempotent and valid
+
+---
+
+## Entity Layer
+
+Create:
+
+* AnalyticsSnapshot
+* ActivityLog
+* LearningStreak
+
+Ensure:
+
+* Proper JPA annotations
+* Consistent naming conventions
+* Relationships mapped correctly
+
+---
+
+## Repository Layer
+
+Create repositories for all entities.
+
+Ensure:
+
+* Query methods for latest snapshot
+* Efficient retrieval patterns
+* No redundant queries
+
+---
+
+## DTO Layer
+
+Create:
+
+* AnalyticsSnapshotResponse
+* ActivityLogResponse
+* LearningStreakResponse
+
+Ensure:
+
+* Clean mapping
+* No entity leakage
+
+---
+
+## Service Layer
+
+Create AnalyticsService.
+
+Responsibilities:
+
+* Retrieve latest analytics snapshot
+* Retrieve activity history
+* Retrieve streak data
+* Create snapshot
+* Append activity logs
+* Update streak
+
+Constraints:
+
+* No predictive logic
+* No AI logic
+* Maintain transactional integrity
+* Handle edge cases (missing data, duplicates, nulls)
+
+---
+
+## Controller Layer
+
+Create AnalyticsController.
+
+Endpoints:
+
+* GET /api/v1/analytics/summary
+* GET /api/v1/analytics/activity
+* GET /api/v1/analytics/streak
+* POST /api/v1/analytics/snapshot
+
+Requirements:
+
+* JWT authentication required
+* Proper validation
+* Clean response structure
+* No business logic in controllers
+
+---
+
+## Architecture Rules
+
+* Do NOT modify Assessment module
+* Do NOT modify Mentor module
+* Do NOT modify Placement module
+* No circular dependencies
+* Follow existing package structure
+* Use constructor injection only
+* Use @Transactional where required
+* Maintain consistency with previous phases
+
+---
+
+## Testing
+
+Create integration tests covering:
+
+* CRUD operations
+* Authentication
+* Validation
+* Flyway migration
+* Repository queries
+
+Run and ensure:
+
+mvn clean compile
+mvn clean test
+
+Requirements:
+
+* All tests must pass
+* No regressions in previous modules
+* Fix any failing tests automatically
+
+---
+
+## Autonomous Execution Rules
+
+* Detect and fix compilation errors
+* Resolve Flyway migration issues
+* Fix failing tests
+* Maintain schema consistency
+* Ensure backward compatibility
+* Do not leave partial implementations
+
+---
+
+## Deliverables
+
+Provide:
+
+1. Files created
+2. Files modified
+3. Database schema
+4. REST endpoints
+5. Test results
+6. Flyway verification
+7. Remaining blockers (if any)
+
+Do not stop until:
+
+* Build succeeds
+* All tests pass
+* Migration is applied correctly
+* Phase 6A is fully complete and stable

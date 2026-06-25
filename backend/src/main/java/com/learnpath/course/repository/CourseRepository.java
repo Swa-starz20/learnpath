@@ -13,4 +13,5 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> findByDomainIdAndPublishedTrueOrderByTitleAsc(Long domainId);
     Optional<Course> findBySlug(String slug);
     boolean existsBySlug(String slug);
+    List<Course> findByTitleContainingIgnoreCaseAndPublishedTrue(String query);
 }

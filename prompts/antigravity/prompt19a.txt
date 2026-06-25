@@ -1,0 +1,9 @@
+Proceed with the implementation.
+
+Before coding, make the following architectural refinements:
+
+1. AnalyticsService must act only as an aggregator. Do not duplicate business logic for roadmap completion, assessment averages, readiness score, XP, or mastery. Retrieve those values from the appropriate existing modules/services and compose the analytics snapshot.
+
+2. Design analytics_activity_logs around reusable activity types (e.g. LOGIN, ASSESSMENT_COMPLETED, COURSE_COMPLETED, ROADMAP_NODE_COMPLETED, XP_GAINED, PROFILE_UPDATED, MENTOR_PROFILE_UPDATED, PLACEMENT_PROFILE_UPDATED). Keep the implementation extensible so future event listeners can append activities without schema changes.
+
+Apart from these refinements, continue with the implementation exactly as planned. Resolve any compilation issues, Flyway migration issues, or failing tests automatically until the build is stable, all tests pass, and Phase 6A is fully complete.

@@ -10,4 +10,5 @@ import java.util.List;
 public interface CareerTrackRepository extends JpaRepository<CareerTrack, Long> {
     List<CareerTrack> findByActiveTrueOrderByNameAsc();
     List<CareerTrack> findByDomainIdAndActiveTrueOrderByNameAsc(Long domainId);
+    List<CareerTrack> findByNameContainingIgnoreCaseAndActiveTrue(String query);
 }
