@@ -1,0 +1,71 @@
+# ╔══════════════════════════════════════════════════════╗
+# ║  LearnPath Backend — Application Configuration      ║
+# ║  Shared base config — profile-specific files apply  ║
+# ║  on top via spring.config.activate.on-profile       ║
+# ╚══════════════════════════════════════════════════════╝
+
+spring:
+  application:
+    name: learnpath-backend
+
+  # ── JPA / Hibernate ─────────────────────────────────────────────────────────
+  jpa:
+    hibernate:
+      ddl-auto: validate           # Flyway manages schema — Hibernate only validates
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+        default_schema: public
+    show-sql: false
+    open-in-view: false           # Prevent lazy-loading across HTTP layer
+
+  # ── Flyway ──────────────────────────────────────────────────────────────────
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+    validate-on-migrate: true
+    out-of-order: false
+
+  # ── Jackson ─────────────────────────────────────────────────────────────────
+  jackson:
+    default-property-inclusion: NON_NULL
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+    time-zone: UTC
+
+# ── JWT ─────────────────────────────────────────────────────────────────────
+jwt:
+  # REQUIRED in production: set via JWT_SECRET environment variable (min 32 chars).
+  # The default below is intentionally insecure and MUST be overridden via
+  # the JWT_SECRET env var before deploying to any non-local environment.
+  secret: ${JWT_SECRET:INSECURE-DEFAULT-REPLACE-VIA-JWT-SECRET-ENV-VAR-MIN-32-CHARS}
+  access-token-ttl-minutes: ${JWT_ACCESS_TTL_MINUTES:15}
+
+# ── Actuator ────────────────────────────────────────────────────────────────
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# ── Server ──────────────────────────────────────────────────────────────────
+server:
+  port: 8080
+  error:
+    include-message: never        # Never expose internal error messages
+    include-stacktrace: never
+
+# ── Logging ─────────────────────────────────────────────────────────────────
+logging:
+  level:
+    root: WARN
+    com.learnpath: INFO
+    org.springframework.security: WARN
+    org.flywaydb: INFO
